@@ -3,7 +3,27 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Monster
+  - MinimapCamera
+  - Fire
+  - InventorySlot
+  - EquipmentSlot
+  - TrashSlot
+  - SkillsSlot
+  - SkillbarSlot
+  - DragAndDropHandler
+  - LootSlot
+  - NpcSellSlot
+  - TradingSlot
+  - Npc
+  - CraftingIngredientSlot
+  - CraftingResultSlot
+  - ItemMallSlot
+  - Pet
+  - QuestLocation
+  - NpcReviveSlot
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -13,13 +33,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Monster
+  - Npc
+  - Pet
+  - Indicator
+  - MinimapMarker
+  - TextOverlay
   - 
   - 
   - 
