@@ -64,7 +64,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scenes\shart.cs" />
     <Compile Include="Assets\Theia\Unity Essentials - Standard Assets\Environment\Water\Water4\Scripts\WaterBase.cs" />
     <Compile Include="Assets\Theia\Unity Essentials - Standard Assets\Environment\Water\Water4\Scripts\WaterTile.cs" />
     <None Include="Assets\Theia\Fonts\ubuntu-font-family-0.83\TRADEMARKS.txt" />
@@ -289,14 +288,14 @@
     <Reference Include="UnityEditor">
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.14f1/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.CecilX">
-      <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.CecilX.Mdb">
       <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Pdb">
       <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CecilX">
+      <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
       <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>

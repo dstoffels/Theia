@@ -313,14 +313,14 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.CecilX">
-      <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.CecilX.Mdb">
       <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Pdb">
       <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CecilX">
+      <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
       <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
