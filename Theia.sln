@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{A610FECA-FCF2-0FB6-F7C2-F7CAADE3089C}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uMMORPG", "uMMORPG.csproj", "{3344A16C-5556-357A-67D0-3547AFD231F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWebTransport", "SimpleWebTransport.csproj", "{DE6C96D8-092C-DDB0-F937-6AA63EFA35E8}"
@@ -18,8 +20,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponents", "NavMeshComponents.csproj", "{04BB17B3-459F-4A8E-7362-8340A335D4A4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libuv2kTransport", "libuv2kTransport.csproj", "{F033FEDE-A1C6-88E5-4095-F2D8485BD3C8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{A610FECA-FCF2-0FB6-F7C2-F7CAADE3089C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kcp2k", "kcp2k.csproj", "{2708CDE8-48E3-AE6B-C8AA-B41BA20575D3}"
 EndProject
@@ -41,6 +41,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A610FECA-FCF2-0FB6-F7C2-F7CAADE3089C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A610FECA-FCF2-0FB6-F7C2-F7CAADE3089C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A610FECA-FCF2-0FB6-F7C2-F7CAADE3089C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A610FECA-FCF2-0FB6-F7C2-F7CAADE3089C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3344A16C-5556-357A-67D0-3547AFD231F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3344A16C-5556-357A-67D0-3547AFD231F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3344A16C-5556-357A-67D0-3547AFD231F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -77,10 +81,6 @@ Global
 		{F033FEDE-A1C6-88E5-4095-F2D8485BD3C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F033FEDE-A1C6-88E5-4095-F2D8485BD3C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F033FEDE-A1C6-88E5-4095-F2D8485BD3C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A610FECA-FCF2-0FB6-F7C2-F7CAADE3089C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A610FECA-FCF2-0FB6-F7C2-F7CAADE3089C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A610FECA-FCF2-0FB6-F7C2-F7CAADE3089C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A610FECA-FCF2-0FB6-F7C2-F7CAADE3089C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2708CDE8-48E3-AE6B-C8AA-B41BA20575D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2708CDE8-48E3-AE6B-C8AA-B41BA20575D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2708CDE8-48E3-AE6B-C8AA-B41BA20575D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
