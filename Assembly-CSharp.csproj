@@ -64,25 +64,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\uMMORPG\Unity Essentials - Standard Assets\Environment\Water\Water4\Scripts\WaterBase.cs" />
-    <Compile Include="Assets\uMMORPG\Unity Essentials - Standard Assets\Environment\Water\Water4\Scripts\WaterTile.cs" />
-    <None Include="Assets\uMMORPG\Fonts\ubuntu-font-family-0.83\TRADEMARKS.txt" />
+    <Compile Include="Assets\Theia\Unity Essentials - Standard Assets\Environment\Water\Water4\Scripts\WaterBase.cs" />
+    <Compile Include="Assets\Theia\Unity Essentials - Standard Assets\Environment\Water\Water4\Scripts\WaterTile.cs" />
+    <None Include="Assets\Theia\Fonts\ubuntu-font-family-0.83\TRADEMARKS.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\uMMORPG\Unity Essentials - Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
-    <None Include="Assets\uMMORPG\Unity Essentials - Lighting Optimisation Tutorial\Shaders\WavingGrass.shader" />
-    <None Include="Assets\uMMORPG\Unity Essentials - 3D Game Kit - Teleporter\Acid.shader" />
+    <None Include="Assets\Theia\Unity Essentials - Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
+    <None Include="Assets\Theia\Unity Essentials - Lighting Optimisation Tutorial\Shaders\WavingGrass.shader" />
+    <None Include="Assets\Theia\Unity Essentials - 3D Game Kit - Teleporter\Acid.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\uMMORPG\Fonts\ubuntu-font-family-0.83\LICENCE-FAQ.txt" />
-    <None Include="Assets\uMMORPG\Fonts\ubuntu-font-family-0.83\CONTRIBUTING.txt" />
-    <None Include="Assets\uMMORPG\Animations\MocapUTD\MocapUTD - License.txt" />
-    <None Include="Assets\uMMORPG\Unity Essentials - Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
+    <None Include="Assets\Theia\Fonts\ubuntu-font-family-0.83\LICENCE-FAQ.txt" />
+    <None Include="Assets\Theia\Fonts\ubuntu-font-family-0.83\CONTRIBUTING.txt" />
+    <None Include="Assets\Theia\Animations\MocapUTD\MocapUTD - License.txt" />
+    <None Include="Assets\Theia\Unity Essentials - Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\uMMORPG\Fonts\ubuntu-font-family-0.83\FONTLOG.txt" />
-    <None Include="Assets\uMMORPG\Unity Essentials - Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
-    <None Include="Assets\uMMORPG\Textures\Icons\(Public Domain) 496 pixel art icons for medieval fantasy RPG\496 pixel art icons for medieval fantasy RPG - License.txt" />
-    <None Include="Assets\uMMORPG\Plugins\Mirror\Readme.txt" />
-    <None Include="Assets\uMMORPG\Models\Entities\(Public Domain) Forest Monster\Forest Monster - License.txt" />
+    <None Include="Assets\Theia\Fonts\ubuntu-font-family-0.83\FONTLOG.txt" />
+    <None Include="Assets\Theia\Unity Essentials - Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
+    <None Include="Assets\Theia\Textures\Icons\(Public Domain) 496 pixel art icons for medieval fantasy RPG\496 pixel art icons for medieval fantasy RPG - License.txt" />
+    <None Include="Assets\Theia\Plugins\Mirror\Readme.txt" />
+    <None Include="Assets\Theia\Models\Entities\(Public Domain) Forest Monster\Forest Monster - License.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -90,19 +90,19 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\uMMORPG\Fonts\ubuntu-font-family-0.83\copyright.txt" />
-    <None Include="Assets\uMMORPG\Unity Essentials - Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
-    <None Include="Assets\uMMORPG\Fonts\ubuntu-font-family-0.83\README.txt" />
+    <None Include="Assets\Theia\Fonts\ubuntu-font-family-0.83\copyright.txt" />
+    <None Include="Assets\Theia\Unity Essentials - Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+    <None Include="Assets\Theia\Fonts\ubuntu-font-family-0.83\README.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\uMMORPG\Documentation.txt" />
-    <None Include="Assets\uMMORPG\Plugins\Mirror\Plugins\Mono.Cecil\License.txt" />
-    <None Include="Assets\uMMORPG\Plugins\Mirror\License.txt" />
+    <None Include="Assets\Theia\Documentation.txt" />
+    <None Include="Assets\Theia\Plugins\Mirror\Plugins\Mono.Cecil\License.txt" />
+    <None Include="Assets\Theia\Plugins\Mirror\License.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\uMMORPG\Models\Entities\(Public Domain) Horse\Rigged Horse - License.txt" />
-    <None Include="Assets\uMMORPG\Notice.txt" />
+    <None Include="Assets\Theia\Models\Entities\(Public Domain) Horse\Rigged Horse - License.txt" />
+    <None Include="Assets\Theia\Notice.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
-    <None Include="Assets\uMMORPG\Fonts\ubuntu-font-family-0.83\LICENCE.txt" />
+    <None Include="Assets\Theia\Fonts\ubuntu-font-family-0.83\LICENCE.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
@@ -289,16 +289,16 @@
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.14f1/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX">
-      <HintPath>/Users/danimal/Downloads/Theia/Assets/uMMORPG/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
+      <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
-      <HintPath>/Users/danimal/Downloads/Theia/Assets/uMMORPG/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
+      <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Pdb">
-      <HintPath>/Users/danimal/Downloads/Theia/Assets/uMMORPG/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+      <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
-      <HintPath>/Users/danimal/Downloads/Theia/Assets/uMMORPG/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+      <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.14f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
