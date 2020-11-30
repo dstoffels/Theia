@@ -40,7 +40,7 @@ public partial class UISkillbar : MonoBehaviour
                 int equipmentIndex = player.equipment.GetItemIndexByName(entry.reference);
                 if (skillIndex != -1)
                 {
-                    Skill skill = player.skills.skills[skillIndex];
+                    OldSkill skill = player.skills.skills[skillIndex];
                     bool canCast = player.skills.CastCheckSelf(skill);
 
                     // if movement does NOT support navigation then we need to
@@ -55,14 +55,14 @@ public partial class UISkillbar : MonoBehaviour
                         canCast) // checks mana, cooldowns, etc.) {
                     {
                         // try use the skill or walk closer if needed
-                        ((PlayerSkills)player.skills).TryUse(skillIndex);
+                        ((OldPlayerSkills)player.skills).TryUse(skillIndex);
                     }
 
                     // refresh skill slot
                     slot.button.interactable = canCast; // check mana, cooldowns, etc.
                     slot.button.onClick.SetListener(() => {
                         // try use the skill or walk closer if needed
-                        ((PlayerSkills)player.skills).TryUse(skillIndex);
+                        ((OldPlayerSkills)player.skills).TryUse(skillIndex);
                     });
                     // only build tooltip while it's actually shown. this
                     // avoids MASSIVE amounts of StringBuilder allocations.

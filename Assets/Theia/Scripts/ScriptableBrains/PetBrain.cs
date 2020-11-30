@@ -85,7 +85,7 @@ public class PetBrain : CommonBrain
         {
             // we had a target before, but it's out of attack range now.
             // follow it. (use collider point(s) to also work with big entities)
-            float stoppingDistance = ((PetSkills)pet.skills).CurrentCastRange() * attackToMoveRangeRatio;
+            float stoppingDistance = ((OldPetSkills)pet.skills).CurrentCastRange() * attackToMoveRangeRatio;
             Vector3 destination = Utils.ClosestPoint(pet.target, pet.transform.position);
             pet.movement.Navigate(destination, stoppingDistance);
             return "MOVING";
@@ -94,7 +94,7 @@ public class PetBrain : CommonBrain
         {
             // we had a target in attack range before and trying to cast a skill
             // on it. check self (alive, mana, weapon etc.) and target
-            Skill skill = pet.skills.skills[pet.skills.currentSkill];
+            OldSkill skill = pet.skills.skills[pet.skills.currentSkill];
             if (pet.skills.CastCheckSelf(skill) && pet.skills.CastCheckTarget(skill))
             {
                 // start casting
@@ -112,7 +112,7 @@ public class PetBrain : CommonBrain
         if (EventAggro(pet))
         {
             // target in attack range. try to cast a first skill on it
-            if (pet.skills.skills.Count > 0) pet.skills.currentSkill = ((PetSkills)pet.skills).NextSkill();
+            if (pet.skills.skills.Count > 0) pet.skills.currentSkill = ((OldPetSkills)pet.skills).NextSkill();
             else Debug.LogError(name + " has no skills to attack with.");
             return "IDLE";
         }
@@ -175,7 +175,7 @@ public class PetBrain : CommonBrain
         {
             // we had a target before, but it's out of attack range now.
             // follow it. (use collider point(s) to also work with big entities)
-            float stoppingDistance = ((PetSkills)pet.skills).CurrentCastRange() * attackToMoveRangeRatio;
+            float stoppingDistance = ((OldPetSkills)pet.skills).CurrentCastRange() * attackToMoveRangeRatio;
             Vector3 destination = Utils.ClosestPoint(pet.target, pet.transform.position);
             pet.movement.Navigate(destination, stoppingDistance);
             return "MOVING";
@@ -184,7 +184,7 @@ public class PetBrain : CommonBrain
         {
             // target in attack range. try to cast a first skill on it
             // (we may get a target while randomly wandering around)
-            if (pet.skills.skills.Count > 0) pet.skills.currentSkill = ((PetSkills)pet.skills).NextSkill();
+            if (pet.skills.skills.Count > 0) pet.skills.currentSkill = ((OldPetSkills)pet.skills).NextSkill();
             else Debug.LogError(name + " has no skills to attack with.");
             pet.movement.Reset();
             return "IDLE";
@@ -252,7 +252,7 @@ public class PetBrain : CommonBrain
             if (pet.target.health.current == 0) pet.target = null;
 
             // go back to IDLE. reset current skill.
-            ((PetSkills)pet.skills).lastSkill = pet.skills.currentSkill;
+            ((OldPetSkills)pet.skills).lastSkill = pet.skills.currentSkill;
             pet.skills.currentSkill = -1;
             return "IDLE";
         }

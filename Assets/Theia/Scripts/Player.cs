@@ -47,7 +47,7 @@ using TMPro;
 [RequireComponent(typeof(PlayerPetControl))]
 [RequireComponent(typeof(PlayerQuests))]
 [RequireComponent(typeof(PlayerSkillbar))]
-[RequireComponent(typeof(PlayerSkills))]
+[RequireComponent(typeof(OldPlayerSkills))]
 [RequireComponent(typeof(PlayerTrading))]
 [RequireComponent(typeof(NetworkName))]
 public partial class Player : Entity
@@ -213,7 +213,7 @@ public partial class Player : Entity
                 anim.SetBool("STUNNED", state == "STUNNED");
                 anim.SetBool("MOUNTED", mountControl.IsMounted()); // for seated animation
                 anim.SetBool("DEAD", state == "DEAD");
-                foreach (Skill skill in skills.skills)
+                foreach (OldSkill skill in skills.skills)
                     if (skill.level > 0 && !(skill.data is PassiveSkill))
                         anim.SetBool(skill.name, skill.CastTimeRemaining() > 0);
             }
@@ -295,7 +295,7 @@ public partial class Player : Entity
     //     moved, in which case we need to follow, which we need to do on the
     //     client)
     [Client]
-    public void OnSkillCastFinished(Skill skill)
+    public void OnSkillCastFinished(OldSkill skill)
     {
         if (!isLocalPlayer) return;
 
@@ -307,12 +307,12 @@ public partial class Player : Entity
         // user pressed another skill button?
         else if (pendingSkill != -1)
         {
-            ((PlayerSkills)skills).TryUse(pendingSkill, true);
+            ((OldPlayerSkills)skills).TryUse(pendingSkill, true);
         }
         // otherwise do follow up attack if no interruptions happened
         else if (skill.followupDefaultAttack)
         {
-            ((PlayerSkills)skills).TryUse(0, true);
+            ((OldPlayerSkills)skills).TryUse(0, true);
         }
 
         // clear pending actions in any case
@@ -492,7 +492,7 @@ public partial class Player : Entity
             if (localPlayer.CanAttack(this) && localPlayer.skills.skills.Count > 0)
             {
                 // then try to use that one
-                ((PlayerSkills)localPlayer.skills).TryUse(0);
+                ((OldPlayerSkills)localPlayer.skills).TryUse(0);
             }
             // otherwise just walk there
             // (e.g. if clicking on it in a safe zone where we can't attack)

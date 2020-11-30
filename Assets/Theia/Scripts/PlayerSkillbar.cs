@@ -13,14 +13,14 @@ public struct SkillbarEntry
 
 [RequireComponent(typeof(PlayerEquipment))]
 [RequireComponent(typeof(PlayerInventory))]
-[RequireComponent(typeof(PlayerSkills))]
+[RequireComponent(typeof(OldPlayerSkills))]
 public class PlayerSkillbar : NetworkBehaviour
 {
     [Header("Components")]
     public Player player;
     public PlayerEquipment equipment;
     public PlayerInventory inventory;
-    public PlayerSkills skills;
+    public OldPlayerSkills skills;
 
     [Header("Skillbar")]
     public SkillbarEntry[] slots =
@@ -69,7 +69,7 @@ public class PlayerSkillbar : NetworkBehaviour
     void Load()
     {
         print("loading skillbar for " + name);
-        List<Skill> learned = player.skills.skills.Where(skill => skill.level > 0).ToList();
+        List<OldSkill> learned = player.skills.skills.Where(skill => skill.level > 0).ToList();
         for (int i = 0; i < slots.Length; ++i)
         {
             // try loading an existing entry

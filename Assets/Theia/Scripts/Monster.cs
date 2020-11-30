@@ -29,7 +29,7 @@ using UnityEngine;
 using Mirror;
 
 [RequireComponent(typeof(Inventory))]
-[RequireComponent(typeof(MonsterSkills))]
+[RequireComponent(typeof(OldMonsterSkills))]
 [RequireComponent(typeof(NavMeshMovement))]
 [RequireComponent(typeof(NetworkNavMeshAgent))]
 public partial class Monster : Entity
@@ -79,7 +79,7 @@ public partial class Monster : Entity
             animator.SetBool("CASTING", state == "CASTING");
             animator.SetBool("STUNNED", state == "STUNNED");
             animator.SetBool("DEAD", state == "DEAD");
-            foreach (Skill skill in skills.skills)
+            foreach (OldSkill skill in skills.skills)
                 animator.SetBool(skill.name, skill.CastTimeRemaining() > 0);
         }
     }
@@ -151,7 +151,7 @@ public partial class Monster : Entity
         if (player.CanAttack(this) && player.skills.skills.Count > 0)
         {
             // then try to use that one
-            ((PlayerSkills)player.skills).TryUse(0);
+            ((OldPlayerSkills)player.skills).TryUse(0);
         }
         // dead, has loot, close enough?
         // use collider point(s) to also work with big entities

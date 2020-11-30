@@ -39,13 +39,13 @@ using TMPro;
 [Serializable] public class UnityEventEntityInt : UnityEvent<Entity, int> {}
 
 // note: no animator required, towers, dummies etc. may not have one
-[RequireComponent(typeof(Level))]
-[RequireComponent(typeof(Health))]
-[RequireComponent(typeof(Mana))]
+[RequireComponent(typeof(OldLevel))]
+[RequireComponent(typeof(OldHealth))]
+[RequireComponent(typeof(OldMana))]
 [RequireComponent(typeof(Combat))]
 //[RequireComponent(typeof(Equipment))] // not required. monsters don't have one.
 //[RequireComponent(typeof(Movement))] // not required. mounts don't have one.
-[RequireComponent(typeof(Skills))]
+[RequireComponent(typeof(OldSkills))]
 [RequireComponent(typeof(NetworkProximityGridChecker))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody))] // kinematic, only needed for OnTrigger
@@ -54,13 +54,13 @@ using TMPro;
 public abstract partial class Entity : NetworkBehaviour
 {
     [Header("Components")]
-    public Level level;
-    public Health health;
-    public Mana mana;
+    public OldLevel level;
+    public OldHealth health;
+    public OldMana mana;
     public Combat combat;
     public Equipment equipment;
     public Movement movement;
-    public Skills skills;
+    public OldSkills skills;
     public NetworkProximityGridChecker proxchecker;
     public Animator animator;
 #pragma warning disable CS0109 // member does not hide accessible member
@@ -95,7 +95,7 @@ public abstract partial class Entity : NetworkBehaviour
         {
             // sum up manually. Linq.Sum() is HEAVY(!) on GC and performance (190 KB/call!)
             float passiveBonus = 0;
-            foreach (Skill skill in skills.skills)
+            foreach (OldSkill skill in skills.skills)
                 if (skill.level > 0 && skill.data is PassiveSkill passiveSkill)
                     passiveBonus += passiveSkill.speedBonus.Get(skill.level);
 

@@ -116,7 +116,7 @@ public class PlayerGameMasterTool : NetworkBehaviour
         if (!player.isGameMaster) return;
 
         if (value > 0)
-            ((PlayerSkills)player.skills).skillExperience = value;
+            ((OldPlayerSkills)player.skills).skillExperience = value;
     }
 
     [Command]

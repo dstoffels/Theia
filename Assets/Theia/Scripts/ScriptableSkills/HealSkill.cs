@@ -4,7 +4,7 @@ using System.Text;
 using UnityEngine;
 using Mirror;
 
-public abstract class HealSkill : ScriptableSkill
+public abstract class HealSkill : OldScriptableSkill
 {
     public LinearInt healsHealth;
     public LinearInt healsMana;

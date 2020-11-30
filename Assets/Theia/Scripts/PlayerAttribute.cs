@@ -2,13 +2,13 @@
 using UnityEngine;
 using Mirror;
 
-[RequireComponent(typeof(Level))]
-[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(OldLevel))]
+[RequireComponent(typeof(OldHealth))]
 public abstract class PlayerAttribute : NetworkBehaviour
 {
     [Header("Components")]
-    public Level level;
-    public Health health;
+    public OldLevel level;
+    public OldHealth health;
 
     [Header("Attribute")]
     [SyncVar] public int value;

@@ -64,6 +64,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\SerializableDictionary\Editor\SerializableDictionaryPropertyDrawer.cs" />
+    <Compile Include="Assets\SerializableDictionary\Example\Editor\UserSerializableDictionaryPropertyDrawers.cs" />
     <Compile Include="Assets\Theia\Unity Essentials - Standard Assets\Environment\Water\Editor\WaterBaseEditor.cs" />
     <Compile Include="Assets\Theia\Unity Essentials - Standard Assets\Environment\Water\Editor\WaterEditorUtility.cs" />
     <Reference Include="UnityEngine">

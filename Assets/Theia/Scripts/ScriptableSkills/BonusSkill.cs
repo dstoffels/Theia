@@ -3,7 +3,7 @@
 using System.Text;
 using UnityEngine;
 
-public abstract class BonusSkill : ScriptableSkill
+public abstract class BonusSkill : OldScriptableSkill
 {
     public LinearInt healthMaxBonus;
     public LinearInt manaMaxBonus;

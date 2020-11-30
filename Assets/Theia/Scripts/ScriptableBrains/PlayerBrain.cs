@@ -91,7 +91,7 @@ public class PlayerBrain : CommonBrain
             {
                 // user wants to cast a skill.
                 // check self (alive, mana, weapon etc.) and target and distance
-                Skill skill = player.skills.skills[player.skills.currentSkill];
+                OldSkill skill = player.skills.skills[player.skills.currentSkill];
                 player.nextTarget = player.target; // return to this one after any corrections by skills.CastCheckTarget
                 if (player.skills.CastCheckSelf(skill) &&
                     player.skills.CastCheckTarget(skill) &&
@@ -182,7 +182,7 @@ public class PlayerBrain : CommonBrain
             // (no MOUNTED state because we'd need MOUNTED_STUNNED, etc. too)
             if (!player.mountControl.IsMounted())
             {
-                Skill skill = player.skills.skills[player.skills.currentSkill];
+                OldSkill skill = player.skills.skills[player.skills.currentSkill];
                 if (player.skills.CastCheckSelf(skill) &&
                     player.skills.CastCheckTarget(skill) &&
                     player.skills.CastCheckDistance(skill, out Vector3 destination))
@@ -312,7 +312,7 @@ public class PlayerBrain : CommonBrain
             // apply the skill after casting is finished
             // note: we don't check the distance again. it's more fun if players
             //       still cast the skill if the target ran a few steps away
-            Skill skill = player.skills.skills[player.skills.currentSkill];
+            OldSkill skill = player.skills.skills[player.skills.currentSkill];
 
             // apply the skill on the target
             player.skills.FinishCast(skill);
@@ -529,7 +529,7 @@ public class PlayerBrain : CommonBrain
                         if (Utils.ClosestDistance(player, player.target) <= range)
                         {
                             // then stop moving and start attacking
-                            ((PlayerSkills)player.skills).CmdUse(player.useSkillWhenCloser);
+                            ((OldPlayerSkills)player.skills).CmdUse(player.useSkillWhenCloser);
 
                             // reset
                             player.useSkillWhenCloser = -1;

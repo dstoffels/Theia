@@ -31,7 +31,7 @@ public partial class UISkills : MonoBehaviour
                 for (int i = 0; i < player.skills.skills.Count; ++i)
                 {
                     UISkillSlot slot = content.GetChild(i).GetComponent<UISkillSlot>();
-                    Skill skill = player.skills.skills[i];
+                    OldSkill skill = player.skills.skills[i];
 
                     bool isPassive = skill.data is PassiveSkill;
 
@@ -56,7 +56,7 @@ public partial class UISkills : MonoBehaviour
                     int icopy = i;
                     slot.button.onClick.SetListener(() => {
                         // try use the skill or walk closer if needed
-                        ((PlayerSkills)player.skills).TryUse(icopy);
+                        ((OldPlayerSkills)player.skills).TryUse(icopy);
                     });
 
                     // image
@@ -70,11 +70,11 @@ public partial class UISkills : MonoBehaviour
                     slot.descriptionText.text = skill.ToolTip(showRequirements: skill.level == 0);
 
                     // learn / upgrade
-                    if (skill.level < skill.maxLevel && ((PlayerSkills)player.skills).CanUpgrade(skill))
+                    if (skill.level < skill.maxLevel && ((OldPlayerSkills)player.skills).CanUpgrade(skill))
                     {
                         slot.upgradeButton.gameObject.SetActive(true);
                         slot.upgradeButton.GetComponentInChildren<Text>().text = skill.level == 0 ? "Learn" : "Upgrade";
-                        slot.upgradeButton.onClick.SetListener(() => { ((PlayerSkills)player.skills).CmdUpgrade(icopy); });
+                        slot.upgradeButton.onClick.SetListener(() => { ((OldPlayerSkills)player.skills).CmdUpgrade(icopy); });
                     }
                     else slot.upgradeButton.gameObject.SetActive(false);
 
@@ -86,7 +86,7 @@ public partial class UISkills : MonoBehaviour
                 }
 
                 // skill experience
-                skillExperienceText.text = ((PlayerSkills)player.skills).skillExperience.ToString();
+                skillExperienceText.text = ((OldPlayerSkills)player.skills).skillExperience.ToString();
             }
         }
         else panel.SetActive(false);

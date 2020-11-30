@@ -3,12 +3,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using Mirror;
 
-[RequireComponent(typeof(Level))]
+[RequireComponent(typeof(OldLevel))]
 [DisallowMultipleComponent]
 public class Experience : NetworkBehaviour
 {
     [Header("Components")]
-    public Level level;
+    public OldLevel level;
 
     [Header("Experience")] // note: int is not enough (can have > 2 mil. easily)
     [SyncVar, SerializeField] long _current = 0;

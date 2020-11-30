@@ -26,7 +26,7 @@ public abstract class Energy : NetworkBehaviour
     public abstract int recoveryRate { get; }
 
     // don't recover while dead. all energy scripts need to check Health.
-    public Health health;
+    public OldHealth health;
 
     // spawn with full energy? important for monsters, etc.
     public bool spawnFull = true;

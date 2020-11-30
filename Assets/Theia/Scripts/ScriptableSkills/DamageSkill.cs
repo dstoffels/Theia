@@ -3,7 +3,7 @@
 using System.Text;
 using UnityEngine;
 
-public abstract class DamageSkill : ScriptableSkill
+public abstract class DamageSkill : OldScriptableSkill
 {
     [Header("Damage")]
     public LinearInt damage = new LinearInt{baseValue=1};

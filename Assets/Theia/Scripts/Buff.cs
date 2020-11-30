@@ -34,9 +34,9 @@ public partial struct Buff
             // note: ScriptableSkill.OnValidate 'is in resource folder' check
             //       causes Unity SendMessage warnings and false positives.
             //       this solution is a lot better.
-            if (!ScriptableSkill.All.ContainsKey(hash))
+            if (!OldScriptableSkill.All.ContainsKey(hash))
                 throw new KeyNotFoundException("There is no ScriptableSkill with hash=" + hash + ". Make sure that all ScriptableSkills are in the Resources folder so they are loaded properly.");
-            return (BuffSkill)ScriptableSkill.All[hash];
+            return (BuffSkill)OldScriptableSkill.All[hash];
         }
     }
     public string name => data.name;

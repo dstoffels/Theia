@@ -111,7 +111,7 @@ public partial class SkillTemplate
 }
 
 // note: can't add variables yet without modifying original constructor
-public partial struct Skill
+public partial struct OldSkill
 {
     //public int addonVariable
     //{

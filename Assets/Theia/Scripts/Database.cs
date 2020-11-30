@@ -416,7 +416,7 @@ public partial class Database : MonoBehaviour
         }
     }
 
-    void LoadSkills(PlayerSkills skills)
+    void LoadSkills(OldPlayerSkills skills)
     {
         // load skills based on skill templates (the others don't matter)
         // -> this way any skill changes in a prefab will be applied
@@ -424,8 +424,8 @@ public partial class Database : MonoBehaviour
         //    which are only for newly created characters)
 
         // fill all slots first
-        foreach (ScriptableSkill skillData in skills.skillTemplates)
-            skills.skills.Add(new Skill(skillData));
+        foreach (OldScriptableSkill skillData in skills.skillTemplates)
+            skills.skills.Add(new OldSkill(skillData));
 
         // then load learned skills and put into their slots
         // (one big query is A LOT faster than querying each slot separately)
@@ -434,7 +434,7 @@ public partial class Database : MonoBehaviour
             int index = skills.GetSkillIndexByName(row.name);
             if (index != -1)
             {
-                Skill skill = skills.skills[index];
+                OldSkill skill = skills.skills[index];
                 // make sure that 1 <= level <= maxlevel (in case we removed a skill
                 // level etc)
                 skill.level = Mathf.Clamp(row.level, 1, skill.maxLevel);
@@ -452,14 +452,14 @@ public partial class Database : MonoBehaviour
         }
     }
 
-    void LoadBuffs(PlayerSkills skills)
+    void LoadBuffs(OldPlayerSkills skills)
     {
         // load buffs
         // note: no check if we have learned the skill for that buff
         //       since buffs may come from other people too
         foreach (character_buffs row in connection.Query<character_buffs>("SELECT * FROM character_buffs WHERE character=?", skills.name))
         {
-            if (ScriptableSkill.All.TryGetValue(row.name.GetStableHashCode(), out ScriptableSkill skillData))
+            if (OldScriptableSkill.All.TryGetValue(row.name.GetStableHashCode(), out OldScriptableSkill skillData))
             {
                 // make sure that 1 <= level <= maxlevel (in case we removed a skill
                 // level etc)
@@ -536,7 +536,7 @@ public partial class Database : MonoBehaviour
                 player.strength.value                         = row.strength;
                 player.intelligence.value                     = row.intelligence;
                 player.experience.current                     = row.experience;
-                ((PlayerSkills)player.skills).skillExperience = row.skillExperience;
+                ((OldPlayerSkills)player.skills).skillExperience = row.skillExperience;
                 player.gold                                   = row.gold;
                 player.isGameMaster                           = row.gamemaster;
                 player.itemMall.coins                         = row.coins;
@@ -565,8 +565,8 @@ public partial class Database : MonoBehaviour
                 LoadInventory(player.inventory);
                 LoadEquipment((PlayerEquipment)player.equipment);
                 LoadItemCooldowns(player);
-                LoadSkills((PlayerSkills)player.skills);
-                LoadBuffs((PlayerSkills)player.skills);
+                LoadSkills((OldPlayerSkills)player.skills);
+                LoadBuffs((OldPlayerSkills)player.skills);
                 LoadQuests(player.quests);
                 LoadGuildOnDemand(player.guild);
 
@@ -669,11 +669,11 @@ public partial class Database : MonoBehaviour
         }
     }
 
-    void SaveSkills(PlayerSkills skills)
+    void SaveSkills(OldPlayerSkills skills)
     {
         // skills: remove old entries first, then add all new ones
         connection.Execute("DELETE FROM character_skills WHERE character=?", skills.name);
-        foreach (Skill skill in skills.skills)
+        foreach (OldSkill skill in skills.skills)
             if (skill.level > 0) // only learned skills to save queries/storage/time
             {
                 // castTimeEnd and cooldownEnd are based on NetworkTime.time,
@@ -692,7 +692,7 @@ public partial class Database : MonoBehaviour
             }
     }
 
-    void SaveBuffs(PlayerSkills skills)
+    void SaveBuffs(OldPlayerSkills skills)
     {
         // buffs: remove old entries first, then add all new ones
         connection.Execute("DELETE FROM character_buffs WHERE character=?", skills.name);
@@ -747,7 +747,7 @@ public partial class Database : MonoBehaviour
             strength = player.strength.value,
             intelligence = player.intelligence.value,
             experience = player.experience.current,
-            skillExperience = ((PlayerSkills)player.skills).skillExperience,
+            skillExperience = ((OldPlayerSkills)player.skills).skillExperience,
             gold = player.gold,
             coins = player.itemMall.coins,
             gamemaster = player.isGameMaster,
@@ -758,8 +758,8 @@ public partial class Database : MonoBehaviour
         SaveInventory(player.inventory);
         SaveEquipment((PlayerEquipment)player.equipment);
         SaveItemCooldowns(player);
-        SaveSkills((PlayerSkills)player.skills);
-        SaveBuffs((PlayerSkills)player.skills);
+        SaveSkills((OldPlayerSkills)player.skills);
+        SaveBuffs((OldPlayerSkills)player.skills);
         SaveQuests(player.quests);
         if (player.guild.InGuild())
             SaveGuild(player.guild.guild, false); // TODO only if needs saving? but would be complicated

@@ -20,7 +20,7 @@ public class PlayerCharacterControllerMovement : Movement
     [Header("Components")]
     public Player player;
     public Animator animator;
-    public Health health;
+    public OldHealth health;
     public CharacterController2k controller;
     public AudioSource feetAudio;
     public Combat combat;

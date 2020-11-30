@@ -62,7 +62,7 @@ public class MonsterBrain : CommonBrain
         {
             // we had a target before, but it's out of attack range now.
             // follow it. (use collider point(s) to also work with big entities)
-            float stoppingDistance = ((MonsterSkills)monster.skills).CurrentCastRange() * attackToMoveRangeRatio;
+            float stoppingDistance = ((OldMonsterSkills)monster.skills).CurrentCastRange() * attackToMoveRangeRatio;
             Vector3 destination = Utils.ClosestPoint(monster.target, monster.transform.position);
             monster.movement.Navigate(destination, stoppingDistance);
             return "MOVING";
@@ -88,7 +88,7 @@ public class MonsterBrain : CommonBrain
         {
             // we had a target in attack range before and trying to cast a skill
             // on it. check self (alive, mana, weapon etc.) and target
-            Skill skill = monster.skills.skills[monster.skills.currentSkill];
+            OldSkill skill = monster.skills.skills[monster.skills.currentSkill];
             if (monster.skills.CastCheckSelf(skill))
             {
                 if (monster.skills.CastCheckTarget(skill))
@@ -117,7 +117,7 @@ public class MonsterBrain : CommonBrain
         if (EventAggro(monster))
         {
             // target in attack range. try to cast a first skill on it
-            if (monster.skills.skills.Count > 0) monster.skills.currentSkill = ((MonsterSkills)monster.skills).NextSkill();
+            if (monster.skills.skills.Count > 0) monster.skills.currentSkill = ((OldMonsterSkills)monster.skills).NextSkill();
             else Debug.LogError(name + " has no skills to attack with.");
             return "IDLE";
         }
@@ -178,7 +178,7 @@ public class MonsterBrain : CommonBrain
         {
             // we had a target before, but it's out of attack range now.
             // follow it. (use collider point(s) to also work with big entities)
-            float stoppingDistance = ((MonsterSkills)monster.skills).CurrentCastRange() * attackToMoveRangeRatio;
+            float stoppingDistance = ((OldMonsterSkills)monster.skills).CurrentCastRange() * attackToMoveRangeRatio;
             Vector3 destination = Utils.ClosestPoint(monster.target, monster.transform.position);
             monster.movement.Navigate(destination, stoppingDistance);
             return "MOVING";
@@ -204,7 +204,7 @@ public class MonsterBrain : CommonBrain
         {
             // target in attack range. try to cast a first skill on it
             // (we may get a target while randomly wandering around)
-            if (monster.skills.skills.Count > 0) monster.skills.currentSkill = ((MonsterSkills)monster.skills).NextSkill();
+            if (monster.skills.skills.Count > 0) monster.skills.currentSkill = ((OldMonsterSkills)monster.skills).NextSkill();
             else Debug.LogError(name + " has no skills to attack with.");
             monster.movement.Reset();
             return "IDLE";
@@ -290,7 +290,7 @@ public class MonsterBrain : CommonBrain
                 monster.target = null;
 
             // go back to IDLE, reset current skill
-            ((MonsterSkills)monster.skills).lastSkill = monster.skills.currentSkill;
+            ((OldMonsterSkills)monster.skills).lastSkill = monster.skills.currentSkill;
             monster.skills.currentSkill = -1;
             return "IDLE";
         }

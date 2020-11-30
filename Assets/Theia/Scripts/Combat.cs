@@ -21,7 +21,7 @@ public interface ICombatBonus
 public class Combat : NetworkBehaviour
 {
     [Header("Components")]
-    public Level level;
+    public OldLevel level;
     public Entity entity;
 #pragma warning disable CS0109 // member does not hide accessible member
     public new Collider collider;
