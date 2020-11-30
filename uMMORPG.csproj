@@ -75,8 +75,6 @@
     <Compile Include="Assets\Theia\Scripts\DefaultVelocity.cs" />
     <Compile Include="Assets\Theia\Scripts\DestroyAfter.cs" />
     <Compile Include="Assets\Theia\Scripts\Editor\Welcome.cs" />
-    <Compile Include="Assets\Theia\Scripts\Energies\Health.cs" />
-    <Compile Include="Assets\Theia\Scripts\Energies\Mana.cs" />
     <Compile Include="Assets\Theia\Scripts\Energy.cs" />
     <Compile Include="Assets\Theia\Scripts\Entity.cs" />
     <Compile Include="Assets\Theia\Scripts\Equipment.cs" />
@@ -463,16 +461,16 @@
       <HintPath>/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
-      <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
+      <HintPath>/Users/danimal/Downloads/Theia/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Pdb">
-      <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+      <HintPath>/Users/danimal/Downloads/Theia/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX">
-      <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
+      <HintPath>/Users/danimal/Downloads/Theia/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
-      <HintPath>/Users/danimal/Downloads/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+      <HintPath>/Users/danimal/Downloads/Theia/Theia/Assets/Theia/Plugins/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.14f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -829,13 +827,13 @@
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.14f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/danimal/Downloads/Theia/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/danimal/Downloads/Theia/Theia/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>/Users/danimal/Downloads/Theia/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>/Users/danimal/Downloads/Theia/Theia/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>/Users/danimal/Downloads/Theia/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>/Users/danimal/Downloads/Theia/Theia/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

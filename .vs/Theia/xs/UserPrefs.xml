@@ -1,15 +1,18 @@
 ﻿<Properties StartupConfiguration="{A610FECA-FCF2-0FB6-F7C2-F7CAADE3089C}|">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/Theia/Scripts/Entity.cs" Line="1" Column="1" />
+      <File FileName="Assets/Theia/Scripts/Entity.cs" Line="63" Column="14" />
+      <File FileName="Assets/Theia/Scripts/Skills.cs" Line="11" Column="57" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Theia" expanded="True" selected="True">
+          <Node name="Theia" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Theia" expanded="True">
-                <Node name="Scripts" expanded="True" />
+                <Node name="Scripts" expanded="True">
+                  <Node name="Entity.cs" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
@@ -19,7 +22,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="3196cea7-d9a7-4059-bf3a-b4c025323e3b" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="bd517e53-3ee6-499d-a1f4-4091b0aa0466" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
