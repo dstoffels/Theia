@@ -34,6 +34,8 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using Mirror;
 using TMPro;
+using Dictionaries;
+using Stats;
 
 [Serializable] public class UnityEventEntity : UnityEvent<Entity> {}
 [Serializable] public class UnityEventEntityInt : UnityEvent<Entity, int> {}
@@ -53,6 +55,10 @@ using TMPro;
 [DisallowMultipleComponent]
 public abstract partial class Entity : NetworkBehaviour
 {
+
+    [Auto] public Attributes attributes;
+    //public Skills skills;
+
     [Header("Components")]
     public OldLevel level;
     public OldHealth health;

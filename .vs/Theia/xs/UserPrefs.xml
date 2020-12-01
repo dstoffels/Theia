@@ -1,8 +1,20 @@
 ﻿<Properties StartupConfiguration="{A610FECA-FCF2-0FB6-F7C2-F7CAADE3089C}|">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/Theia/Scripts/Entity.cs" Line="98" Column="30" />
+      <File FileName="Assets/Theia/Scripts/Entity.cs" Line="59" Column="12" />
       <File FileName="Assets/Theia/Scripts/Player.cs" />
+      <File FileName="Assets/Theia/Scripts/Globals.cs" Line="69" Column="2" />
+      <File FileName="Assets/Theia/Scripts/Editor/Dictionaries.cs" />
+      <File FileName="Assets/Theia/Scripts/AutoAttribute.cs" />
+      <File FileName="Assets/Theia/Scripts/Vitals/Vitals.cs" Line="19" Column="71" />
+      <File FileName="Assets/Theia/Scripts/Vitals/ScriptableVital.cs" Line="39" Column="101" />
+      <File FileName="Assets/Theia/Scripts/Vitals/Vital.cs" Line="41" Column="39" />
+      <File FileName="Assets/Theia/Scripts/Skills/Skill.cs" Line="1" Column="1" />
+      <File FileName="Assets/Theia/Scripts/Skills/Skills.cs" Line="16" Column="67" />
+      <File FileName="Assets/Theia/Scripts/Vitals/Mana.cs" Line="1" Column="1" />
+      <File FileName="Assets/Theia/Scripts/Vitals/Blood.cs" Line="8" Column="2" />
+      <File FileName="Assets/Theia/Scripts/Vitals/Calefaction.cs" Line="15" Column="20" />
+      <File FileName="Assets/Theia/Scripts/Vitals/HitPoints.cs" Line="23" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,9 +22,13 @@
           <Node name="Theia" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Theia" expanded="True">
+                <Node name="Plugins" expanded="True" />
                 <Node name="Scripts" expanded="True">
-                  <Node name="Energies" expanded="True" />
-                  <Node name="Entity.cs" selected="True" />
+                  <Node name="Attributes" expanded="True" />
+                  <Node name="Editor" expanded="True" />
+                  <Node name="Skills" expanded="True" />
+                  <Node name="Vitals" expanded="True" />
+                  <Node name="Globals.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
@@ -23,7 +39,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d4ea05ed-c4c0-4785-86f6-26eb9a2fc91b" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4d1f2eac-70f5-45ad-8d9a-0071767cb568" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
