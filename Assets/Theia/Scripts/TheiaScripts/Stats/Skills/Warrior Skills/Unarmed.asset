@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b04de4567d3454478ee0ea197d02310, type: 3}
+  m_Name: Unarmed
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  tooltip: 
+  primaryAttribute: {fileID: 11400000, guid: 498aac0627bc3aa4a902398b3d885c4c, type: 2}
+  secondaryAttribute: {fileID: 11400000, guid: ddc9daf4b43621c4d89a48184a802c1b, type: 2}
+  domain: {fileID: 11400000, guid: 54d38b874b7274449b56c405c275a410, type: 2}
+  abilities:
+  - {fileID: 11400000, guid: 2545aa04a9392e9478d3b496a1924851, type: 2}

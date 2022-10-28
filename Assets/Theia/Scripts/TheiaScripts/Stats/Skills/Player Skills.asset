@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24f87df7a235ed4a84c2ee5217af83b, type: 3}
+  m_Name: Player Skills
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  skillsList:
+  - {fileID: 11400000, guid: 2eda9b48e18f65040be7dbb63381d418, type: 2}
+  - {fileID: 11400000, guid: 6cc85435bd38a424ab9a72ebc6879f35, type: 2}
+  - {fileID: 11400000, guid: df819c145f172bb4ab9c82f155effcd7, type: 2}
+  - {fileID: 11400000, guid: 7a7dd39442e8b094083be253fe77d51e, type: 2}
