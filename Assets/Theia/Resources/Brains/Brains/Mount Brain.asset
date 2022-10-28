@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ff7e3b2fcb0485db8a499a7eed6980, type: 3}
+  m_Name: Mount Brain
+  m_EditorClassIdentifier: 
+  eventDied: {fileID: 11400000, guid: aee1b35ad2a60479b9ba99a396b8ebf9, type: 2}
+  eventDeathTimeElapsed: {fileID: 11400000, guid: d8a0f3a83dc374332ab03159e6513e66,
+    type: 2}
+  eventOwnerDied: {fileID: 11400000, guid: f6c295b688e684886adacf3664de1af0, type: 2}
+  eventOwnerDisappeared: {fileID: 11400000, guid: 22a54b479f7bf4a3e80a27f606fb51a9,
+    type: 2}

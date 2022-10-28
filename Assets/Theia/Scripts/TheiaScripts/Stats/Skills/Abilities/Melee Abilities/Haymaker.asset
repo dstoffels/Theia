@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc64e0be7d50bc4b9b4f40d936d4bbd, type: 3}
+  m_Name: Haymaker
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  difficulty: 0
+  staminaCost: 5
+  manaCost: 0
+  replaces: {fileID: 0}
+  image: {fileID: 0}
+  tooltip: 
+  requiresEquipment: 0
+  damageTypes:
+  - {fileID: 11400000, guid: a7b6e2bca727ee941a5ff9e4b9da8c36, type: 2}
+  damageMultiplier: 1
