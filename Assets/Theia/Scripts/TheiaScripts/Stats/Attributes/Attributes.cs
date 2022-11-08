@@ -1,10 +1,10 @@
-﻿using Stats.Values;
+﻿using StatsOLD.Values;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
 
-namespace Stats
+namespace StatsOLD
 {
     [RequireComponent(typeof(Skills)), DisallowMultipleComponent]
     public class Attributes : SerializedMonoBehaviour

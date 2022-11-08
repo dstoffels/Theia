@@ -1,6 +1,6 @@
 ﻿using InventoryStuff.Armor;
 using Mats;
-using Stats;
+using StatsOLD;
 using System.Collections.Generic;
 
 namespace Items.Armor

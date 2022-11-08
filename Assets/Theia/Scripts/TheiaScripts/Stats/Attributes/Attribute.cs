@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
-using Stats.Values;
+using StatsOLD.Values;
 
-namespace Stats
+namespace StatsOLD
 {
     public interface IAttributeBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 

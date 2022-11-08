@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace Stats
+namespace StatsOLD
 {
     [CreateAssetMenu(menuName = "Skills/Skill")]
     public class SkillData : StatData

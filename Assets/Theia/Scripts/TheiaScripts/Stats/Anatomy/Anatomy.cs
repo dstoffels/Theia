@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using InventoryStuff.Armor;
 
-namespace Stats
+namespace StatsOLD
 {
     // TODO: need to sort out methods for randomly selecting organs, randomly selecting upper/lower organs and ensuring that if a crippled organ is selected it will rerun the method or select the next in line.
     [RequireComponent(typeof(Attributes), typeof(HitPoints), typeof(Armor))]

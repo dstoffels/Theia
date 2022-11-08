@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Stats.Values;
+using StatsOLD.Values;
 
-namespace Stats
+namespace StatsOLD
 {
     /// <summary>
     /// Vitals include Stamina, Mana, Blood and Temperature, which derive from the Vital abstract class,

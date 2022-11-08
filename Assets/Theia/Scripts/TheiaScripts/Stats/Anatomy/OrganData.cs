@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Stats
+namespace StatsOLD
 {
     /// <summary>
-    /// A data container for <see cref="Organ"/>s; Create and add these to <see cref="AnatomyTemplate"/>s to populate an <see cref="Entity"/>'s <see cref="Anatomy"/>
+    /// A data container for <see cref="Organ"/>s; Create and add these to <see cref="AnatomyTemplate"/>s to populate an <see cref="Entities"/>'s <see cref="Anatomy"/>
     /// </summary>
     [CreateAssetMenu(menuName = "Anatomy/Organ")]
     public class OrganData : SerializedScriptableObject
@@ -22,7 +22,7 @@ namespace Stats
 
 public class Attack
 {
-    public Stats.OrganData FindOrgan(Player target)
+    public StatsOLD.OrganData FindOrgan(Player target)
     {
         var roll = DOneHundred.Roll();
         var count = 0f;

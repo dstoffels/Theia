@@ -1,11 +1,11 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
-using Stats.Values;
+using StatsOLD.Values;
 using static UnityEngine.Mathf;
 using System.Collections;
 using InventoryStuff.Armor;
 
-namespace Stats
+namespace StatsOLD
 {
     [HideReferenceObjectPicker]
     [RequireComponent(typeof(HitPoints), typeof(Anatomy), typeof(Armor))]

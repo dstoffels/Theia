@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
-using Stats.Values;
+using StatsOLD.Values;
 using Sirenix.OdinInspector;
 
-namespace Stats
+namespace StatsOLD
 {
     [DisallowMultipleComponent]
     public class Temperature : Vital

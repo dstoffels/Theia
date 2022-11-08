@@ -1,7 +1,7 @@
 ﻿using InventoryStuff.Armor;
 using Mats;
 using Sirenix.OdinInspector;
-using Stats;
+using StatsOLD;
 using System.Collections.Generic;
 
 namespace Items.Armor

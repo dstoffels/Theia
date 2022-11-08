@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace Stats
+namespace StatsOLD
 {
     public class StatData : SerializedScriptableObject
     {

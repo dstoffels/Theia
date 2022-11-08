@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace Stats
+namespace StatsOLD
 {
     // [CreateAssetMenu]
     public class AttributeData : StatData

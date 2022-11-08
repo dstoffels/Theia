@@ -1,5 +1,5 @@
 using Mirror;
-using Stats;
+using StatsOLD;
 using UnityEngine;
 using InventoryStuff.Armor;
 using InventoryStuff;

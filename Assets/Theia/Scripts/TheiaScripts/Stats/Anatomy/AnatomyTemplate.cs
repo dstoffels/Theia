@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Stats
+namespace StatsOLD
 {
     /// <summary>
-    /// A simple container with a list of <see cref="OrganData"/> that are populated into an <see cref="Entity"/>'s <see cref="Anatomy"/>.
+    /// A simple container with a list of <see cref="OrganData"/> that are populated into an <see cref="Entities"/>'s <see cref="Anatomy"/>.
     /// </summary>
     [CreateAssetMenu(menuName = "Anatomy/Anatomy")]
     public class AnatomyTemplate : SerializedScriptableObject

@@ -1,9 +1,9 @@
 ﻿using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
-using Stats.Values;
+using StatsOLD.Values;
 
-namespace Stats
+namespace StatsOLD
 {
     [RequireComponent(typeof(Anatomy))]
     [DisallowMultipleComponent]

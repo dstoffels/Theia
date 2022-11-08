@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Stats.Values;
+using StatsOLD.Values;
 
-namespace Stats
+namespace StatsOLD
 {
     [DisallowMultipleComponent]
     public class Stamina : Vital

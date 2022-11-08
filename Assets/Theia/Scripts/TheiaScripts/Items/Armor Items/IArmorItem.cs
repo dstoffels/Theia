@@ -1,5 +1,5 @@
 ﻿using InventoryStuff.Armor;
-using Stats;
+using StatsOLD;
 using System.Collections.Generic;
 
 namespace Items.Armor
