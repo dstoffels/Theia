@@ -5,28 +5,27 @@ using Entities;
 
 namespace Stats
 {
-    public class Attribute : Stat
+
+    public class Attribute : Stat<AttributeData>, IStatSubject, IStatObserver
     {
-        public static int FIRST_BONUS_AT = 20;
+        static int FIRST_BONUS_AT = 20;
 
-        private int baseLevel = 0;
-        private int raceModifier = 0;
+        int baseLevel = 10;
+        int raceModifier = 0;
 
-        private int skillPoints = 0;
-        private int nextBonusAt = FIRST_BONUS_AT;
-        private int lastBonusAt = 0;
-        private int skillBonus = 0;
+        Dictionary<string, int> skillValues = new Dictionary<string, int>();
+        int skillPoints = 0;
+        int nextBonusAt = FIRST_BONUS_AT;
+        int lastBonusAt = 0;
+        int skillBonus = 0;
 
-
-        public override void Update(StatEvent statEvent)
+        public void Update(StatEvent statEvent)
         {
-            setSkillBonus();
-            // TODO: update all dependent stats (skills, vitals)
-            // set Level: baseLevel, raceMod, skillBonus
-            Level = baseLevel + raceModifier + skillBonus;
+            SetSkillPoints(statEvent);
+            SetSkillBonus();
         }
 
-        private void setSkillBonus()
+        private void SetSkillBonus()
         {
             if (NeedsUpdate())
             {
@@ -40,17 +39,35 @@ namespace Stats
                     nextBonusAt += FIRST_BONUS_AT;
                     skillBonus++;
                 }
+                SetLevel();
             }
         }
 
-        protected override bool NeedsUpdate()
+        bool NeedsUpdate() => skillPoints >= nextBonusAt || skillPoints < lastBonusAt;
+
+        void SetLevel()
         {
-            return skillPoints >= nextBonusAt || skillPoints < lastBonusAt;
+            level = baseLevel + raceModifier + skillBonus;
+            NotifyDependents();
         }
-    }
 
-    public interface IAttributeData : IStatData
-    {
+        void SetSkillPoints(StatEvent statEvent)
+        {
+            if (!skillValues.ContainsKey(statEvent.name)) skillValues.Add(statEvent.name, statEvent.value);
+            skillValues[statEvent.name] = statEvent.value;
+            skillPoints = 0;
+            foreach (var skillValue in skillValues.Values) skillPoints += skillValue;
+        }
 
+        public void NotifyDependents()
+        {
+            foreach (var observer in observers) observer.Update(new StatEvent(name, level));
+        }
+
+        public void Attach(IStatObserver observer) => observers.Add(observer);
+
+        public void Detach(IStatObserver observer) => observers.Remove(observer);
+
+        public Attribute(AttributeData data) : base(data) { }
     }
 }

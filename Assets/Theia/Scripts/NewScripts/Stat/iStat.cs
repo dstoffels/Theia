@@ -5,39 +5,37 @@ using Entities;
 
 namespace Stats
 {
-    public interface IObserver
+    public interface IStatSubject
     {
-        public void Update(StatEvent statEvent);
+        public void Attach(IStatObserver observer);
+        public void Detach(IStatObserver observer);
+        public void NotifyDependents();
 
     }
 
-    public interface IUserInterface
+    public interface IStat
     {
-        public void UpdateUI();
-    }
-
-    public interface IStatData
-    {
-        public int id { get; }
         public string name { get; }
         public string description { get; }
-    }
-
-    public interface IStat : IObserver
-    {
-        public int Level { get; }
+        public int level { get; }
         //public float progress { get; }
 
+    }
+
+    public interface IStatObserver
+    {
+        public string name { get; }
+        public void Update(StatEvent statEvent);
     }
 
     public struct StatEvent
     {
         public string name;
         public int value;
-        public StatEvent(string statName, int newStatValue)
+        public StatEvent(string statName, int value)
         {
             name = statName;
-            value = newStatValue;
+            this.value = value;
         }
     }
 
