@@ -3,14 +3,16 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 
 namespace Stats
 {
     // Network behaviours can't utilize generics, so each stat collection component
     // (attributes, skills, vitals) must manually implement "dictionary" functionality :(
-    class Attributes : Mirror.NetworkBehaviour
+    [HideNetworkBehaviourFields]
+    public class Attributes : Mirror.NetworkBehaviour
     {
-        // Add 
+        [InfoBox("Attribute Data added here will automatically generate the entity's attributes."), ListDrawerSettings()]
         public List<AttributeData> data = new List<AttributeData>();
         public Attribute this[string key]
         {
@@ -21,6 +23,7 @@ namespace Stats
 
         List<string> keys = new List<string>();
         public List<string> Keys => keys;
+
         List<Attribute> values = new List<Attribute>();
         public List<Attribute> Values => values;
 
@@ -63,5 +66,7 @@ namespace Stats
         {
             Init();
         }
+
+
     }
 }
