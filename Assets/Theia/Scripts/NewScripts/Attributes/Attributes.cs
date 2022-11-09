@@ -7,9 +7,10 @@ using Sirenix.OdinInspector;
 namespace Stats
 {
     // Network behaviours can't utilize generics, so each stat collection component
-    // (attributes, skills, vitals) must manually implement "dictionary" functionality
+    // (attributes, skills, vitals) must manually implement "dictionary" functionality :(
     class Attributes : Mirror.NetworkBehaviour
     {
+        // Add 
         public List<AttributeData> data = new List<AttributeData>();
         public Attribute this[string key]
         {
