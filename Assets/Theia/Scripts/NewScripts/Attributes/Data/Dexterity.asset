@@ -21,4 +21,5 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  description: 
+  description: "Manual deftness & hand-eye coordination. The player\u2019s ability
+    to accomplish tasks involving the hands, like swinging a sword or picking a lock."

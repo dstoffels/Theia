@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Entities;
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 
 namespace Stats
 {
-
+    [Serializable]
     public class Attribute : Stat<AttributeData>, IStatSubject, IStatObserver
     {
         static int FIRST_BONUS_AT = 20;

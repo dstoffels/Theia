@@ -22,5 +22,5 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   description: 
-  primaryAttribute: {fileID: 0}
-  secondaryAttribute: {fileID: 0}
+  primaryAttribute: {fileID: 11400000, guid: 6c6b0483049b16b499a4b55e75bf3ede, type: 2}
+  secondaryAttribute: {fileID: 11400000, guid: a96130e0761ea90469a8b7afedde2eff, type: 2}

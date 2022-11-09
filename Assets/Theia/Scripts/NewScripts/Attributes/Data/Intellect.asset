@@ -21,4 +21,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  description: 
+  description: The ability to reason and comprehend the abstract. Intellect affects
+    the amount of experience earned and serves as your connection to the natural
+    world (the elemental domain). A high intellect provides xp bonuses and is crucial
+    for learning spells.
