@@ -10,8 +10,7 @@ namespace Stats
     [RequireComponent(typeof(Attributes))]
     public class Skills : StatManager
     {
-        [InfoBox("Skill Data added here will automatically generate the entity's attributes.")]
-        public List<SkillData> data = new List<SkillData>();
+        public SkillsTemplate skillsTemplate;
         public Skill this[string key]
         {
             get { return skills[keys.IndexOf(key)]; }
@@ -52,7 +51,7 @@ namespace Stats
         public void Init()
         {
             Clear();
-            foreach (var item in data) Add(item.name, new Skill(item));
+            foreach (var item in skillsTemplate.data) Add(item.name, new Skill(item));
             Attributes attributes = GetComponent<Attributes>();
             foreach (var att in attributes.Values) 
                 foreach (var skill in Values) 

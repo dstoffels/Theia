@@ -10,14 +10,14 @@ namespace Stats
     [HideReferenceObjectPicker]
     public class Attribute : Stat<AttributeData>, IStatSubject, IStatObserver
     {
-        static int FIRST_BONUS_AT = 20;
 
         [ShowInInspector]
         int baseLevel;
         int raceModifier;
 
-        Dictionary<string, int> skillValues = new Dictionary<string, int>();
         SkillPoints skillPoints = new SkillPoints();
+
+        const int FIRST_BONUS_AT = 20;
         int nextBonusAt = FIRST_BONUS_AT;
         int lastBonusAt = 0;
         int skillBonus = 0;

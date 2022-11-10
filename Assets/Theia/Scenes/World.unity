@@ -23088,8 +23088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  data:
-  - {fileID: 11400000, guid: d1d48a20e7226c242bcc8944d47aee2b, type: 2}
+  skillsTemplate: {fileID: 11400000, guid: d86af9591f9107b40b4fa6a5d5ab10f8, type: 2}
 --- !u!114 &648899510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23104,15 +23103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  data:
-  - {fileID: 11400000, guid: d51834e2b9342fe4daf575c9dde1c537, type: 2}
-  - {fileID: 11400000, guid: 6c6b0483049b16b499a4b55e75bf3ede, type: 2}
-  - {fileID: 11400000, guid: a96130e0761ea90469a8b7afedde2eff, type: 2}
-  - {fileID: 11400000, guid: 8e89823a9e3c9854e9d5eb390300dc52, type: 2}
-  - {fileID: 11400000, guid: 7a20c5bcba8cfca49bc3edb41d80b9f4, type: 2}
-  - {fileID: 11400000, guid: 0d6ceceb28c180e4ba673ff6ff8667c7, type: 2}
-  - {fileID: 11400000, guid: 563e31d428dc00d40addfe4898e918e0, type: 2}
-  - {fileID: 11400000, guid: 9d9387aa74be81b4aa2ca7f3cef6d3b9, type: 2}
+  attributesTemplate: {fileID: 11400000, guid: f63e8093dda7e27489a1c56a1b777c8c, type: 2}
 --- !u!114 &648899511
 MonoBehaviour:
   m_ObjectHideFlags: 0

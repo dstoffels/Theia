@@ -30,8 +30,8 @@ namespace Stats
             SetProficiency();
         }
 
-        static float FIRST_LEVELUP_AT = 1000;
-        static float LEVELUP_MULTIPLIER = 1.02f;
+        const float FIRST_LEVELUP_AT = 1000;
+        const float LEVELUP_MULTIPLIER = 1.02f;
 
         float nextLevelupAt = FIRST_LEVELUP_AT;
         float requiredXp = FIRST_LEVELUP_AT;

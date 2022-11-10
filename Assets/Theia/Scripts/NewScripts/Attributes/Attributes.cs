@@ -13,8 +13,7 @@ namespace Stats
 
     public class Attributes : StatManager
     {
-        [InfoBox("Attribute Data added here will automatically generate the entity's attributes.")]
-        public List<AttributeData> data = new List<AttributeData>();
+        public AttributesTemplate attributesTemplate;
         public Attribute this[string key]
         {
             get { return attributes[keys.IndexOf(key)]; }
@@ -50,22 +49,24 @@ namespace Stats
         }
 
         public bool Contains(KeyValuePair<string, Attribute> item) => keys.Contains(item.Key) && attributes.Contains(item.Value);
-
+        [Button]
         public void Init()
         {
-            Clear();
-            foreach (var item in data)
+            if (attributesTemplate)
             {
-                Attribute att = new Attribute(item);
-                Add(item.name, att);
+                Clear();
+                foreach (var item in attributesTemplate.data)
+                {
+                    Attribute att = new Attribute(item);
+                    Add(item.name, att);
+                }
             }
+
         }
 
         public void Init(int a)
         {
-            // fetch all assets automatically?
             Init();
-
         }
 
         private void OnValidate()
