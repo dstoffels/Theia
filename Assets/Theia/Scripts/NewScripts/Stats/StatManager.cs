@@ -5,32 +5,73 @@ using Sirenix.OdinInspector;
 
 namespace Stats
 {
-    // Network behaviours can't utilize generics, so each stat collection component
-    // (attributes, skills, vitals) must manually implement "dictionary" functionality :(
-    // Only a handful of members can be inherited. Sorry for the mess! 
-    public abstract class StatManager : Mirror.NetworkBehaviour
+    /// <summary>
+    /// A dictionary-like component that stores stats.
+    /// </summary>
+    /// <typeparam name="TStat"></typeparam>
+    /// <typeparam name="TData"></typeparam>
+    public abstract class StatManager<TStat, TData> : SerializedMonoBehaviour where TStat : Stat<TData> where TData : BaseData
     {
-        public StatsTemplate<BaseData> statsTemplate;
+        public StatsTemplate<TData> template;
+
+        public TStat this[string key]
+        {
+            get { return values[keys.IndexOf(key)]; }
+            set { values[keys.IndexOf(key)] = value; }
+        }
+
         protected List<string> keys = new List<string>();
         public List<string> Keys => keys;
 
+        [ShowInInspector]
+        protected List<TStat> values = new List<TStat>();
+        public List<TStat> Values => values;
+
+        public void Add(string key, TStat value)
+        {
+            if (!ContainsKey(key))
+            {
+                keys.Add(key);
+                values.Add(value);
+            }
+        }
+
+        public void Add(KeyValuePair<string, TStat> item)
+        {
+            if (!ContainsKey(item.Key))
+            {
+                keys.Add(item.Key);
+                values.Add(item.Value);
+            }
+        }
+
+        public void Clear()
+        {
+            keys.Clear();
+            values.Clear();
+        }
+
         public bool ContainsKey(string key) => keys.Contains(key);
+        public bool Contains(KeyValuePair<string, TStat> item) => keys.Contains(item.Key) && values.Contains(item.Value);
 
-        //public T[] GetAllScriptableObjects<T>() where T : BaseData
-        //{
-        //    string[] guids = AssetDatabase.FindAssets("t:" + typeof(T).Name);
+        [Button]
+        public virtual void Init()
+        {
+            if (template)
+            {
+                Clear();
+                foreach (var data in template.data)
+                {
+                    GenerateStatFromData(data);
+                }
+            }
+        }
 
-        //    T[] array = new T[guids.Length];
+        protected abstract void GenerateStatFromData(TData data);
 
-        //    for (int i = 0; i < guids.Length; i++)
-        //    {
-        //        string path = AssetDatabase.GUIDToAssetPath(guids[i]);
-
-        //        array[i] = AssetDatabase.LoadAssetAtPath<T>(path);
-        //    }
-
-        //    return array;
-        //}
-
+        private void OnValidate()
+        {
+            if (values.Count == 0) Init();
+        }
     }
 }

@@ -5,53 +5,12 @@ using Sirenix.OdinInspector;
 
 namespace Stats
 {
-    // Network behaviours can't utilize generics, so each stat collection component
-    // (attributes, skills, vitals) must manually implement "dictionary" functionality :(
     [RequireComponent(typeof(Attributes))]
-    public class Skills : StatManager
+    public class Skills : StatManager<Skill, SkillData>
     {
-        public SkillsTemplate skillsTemplate;
-        public Skill this[string key]
+        public override void Init()
         {
-            get { return skills[keys.IndexOf(key)]; }
-            set { skills[keys.IndexOf(key)] = value; }
-        }
-
-
-        [ShowInInspector]
-        List<Skill> skills = new List<Skill>();
-        public List<Skill> Values => skills;
-
-        public void Add(string key, Skill value)
-        {
-            if (!ContainsKey(key))
-            {
-                keys.Add(key);
-                skills.Add(value);
-            }
-        }
-
-        public void Add(KeyValuePair<string, Skill> item)
-        {
-            if (!ContainsKey(item.Key))
-            {
-                keys.Add(item.Key);
-                skills.Add(item.Value);
-            }
-        }
-
-        public void Clear()
-        {
-            keys.Clear();
-            skills.Clear();
-        }
-
-        public bool Contains(KeyValuePair<string, Skill> item) => keys.Contains(item.Key) && skills.Contains(item.Value);
-
-        public void Init()
-        {
-            Clear();
-            foreach (var item in skillsTemplate.data) Add(item.name, new Skill(item));
+            base.Init();
             Attributes attributes = GetComponent<Attributes>();
             foreach (var att in attributes.Values) 
                 foreach (var skill in Values) 
@@ -64,15 +23,12 @@ namespace Stats
                     }
         }
 
-        private void OnValidate()
-        {
-            if (skills.Count == 0) Init();
-        }
+        protected override void GenerateStatFromData(SkillData data) => Add(data.name, new Skill(data));
 
         [Button]
         void ResetValues()
         {
-            foreach (var skill in skills) skill.AddXP(-2000000000);
+            foreach (var skill in values) skill.AddXP(-2000000000);
 
         }
     }

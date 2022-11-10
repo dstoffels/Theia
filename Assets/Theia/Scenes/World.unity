@@ -23086,9 +23086,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2abbc1a6df01c4f8ec3c8a82fdb127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  skillsTemplate: {fileID: 11400000, guid: d86af9591f9107b40b4fa6a5d5ab10f8, type: 2}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  template: {fileID: 11400000, guid: d86af9591f9107b40b4fa6a5d5ab10f8, type: 2}
 --- !u!114 &648899510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23101,9 +23108,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177e536e9e2381848a1ec6fb25553255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  attributesTemplate: {fileID: 11400000, guid: f63e8093dda7e27489a1c56a1b777c8c, type: 2}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  template: {fileID: 11400000, guid: f63e8093dda7e27489a1c56a1b777c8c, type: 2}
 --- !u!114 &648899511
 MonoBehaviour:
   m_ObjectHideFlags: 0
