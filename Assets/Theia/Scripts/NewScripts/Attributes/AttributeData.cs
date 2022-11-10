@@ -4,5 +4,5 @@
 namespace Stats
 {
     [CreateAssetMenu(menuName ="Attribute")]
-    public class AttributeData : StatData { }
+    public class AttributeData : BaseData { }
 }

@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
+using Sirenix.OdinInspector;
 
 
 namespace Stats
 {
+    [HideReferenceObjectPicker]
     public class Skill : Stat<SkillData>, IStatObserver, IStatSubject
     {
         Dictionary<string, int> attributeValues = new Dictionary<string, int>();
+        [ShowInInspector, ReadOnly]
         public int aptitude { get; private set; }
         void SetAptitude(StatEvent statEvent)
         {
@@ -17,7 +21,9 @@ namespace Stats
             SetLevel();
         }
 
+        [ShowInInspector, ReadOnly]
         public int xp { get; private set; }
+        [Button(Style =ButtonStyle.FoldoutButton)]
         public void AddXP(int amt)
         {
             xp = Math.Max(0, xp + amt);
@@ -73,12 +79,13 @@ namespace Stats
         {
             foreach (var observer in observers)
             {
-                int value = observer.name == data.primaryAttribute.name ? level * 2 : level;
+                int value = observer.name == data.primaryAttribute.name ? proficiency * 2 : proficiency;
                 observer.Update(new StatEvent(name, value));
             }
         }
 
-        public Skill(SkillData data) : base(data) { }
+        public Skill(SkillData data) : base(data) {
+        }
 
     }
 }

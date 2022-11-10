@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f954b32871bb5b9458c77f9e80355c21, type: 3}
+  m_Name: Sapian
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 7a20c5bcba8cfca49bc3edb41d80b9f4, type: 2}
+    - {fileID: 11400000, guid: 8e89823a9e3c9854e9d5eb390300dc52, type: 2}
+    - {fileID: 11400000, guid: 563e31d428dc00d40addfe4898e918e0, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: attributeModifiers
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Stats.AttributeData, uMMORPG],[System.Int32,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Stats.AttributeData,
+        uMMORPG]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 0
+    - Name: $v
+      Entry: 3
+      Data: 8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 1
+    - Name: $v
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 2
+    - Name: $v
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  description: 'The Sapian is a common sight on Theia. They are an upright bipedal
+    species with keen vision, smooth skin with a range of earthy pigmentations, and
+    wildly varying hairstyles. Sapians are most widely known for their adaptability
+    to nearly any environment or occupation. Many modern-day Sapians share lineage
+    with other elder bloodlines, but the Sapian traits are overwhelmingly dominant.
+    Short gestation periods and a relatively quick maturation rate combined with
+    their innate compatibility with the other denizens of the lands had caused Sapian
+    society to rapidly expand prior to the Great Schism, and their survivability
+    is undeniable.
+
+    
+
+    Sapians have largely earned the reputation of having
+    impatient and short-sighted temperaments, but possess an unusual amount of determination
+    - even to the point of stubbornness. Even with this stigma (and perhaps because
+    of the growing ire of many other species), Sapian attitudes can be as varied
+    as their appearances.
+
+    
+
+    Today, much of their society is still in disarray
+    due to the territory wars that followed the Great Schism. This infighting carries
+    on even today, as several of the disasters that occurred during this time of
+    turmoil disproportionately affected Sapian lands. Many Sapians now find their
+    livelihoods as farmers and craftsmen, eking out an existence from the cursed
+    lands and huddling together in scared little hamlets. A near-equal amount regress
+    from society completely, preferring to ply trade as raiders, mercenaries, or
+    traveling priests. Still fewer risk their lives as scavengers, braving dangerous
+    ruins for the relics of the past.'

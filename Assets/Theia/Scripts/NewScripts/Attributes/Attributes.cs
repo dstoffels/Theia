@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 
@@ -9,64 +9,70 @@ namespace Stats
 {
     // Network behaviours can't utilize generics, so each stat collection component
     // (attributes, skills, vitals) must manually implement "dictionary" functionality :(
-    [HideNetworkBehaviourFields]
-    public class Attributes : Mirror.NetworkBehaviour
+    // Sorry for the mess! 
+
+    public class Attributes : StatManager
     {
-        [InfoBox("Attribute Data added here will automatically generate the entity's attributes."), ListDrawerSettings()]
+        [InfoBox("Attribute Data added here will automatically generate the entity's attributes.")]
         public List<AttributeData> data = new List<AttributeData>();
         public Attribute this[string key]
         {
-            get { return values[keys.IndexOf(key)]; }
-            set { values[keys.IndexOf(key)] = value; }
+            get { return attributes[keys.IndexOf(key)]; }
+            set { attributes[keys.IndexOf(key)] = value; }
         }
 
-
-        List<string> keys = new List<string>();
-        public List<string> Keys => keys;
-
-        List<Attribute> values = new List<Attribute>();
-        public List<Attribute> Values => values;
+        [ShowInInspector]
+        List<Attribute> attributes = new List<Attribute>();
+        public List<Attribute> Values => attributes;
 
         public void Add(string key, Attribute value)
         {
-            if (!keys.Contains(key))
+            if (!ContainsKey(key))
             {
                 keys.Add(key);
-                values.Add(value);
+                attributes.Add(value);
             }
         }
 
         public void Add(KeyValuePair<string, Attribute> item)
         {
-            keys.Add(item.Key);
-            values.Add(item.Value);
+            if (!ContainsKey(item.Key))
+            {
+                keys.Add(item.Key);
+                attributes.Add(item.Value);
+            }
         }
 
         public void Clear()
         {
             keys.Clear();
-            values.Clear();
+            attributes.Clear();
         }
 
-        public bool Contains(KeyValuePair<string, Attribute> item) => keys.Contains(item.Key) && values.Contains(item.Value);
-        public bool ContainsKey(string key) => keys.Contains(key);
+        public bool Contains(KeyValuePair<string, Attribute> item) => keys.Contains(item.Key) && attributes.Contains(item.Value);
 
         public void Init()
         {
-            if (data.Count != keys.Count)
+            Clear();
+            foreach (var item in data)
             {
-                Clear();
-                foreach (var item in data) Add(item.name, new Attribute(item));
-                Debug.Log("Attributes initialized");
+                Attribute att = new Attribute(item);
+                Add(item.name, att);
             }
+        }
+
+        public void Init(int a)
+        {
+            // fetch all assets automatically?
+            Init();
 
         }
 
         private void OnValidate()
         {
-            Init();
+            if (attributes.Count == 0) Init();
         }
-
-
     }
+
+
 }

@@ -14223,7 +14223,10 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: min
+      Entry: 4
+      Data: 0
 --- !u!114 &370969803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23051,6 +23054,110 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648018008}
   m_CullTransparentMesh: 0
+--- !u!1 &648899508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 648899513}
+  - component: {fileID: 648899512}
+  - component: {fileID: 648899511}
+  - component: {fileID: 648899510}
+  - component: {fileID: 648899509}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &648899509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648899508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2abbc1a6df01c4f8ec3c8a82fdb127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  data:
+  - {fileID: 11400000, guid: d1d48a20e7226c242bcc8944d47aee2b, type: 2}
+--- !u!114 &648899510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648899508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177e536e9e2381848a1ec6fb25553255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  data:
+  - {fileID: 11400000, guid: d51834e2b9342fe4daf575c9dde1c537, type: 2}
+  - {fileID: 11400000, guid: 6c6b0483049b16b499a4b55e75bf3ede, type: 2}
+  - {fileID: 11400000, guid: a96130e0761ea90469a8b7afedde2eff, type: 2}
+  - {fileID: 11400000, guid: 8e89823a9e3c9854e9d5eb390300dc52, type: 2}
+  - {fileID: 11400000, guid: 7a20c5bcba8cfca49bc3edb41d80b9f4, type: 2}
+  - {fileID: 11400000, guid: 0d6ceceb28c180e4ba673ff6ff8667c7, type: 2}
+  - {fileID: 11400000, guid: 563e31d428dc00d40addfe4898e918e0, type: 2}
+  - {fileID: 11400000, guid: 9d9387aa74be81b4aa2ca7f3cef6d3b9, type: 2}
+--- !u!114 &648899511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648899508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a289023229ee48f41919641f6ec974bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+--- !u!114 &648899512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648899508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 76771568
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
+--- !u!4 &648899513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648899508}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.3175945, y: 8.786859, z: -38.422024}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 30
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &649532478
 GameObject:
   m_ObjectHideFlags: 0
@@ -65894,6 +66001,7 @@ GameObject:
   - component: {fileID: 1999187558}
   - component: {fileID: 1999187557}
   - component: {fileID: 1999187562}
+  - component: {fileID: 1999187563}
   - component: {fileID: 1999187561}
   m_Layer: 0
   m_Name: Backpack (1)
@@ -65987,20 +66095,127 @@ MonoBehaviour:
   m_GameObject: {fileID: 1999187556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 177e536e9e2381848a1ec6fb25553255, type: 3}
+  m_Script: {fileID: 11500000, guid: 2941d21b74b4dcf459249d37c188d338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  data:
-  - {fileID: 11400000, guid: d51834e2b9342fe4daf575c9dde1c537, type: 2}
-  - {fileID: 11400000, guid: 6c6b0483049b16b499a4b55e75bf3ede, type: 2}
-  - {fileID: 11400000, guid: a96130e0761ea90469a8b7afedde2eff, type: 2}
-  - {fileID: 11400000, guid: 8e89823a9e3c9854e9d5eb390300dc52, type: 2}
-  - {fileID: 11400000, guid: 7a20c5bcba8cfca49bc3edb41d80b9f4, type: 2}
-  - {fileID: 11400000, guid: 0d6ceceb28c180e4ba673ff6ff8667c7, type: 2}
-  - {fileID: 11400000, guid: 563e31d428dc00d40addfe4898e918e0, type: 2}
-  - {fileID: 11400000, guid: 9d9387aa74be81b4aa2ca7f3cef6d3b9, type: 2}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 2eda9b48e18f65040be7dbb63381d418, type: 2}
+    - {fileID: 1999187563}
+    - {fileID: 11400000, guid: 6cc85435bd38a424ab9a72ebc6879f35, type: 2}
+    - {fileID: 11400000, guid: df819c145f172bb4ab9c82f155effcd7, type: 2}
+    - {fileID: 11400000, guid: 7a7dd39442e8b094083be253fe77d51e, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: skillset
+      Entry: 7
+      Data: 0|StatsOLD.Skillset, uMMORPG
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[StatsOLD.SkillData,
+        uMMORPG]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 2|StatsOLD.Skill, uMMORPG
+    - Name: data
+      Entry: 10
+      Data: 0
+    - Name: attributes
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 3|StatsOLD.Skill, uMMORPG
+    - Name: data
+      Entry: 10
+      Data: 2
+    - Name: attributes
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 4|StatsOLD.Skill, uMMORPG
+    - Name: data
+      Entry: 10
+      Data: 3
+    - Name: attributes
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: 5|StatsOLD.Skill, uMMORPG
+    - Name: data
+      Entry: 10
+      Data: 4
+    - Name: attributes
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  template: {fileID: 11400000, guid: 1b584cb8a4f8f6247a026612b14f6061, type: 2}
 --- !u!114 &1999187562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66018,6 +66233,229 @@ MonoBehaviour:
   visible: 0
   m_AssetId: 
   hasSpawned: 0
+--- !u!114 &1999187563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999187556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7a404c69e9fa84daf7c7770fb8225b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 498aac0627bc3aa4a902398b3d885c4c, type: 2}
+    - {fileID: 11400000, guid: c540938bf8145584995a65c8501f1061, type: 2}
+    - {fileID: 11400000, guid: ddc9daf4b43621c4d89a48184a802c1b, type: 2}
+    - {fileID: 11400000, guid: b34de46cbbe354542b0b619386765a35, type: 2}
+    - {fileID: 11400000, guid: ae25337c23de48c4ca5ab1d02365852c, type: 2}
+    - {fileID: 11400000, guid: c44ea525644ba934085bc39362f150e0, type: 2}
+    - {fileID: 11400000, guid: 55106acf660707b47a855b340e0bb34a, type: 2}
+    - {fileID: 11400000, guid: f3e880495ebd40447b0b66475f487966, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: attributes
+      Entry: 7
+      Data: 0|StatsOLD.AttributeDict, uMMORPG
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 8
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Agility
+    - Name: $v
+      Entry: 7
+      Data: 2|StatsOLD.Attribute, uMMORPG
+    - Name: data
+      Entry: 10
+      Data: 0
+    - Name: skills
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Ardor
+    - Name: $v
+      Entry: 7
+      Data: 3|StatsOLD.Attribute, uMMORPG
+    - Name: data
+      Entry: 10
+      Data: 1
+    - Name: skills
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Constitution
+    - Name: $v
+      Entry: 7
+      Data: 4|StatsOLD.Attribute, uMMORPG
+    - Name: data
+      Entry: 10
+      Data: 2
+    - Name: skills
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Dexterity
+    - Name: $v
+      Entry: 7
+      Data: 5|StatsOLD.Attribute, uMMORPG
+    - Name: data
+      Entry: 10
+      Data: 3
+    - Name: skills
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Discipline
+    - Name: $v
+      Entry: 7
+      Data: 6|StatsOLD.Attribute, uMMORPG
+    - Name: data
+      Entry: 10
+      Data: 4
+    - Name: skills
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Intellect
+    - Name: $v
+      Entry: 7
+      Data: 7|StatsOLD.Attribute, uMMORPG
+    - Name: data
+      Entry: 10
+      Data: 5
+    - Name: skills
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Strength
+    - Name: $v
+      Entry: 7
+      Data: 8|StatsOLD.Attribute, uMMORPG
+    - Name: data
+      Entry: 10
+      Data: 6
+    - Name: skills
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Acuity
+    - Name: $v
+      Entry: 7
+      Data: 9|StatsOLD.Attribute, uMMORPG
+    - Name: data
+      Entry: 10
+      Data: 7
+    - Name: skills
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: startingLevels
+      Entry: 7
+      Data: StatsOLD.Values.StartingLevels, uMMORPG
+    - Name: 
+      Entry: 8
+      Data: 
+  template: {fileID: 11400000, guid: d7dfadfcdb3b07940aea27d2ef37fba6, type: 2}
 --- !u!1 &2009254446
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,14 +5,6 @@ using Entities;
 
 namespace Stats
 {
-    public interface IStatSubject
-    {
-        public void Attach(IStatObserver observer);
-        public void Detach(IStatObserver observer);
-        public void NotifyDependents();
-
-    }
-
     public interface IStat
     {
         public string name { get; }
@@ -21,6 +13,15 @@ namespace Stats
         //public float progress { get; }
 
     }
+    public interface IStatSubject
+    {
+        public string name { get; }
+        public void Attach(IStatObserver observer);
+        public void Detach(IStatObserver observer);
+        public void NotifyDependents();
+
+    }
+
 
     public interface IStatObserver
     {
