@@ -208,7 +208,7 @@ public partial class PlayerOLD : EntityOLD
                 anim.SetBool("STUNNED", state == "STUNNED");
                 anim.SetBool("MOUNTED", mountControl.IsMounted()); // for seated animation
                 anim.SetBool("DEAD", state == "DEAD");
-                foreach (SkillOLD skill in skills.skills)
+                foreach (SkillOLD skill in skillsOLD.skills)
                     if (skill.level > 0 && !(skill.data is PassiveSkill))
                         anim.SetBool(skill.name, skill.CastTimeRemaining() > 0);
             }
@@ -300,12 +300,12 @@ public partial class PlayerOLD : EntityOLD
         // user pressed another skill button?
         else if (pendingSkill != -1)
         {
-            ((PlayerSkills)skills).TryUse(pendingSkill, true);
+            ((PlayerSkills)skillsOLD).TryUse(pendingSkill, true);
         }
         // otherwise do follow up attack if no interruptions happened
         else if (skill.followupDefaultAttack)
         {
-            ((PlayerSkills)skills).TryUse(0, true);
+            ((PlayerSkills)skillsOLD).TryUse(0, true);
         }
 
         // clear pending actions in any case
@@ -368,8 +368,8 @@ public partial class PlayerOLD : EntityOLD
     {
         // some skills allow movement while casting
         bool castingAndAllowed = state == "CASTING" &&
-                                 skills.currentSkill != -1 &&
-                                 skills.skills[skills.currentSkill].allowMovement;
+                                 skillsOLD.currentSkill != -1 &&
+                                 skillsOLD.skills[skillsOLD.currentSkill].allowMovement;
 
         // in a state where movement is allowed?
         // and if local player: not typing in an input?
@@ -437,12 +437,12 @@ public partial class PlayerOLD : EntityOLD
     // NOTE: this is in Player.cs and not in PlayerCombat.cs for ease of use!
     public bool IsOffender()
     {
-        return offenderBuff != null && skills.GetBuffIndexByName(offenderBuff.name) != -1;
+        return offenderBuff != null && skillsOLD.GetBuffIndexByName(offenderBuff.name) != -1;
     }
 
     public bool IsMurderer()
     {
-        return murdererBuff != null && skills.GetBuffIndexByName(murdererBuff.name) != -1;
+        return murdererBuff != null && skillsOLD.GetBuffIndexByName(murdererBuff.name) != -1;
     }
 
     public bool IsInnocent()
@@ -452,12 +452,12 @@ public partial class PlayerOLD : EntityOLD
 
     public void StartOffender()
     {
-        if (offenderBuff != null) skills.AddOrRefreshBuff(new Buff(offenderBuff, 1));
+        if (offenderBuff != null) skillsOLD.AddOrRefreshBuff(new Buff(offenderBuff, 1));
     }
 
     public void StartMurderer()
     {
-        if (murdererBuff != null) skills.AddOrRefreshBuff(new Buff(murdererBuff, 1));
+        if (murdererBuff != null) skillsOLD.AddOrRefreshBuff(new Buff(murdererBuff, 1));
     }
 
     // selection handling //////////////////////////////////////////////////////
@@ -482,10 +482,10 @@ public partial class PlayerOLD : EntityOLD
         if (this != localPlayer)
         {
             // attackable and has skills? => attack
-            if (localPlayer.CanAttack(this) && localPlayer.skills.skills.Count > 0)
+            if (localPlayer.CanAttack(this) && localPlayer.skillsOLD.skills.Count > 0)
             {
                 // then try to use that one
-                ((PlayerSkills)localPlayer.skills).TryUse(0);
+                ((PlayerSkills)localPlayer.skillsOLD).TryUse(0);
             }
             // otherwise just walk there
             // (e.g. if clicking on it in a safe zone where we can't attack)

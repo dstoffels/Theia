@@ -93,7 +93,7 @@ public partial class UIGameMasterTool : MonoBehaviour
 
                 // skill exp: set if not editing, apply otherwise
                 if (!skillExperienceInput.isFocused)
-                    skillExperienceInput.text = ((PlayerSkills)player.skills).skillExperience.ToString();
+                    skillExperienceInput.text = ((PlayerSkills)player.skillsOLD).skillExperience.ToString();
 
                 skillExperienceInput.onEndEdit.SetListener((value) => {
                     player.gameMasterTool.CmdSetCharacterSkillExperience(Convert.ToInt64(value));

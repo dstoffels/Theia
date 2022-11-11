@@ -80,7 +80,7 @@ public class TargetBuffSkill : BuffSkill
         if (caster.target != null && caster.target.health.current > 0)
         {
             // add buff or replace if already in there
-            caster.target.skills.AddOrRefreshBuff(new Buff(this, skillLevel));
+            caster.target.skillsOLD.AddOrRefreshBuff(new Buff(this, skillLevel));
 
             // show effect on target
             SpawnEffect(caster, caster.target);

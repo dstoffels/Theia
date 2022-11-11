@@ -21,11 +21,11 @@ public abstract class CommonBrain : ScriptableBrain
         entity.state != "MOVING" && entity.movement.IsMoving();
 
     public bool EventSkillFinished(EntityOLD entity) =>
-        0 <= entity.skills.currentSkill && entity.skills.currentSkill < entity.skills.skills.Count &&
-        entity.skills.skills[entity.skills.currentSkill].CastTimeRemaining() == 0;
+        0 <= entity.skillsOLD.currentSkill && entity.skillsOLD.currentSkill < entity.skillsOLD.skills.Count &&
+        entity.skillsOLD.skills[entity.skillsOLD.currentSkill].CastTimeRemaining() == 0;
 
     public bool EventSkillRequest(EntityOLD entity) =>
-        0 <= entity.skills.currentSkill && entity.skills.currentSkill < entity.skills.skills.Count;
+        0 <= entity.skillsOLD.currentSkill && entity.skillsOLD.currentSkill < entity.skillsOLD.skills.Count;
 
     public bool EventStunned(EntityOLD entity) =>
         NetworkTime.time <= entity.stunTimeEnd;
@@ -41,6 +41,6 @@ public abstract class CommonBrain : ScriptableBrain
 
     public bool EventTargetTooFarToAttack(EntityOLD entity) =>
         entity.target != null &&
-        0 <= entity.skills.currentSkill && entity.skills.currentSkill < entity.skills.skills.Count &&
-        !entity.skills.CastCheckDistance(entity.skills.skills[entity.skills.currentSkill], out Vector3 destination);
+        0 <= entity.skillsOLD.currentSkill && entity.skillsOLD.currentSkill < entity.skillsOLD.skills.Count &&
+        !entity.skillsOLD.CastCheckDistance(entity.skillsOLD.skills[entity.skillsOLD.currentSkill], out Vector3 destination);
 }

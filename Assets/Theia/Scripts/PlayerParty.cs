@@ -209,7 +209,7 @@ public class PlayerParty : NetworkBehaviour
                         member.level.current,
                         victim.level.current
                     );
-                    ((PlayerSkills)member.skills).skillExperience += CalculateExperienceShare(
+                    ((PlayerSkills)member.skillsOLD).skillExperience += CalculateExperienceShare(
                         monster.rewardSkillExperience,
                         closeMembers.Count,
                         Party.BonusExperiencePerMember,

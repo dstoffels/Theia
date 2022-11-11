@@ -14,12 +14,12 @@ public partial class UIBuffs : MonoBehaviour
             panel.SetActive(true);
 
             // instantiate/destroy enough slots
-            UIUtils.BalancePrefabs(slotPrefab.gameObject, player.skills.buffs.Count, panel.transform);
+            UIUtils.BalancePrefabs(slotPrefab.gameObject, player.skillsOLD.buffs.Count, panel.transform);
 
             // refresh all
-            for (int i = 0; i < player.skills.buffs.Count; ++i)
+            for (int i = 0; i < player.skillsOLD.buffs.Count; ++i)
             {
-                Buff buff = player.skills.buffs[i];
+                Buff buff = player.skillsOLD.buffs[i];
                 UIBuffSlot slot = panel.transform.GetChild(i).GetComponent<UIBuffSlot>();
 
                 // refresh

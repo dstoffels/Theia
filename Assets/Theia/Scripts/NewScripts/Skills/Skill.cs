@@ -10,9 +10,8 @@ namespace Stats
     public class Skill : Stat<SkillData>, IStatObserver, IStatSubject
     {
         Dictionary<string, int> attributeValues = new Dictionary<string, int>();
-        [ShowInInspector, ReadOnly]
         public int aptitude { get; private set; }
-        void SetAptitude(StatEvent statEvent)
+        void SetAptitude(StatValue statEvent)
         {
             if (!attributeValues.ContainsKey(statEvent.name)) attributeValues.Add(statEvent.name, statEvent.value);
             attributeValues[statEvent.name] = statEvent.value;
@@ -66,7 +65,7 @@ namespace Stats
             level = aptitude + proficiency;
         }
 
-        public void Update(StatEvent statEvent)
+        public void Update(StatValue statEvent)
         {
             SetAptitude(statEvent);
         }
@@ -80,7 +79,7 @@ namespace Stats
             foreach (var observer in observers)
             {
                 int value = observer.name == data.primaryAttribute.name ? proficiency * 2 : proficiency;
-                observer.Update(new StatEvent(name, value));
+                observer.Update(new StatValue(name, value));
             }
         }
 

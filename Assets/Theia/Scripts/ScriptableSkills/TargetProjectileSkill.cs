@@ -94,7 +94,7 @@ public class TargetProjectileSkill : DamageSkill
         // -> we try to spawn it at the weapon's projectile mount
         if (projectile != null)
         {
-            GameObject go = Instantiate(projectile.gameObject, caster.skills.effectMount.position, caster.skills.effectMount.rotation);
+            GameObject go = Instantiate(projectile.gameObject, caster.skillsOLD.effectMount.position, caster.skillsOLD.effectMount.rotation);
             ProjectileSkillEffect effect = go.GetComponent<ProjectileSkillEffect>();
             effect.target = caster.target;
             effect.caster = caster;

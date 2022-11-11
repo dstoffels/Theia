@@ -58,7 +58,7 @@ public partial class Pet : Summonable
             animator.SetBool("CASTING", state == "CASTING");
             animator.SetBool("STUNNED", state == "STUNNED");
             animator.SetBool("DEAD", state == "DEAD");
-            foreach (SkillOLD skill in skills.skills)
+            foreach (SkillOLD skill in skillsOLD.skills)
                 animator.SetBool(skill.name, skill.CastTimeRemaining() > 0);
         }
 
@@ -190,10 +190,10 @@ public partial class Pet : Summonable
         if (this != player.petControl.activePet)
         {
             // attackable and has skills? => attack
-            if (player.CanAttack(this) && player.skills.skills.Count > 0)
+            if (player.CanAttack(this) && player.skillsOLD.skills.Count > 0)
             {
                 // then try to use that one
-                ((PlayerSkills)player.skills).TryUse(0);
+                ((PlayerSkills)player.skillsOLD).TryUse(0);
             }
             // otherwise just walk there
             // (e.g. if clicking on it in a safe zone where we can't attack)

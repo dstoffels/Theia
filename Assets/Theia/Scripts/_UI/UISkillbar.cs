@@ -35,19 +35,19 @@ public partial class UISkillbar : MonoBehaviour
                 slot.hotkeyText.text = pretty;
 
                 // skill, inventory item or equipment item?
-                int skillIndex = player.skills.GetSkillIndexByName(entry.reference);
+                int skillIndex = player.skillsOLD.GetSkillIndexByName(entry.reference);
                 int inventoryIndex = player.inventory.GetItemIndexByName(entry.reference);
                 int equipmentIndex = player.equipment.GetItemIndexByName(entry.reference);
                 if (skillIndex != -1)
                 {
-                    SkillOLD skill = player.skills.skills[skillIndex];
-                    bool canCast = player.skills.CastCheckSelf(skill);
+                    SkillOLD skill = player.skillsOLD.skills[skillIndex];
+                    bool canCast = player.skillsOLD.CastCheckSelf(skill);
 
                     // if movement does NOT support navigation then we need to
                     // check distance too. otherwise distance doesn't matter
                     // because we can navigate anywhere.
                     if (!player.movement.CanNavigate())
-                        canCast &= player.skills.CastCheckDistance(skill, out Vector3 _);
+                        canCast &= player.skillsOLD.CastCheckDistance(skill, out Vector3 _);
 
                     // hotkey pressed and not typing in any input right now?
                     if (Input.GetKeyDown(entry.hotKey) &&
@@ -55,14 +55,14 @@ public partial class UISkillbar : MonoBehaviour
                         canCast) // checks mana, cooldowns, etc.) {
                     {
                         // try use the skill or walk closer if needed
-                        ((PlayerSkills)player.skills).TryUse(skillIndex);
+                        ((PlayerSkills)player.skillsOLD).TryUse(skillIndex);
                     }
 
                     // refresh skill slot
                     slot.button.interactable = canCast; // check mana, cooldowns, etc.
                     slot.button.onClick.SetListener(() => {
                         // try use the skill or walk closer if needed
-                        ((PlayerSkills)player.skills).TryUse(skillIndex);
+                        ((PlayerSkills)player.skillsOLD).TryUse(skillIndex);
                     });
                     // only build tooltip while it's actually shown. this
                     // avoids MASSIVE amounts of StringBuilder allocations.

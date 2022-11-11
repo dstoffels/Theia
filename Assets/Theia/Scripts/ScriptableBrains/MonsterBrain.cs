@@ -46,7 +46,7 @@ public class MonsterBrain : CommonBrain
         {
             // we had a target before, but it died now. clear it.
             monster.target = null;
-            monster.skills.CancelCast();
+            monster.skillsOLD.CancelCast();
             return "IDLE";
         }
         if (EventTargetTooFarToFollow(monster))
@@ -54,7 +54,7 @@ public class MonsterBrain : CommonBrain
             // we had a target before, but it's out of follow range now.
             // clear it and go back to start. don't stay here.
             monster.target = null;
-            monster.skills.CancelCast();
+            monster.skillsOLD.CancelCast();
             monster.movement.Navigate(monster.startPosition, 0);
             return "MOVING";
         }
@@ -62,7 +62,7 @@ public class MonsterBrain : CommonBrain
         {
             // we had a target before, but it's out of attack range now.
             // follow it. (use collider point(s) to also work with big entities)
-            float stoppingDistance = ((MonsterSkills)monster.skills).CurrentCastRange() * attackToMoveRangeRatio;
+            float stoppingDistance = ((MonsterSkills)monster.skillsOLD).CurrentCastRange() * attackToMoveRangeRatio;
             Vector3 destination = Utils.ClosestPoint(monster.target, monster.transform.position);
             monster.movement.Navigate(destination, stoppingDistance);
             return "MOVING";
@@ -88,20 +88,20 @@ public class MonsterBrain : CommonBrain
         {
             // we had a target in attack range before and trying to cast a skill
             // on it. check self (alive, mana, weapon etc.) and target
-            SkillOLD skill = monster.skills.skills[monster.skills.currentSkill];
-            if (monster.skills.CastCheckSelf(skill))
+            SkillOLD skill = monster.skillsOLD.skills[monster.skillsOLD.currentSkill];
+            if (monster.skillsOLD.CastCheckSelf(skill))
             {
-                if (monster.skills.CastCheckTarget(skill))
+                if (monster.skillsOLD.CastCheckTarget(skill))
                 {
                     // start casting
-                    monster.skills.StartCast(skill);
+                    monster.skillsOLD.StartCast(skill);
                     return "CASTING";
                 }
                 else
                 {
                     // invalid target. clear the attempted current skill.
                     monster.target = null;
-                    monster.skills.currentSkill = -1;
+                    monster.skillsOLD.currentSkill = -1;
                     return "IDLE";
                 }
             }
@@ -110,14 +110,14 @@ public class MonsterBrain : CommonBrain
                 // we can't cast this skill at the moment (cooldown/low mana/...)
                 // -> clear the attempted current skill, but keep the target to
                 // continue later
-                monster.skills.currentSkill = -1;
+                monster.skillsOLD.currentSkill = -1;
                 return "IDLE";
             }
         }
         if (EventAggro(monster))
         {
             // target in attack range. try to cast a first skill on it
-            if (monster.skills.skills.Count > 0) monster.skills.currentSkill = ((MonsterSkills)monster.skills).NextSkill();
+            if (monster.skillsOLD.skills.Count > 0) monster.skillsOLD.currentSkill = ((MonsterSkills)monster.skillsOLD).NextSkill();
             else Debug.LogError(name + " has no skills to attack with.");
             return "IDLE";
         }
@@ -161,7 +161,7 @@ public class MonsterBrain : CommonBrain
         {
             // we had a target before, but it died now. clear it.
             monster.target = null;
-            monster.skills.CancelCast();
+            monster.skillsOLD.CancelCast();
             monster.movement.Reset();
             return "IDLE";
         }
@@ -170,7 +170,7 @@ public class MonsterBrain : CommonBrain
             // we had a target before, but it's out of follow range now.
             // clear it and go back to start. don't stay here.
             monster.target = null;
-            monster.skills.CancelCast();
+            monster.skillsOLD.CancelCast();
             monster.movement.Navigate(monster.startPosition, 0);
             return "MOVING";
         }
@@ -178,7 +178,7 @@ public class MonsterBrain : CommonBrain
         {
             // we had a target before, but it's out of attack range now.
             // follow it. (use collider point(s) to also work with big entities)
-            float stoppingDistance = ((MonsterSkills)monster.skills).CurrentCastRange() * attackToMoveRangeRatio;
+            float stoppingDistance = ((MonsterSkills)monster.skillsOLD).CurrentCastRange() * attackToMoveRangeRatio;
             Vector3 destination = Utils.ClosestPoint(monster.target, monster.transform.position);
             monster.movement.Navigate(destination, stoppingDistance);
             return "MOVING";
@@ -204,7 +204,7 @@ public class MonsterBrain : CommonBrain
         {
             // target in attack range. try to cast a first skill on it
             // (we may get a target while randomly wandering around)
-            if (monster.skills.skills.Count > 0) monster.skills.currentSkill = ((MonsterSkills)monster.skills).NextSkill();
+            if (monster.skillsOLD.skills.Count > 0) monster.skillsOLD.currentSkill = ((MonsterSkills)monster.skillsOLD).NextSkill();
             else Debug.LogError(name + " has no skills to attack with.");
             monster.movement.Reset();
             return "IDLE";
@@ -233,16 +233,16 @@ public class MonsterBrain : CommonBrain
         }
         if (EventStunned(monster))
         {
-            monster.skills.CancelCast();
+            monster.skillsOLD.CancelCast();
             monster.movement.Reset();
             return "STUNNED";
         }
         if (EventTargetDisappeared(monster))
         {
             // cancel if the target matters for this skill
-            if (monster.skills.skills[monster.skills.currentSkill].cancelCastIfTargetDied)
+            if (monster.skillsOLD.skills[monster.skillsOLD.currentSkill].cancelCastIfTargetDied)
             {
-                monster.skills.CancelCast();
+                monster.skillsOLD.CancelCast();
                 monster.target = null;
                 return "IDLE";
             }
@@ -250,9 +250,9 @@ public class MonsterBrain : CommonBrain
         if (EventTargetDied(monster))
         {
             // cancel if the target matters for this skill
-            if (monster.skills.skills[monster.skills.currentSkill].cancelCastIfTargetDied)
+            if (monster.skillsOLD.skills[monster.skillsOLD.currentSkill].cancelCastIfTargetDied)
             {
-                monster.skills.CancelCast();
+                monster.skillsOLD.CancelCast();
                 monster.target = null;
                 return "IDLE";
             }
@@ -260,7 +260,7 @@ public class MonsterBrain : CommonBrain
         if (EventTargetEnteredSafeZone(monster))
         {
             // cancel if the target matters for this skill
-            if (monster.skills.skills[monster.skills.currentSkill].cancelCastIfTargetDied)
+            if (monster.skillsOLD.skills[monster.skillsOLD.currentSkill].cancelCastIfTargetDied)
             {
                 // if our target entered the safe zone, we need to be really careful
                 // to avoid kiting.
@@ -281,7 +281,7 @@ public class MonsterBrain : CommonBrain
         if (EventSkillFinished(monster))
         {
             // finished casting. apply the skill on the target.
-            monster.skills.FinishCast(monster.skills.skills[monster.skills.currentSkill]);
+            monster.skillsOLD.FinishCast(monster.skillsOLD.skills[monster.skillsOLD.currentSkill]);
 
             // did the target die? then clear it so that the monster doesn't
             // run towards it if the target respawned
@@ -290,8 +290,8 @@ public class MonsterBrain : CommonBrain
                 monster.target = null;
 
             // go back to IDLE, reset current skill
-            ((MonsterSkills)monster.skills).lastSkill = monster.skills.currentSkill;
-            monster.skills.currentSkill = -1;
+            ((MonsterSkills)monster.skillsOLD).lastSkill = monster.skillsOLD.currentSkill;
+            monster.skillsOLD.currentSkill = -1;
             return "IDLE";
         }
         if (EventDeathTimeElapsed(monster)) {} // don't care

@@ -56,7 +56,7 @@ public class PetBrain : CommonBrain
         {
             // we had a target before, but it died now. clear it.
             pet.target = null;
-            pet.skills.CancelCast();
+            pet.skillsOLD.CancelCast();
             return "IDLE";
         }
         if (EventNeedTeleportToOwner(pet))
@@ -68,7 +68,7 @@ public class PetBrain : CommonBrain
         {
             // return to owner only while IDLE
             pet.target = null;
-            pet.skills.CancelCast();
+            pet.skillsOLD.CancelCast();
             pet.movement.Navigate(pet.owner.petControl.petDestination, 0);
             return "MOVING";
         }
@@ -77,7 +77,7 @@ public class PetBrain : CommonBrain
             // we had a target before, but it's out of follow range now.
             // clear it and go back to start. don't stay here.
             pet.target = null;
-            pet.skills.CancelCast();
+            pet.skillsOLD.CancelCast();
             pet.movement.Navigate(pet.owner.petControl.petDestination, 0);
             return "MOVING";
         }
@@ -85,7 +85,7 @@ public class PetBrain : CommonBrain
         {
             // we had a target before, but it's out of attack range now.
             // follow it. (use collider point(s) to also work with big entities)
-            float stoppingDistance = ((PetSkills)pet.skills).CurrentCastRange() * attackToMoveRangeRatio;
+            float stoppingDistance = ((PetSkills)pet.skillsOLD).CurrentCastRange() * attackToMoveRangeRatio;
             Vector3 destination = Utils.ClosestPoint(pet.target, pet.transform.position);
             pet.movement.Navigate(destination, stoppingDistance);
             return "MOVING";
@@ -94,25 +94,25 @@ public class PetBrain : CommonBrain
         {
             // we had a target in attack range before and trying to cast a skill
             // on it. check self (alive, mana, weapon etc.) and target
-            SkillOLD skill = pet.skills.skills[pet.skills.currentSkill];
-            if (pet.skills.CastCheckSelf(skill) && pet.skills.CastCheckTarget(skill))
+            SkillOLD skill = pet.skillsOLD.skills[pet.skillsOLD.currentSkill];
+            if (pet.skillsOLD.CastCheckSelf(skill) && pet.skillsOLD.CastCheckTarget(skill))
             {
                 // start casting
-                pet.skills.StartCast(skill);
+                pet.skillsOLD.StartCast(skill);
                 return "CASTING";
             }
             else
             {
                 // invalid target. reset attempted current skill cast.
                 pet.target = null;
-                pet.skills.currentSkill = -1;
+                pet.skillsOLD.currentSkill = -1;
                 return "IDLE";
             }
         }
         if (EventAggro(pet))
         {
             // target in attack range. try to cast a first skill on it
-            if (pet.skills.skills.Count > 0) pet.skills.currentSkill = ((PetSkills)pet.skills).NextSkill();
+            if (pet.skillsOLD.skills.Count > 0) pet.skillsOLD.currentSkill = ((PetSkills)pet.skillsOLD).NextSkill();
             else Debug.LogError(name + " has no skills to attack with.");
             return "IDLE";
         }
@@ -153,7 +153,7 @@ public class PetBrain : CommonBrain
         {
             // we had a target before, but it died now. clear it.
             pet.target = null;
-            pet.skills.CancelCast();
+            pet.skillsOLD.CancelCast();
             pet.movement.Reset();
             return "IDLE";
         }
@@ -167,7 +167,7 @@ public class PetBrain : CommonBrain
             // we had a target before, but it's out of follow range now.
             // clear it and go back to start. don't stay here.
             pet.target = null;
-            pet.skills.CancelCast();
+            pet.skillsOLD.CancelCast();
             pet.movement.Navigate(pet.owner.petControl.petDestination, 0);
             return "MOVING";
         }
@@ -175,7 +175,7 @@ public class PetBrain : CommonBrain
         {
             // we had a target before, but it's out of attack range now.
             // follow it. (use collider point(s) to also work with big entities)
-            float stoppingDistance = ((PetSkills)pet.skills).CurrentCastRange() * attackToMoveRangeRatio;
+            float stoppingDistance = ((PetSkills)pet.skillsOLD).CurrentCastRange() * attackToMoveRangeRatio;
             Vector3 destination = Utils.ClosestPoint(pet.target, pet.transform.position);
             pet.movement.Navigate(destination, stoppingDistance);
             return "MOVING";
@@ -184,7 +184,7 @@ public class PetBrain : CommonBrain
         {
             // target in attack range. try to cast a first skill on it
             // (we may get a target while randomly wandering around)
-            if (pet.skills.skills.Count > 0) pet.skills.currentSkill = ((PetSkills)pet.skills).NextSkill();
+            if (pet.skillsOLD.skills.Count > 0) pet.skillsOLD.currentSkill = ((PetSkills)pet.skillsOLD).NextSkill();
             else Debug.LogError(name + " has no skills to attack with.");
             pet.movement.Reset();
             return "IDLE";
@@ -218,16 +218,16 @@ public class PetBrain : CommonBrain
         }
         if (EventStunned(pet))
         {
-            pet.skills.CancelCast();
+            pet.skillsOLD.CancelCast();
             pet.movement.Reset();
             return "STUNNED";
         }
         if (EventTargetDisappeared(pet))
         {
             // cancel if the target matters for this skill
-            if (pet.skills.skills[pet.skills.currentSkill].cancelCastIfTargetDied)
+            if (pet.skillsOLD.skills[pet.skillsOLD.currentSkill].cancelCastIfTargetDied)
             {
-                pet.skills.CancelCast();
+                pet.skillsOLD.CancelCast();
                 pet.target = null;
                 return "IDLE";
             }
@@ -235,9 +235,9 @@ public class PetBrain : CommonBrain
         if (EventTargetDied(pet))
         {
             // cancel if the target matters for this skill
-            if (pet.skills.skills[pet.skills.currentSkill].cancelCastIfTargetDied)
+            if (pet.skillsOLD.skills[pet.skillsOLD.currentSkill].cancelCastIfTargetDied)
             {
-                pet.skills.CancelCast();
+                pet.skillsOLD.CancelCast();
                 pet.target = null;
                 return "IDLE";
             }
@@ -245,15 +245,15 @@ public class PetBrain : CommonBrain
         if (EventSkillFinished(pet))
         {
             // finished casting. apply the skill on the target.
-            pet.skills.FinishCast(pet.skills.skills[pet.skills.currentSkill]);
+            pet.skillsOLD.FinishCast(pet.skillsOLD.skills[pet.skillsOLD.currentSkill]);
 
             // did the target die? then clear it so that the monster doesn't
             // run towards it if the target respawned
             if (pet.target.health.current == 0) pet.target = null;
 
             // go back to IDLE. reset current skill.
-            ((PetSkills)pet.skills).lastSkill = pet.skills.currentSkill;
-            pet.skills.currentSkill = -1;
+            ((PetSkills)pet.skillsOLD).lastSkill = pet.skillsOLD.currentSkill;
+            pet.skillsOLD.currentSkill = -1;
             return "IDLE";
         }
         if (EventMoveEnd(pet)) {} // don't care
@@ -280,7 +280,7 @@ public class PetBrain : CommonBrain
         if (EventDied(pet))
         {
             // we died.
-            pet.skills.CancelCast(); // in case we died while trying to cast
+            pet.skillsOLD.CancelCast(); // in case we died while trying to cast
             return "DEAD";
         }
         if (EventStunned(pet))

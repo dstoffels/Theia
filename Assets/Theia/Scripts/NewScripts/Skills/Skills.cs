@@ -28,7 +28,7 @@ namespace Stats
         [Button]
         void ResetValues()
         {
-            foreach (var skill in values) skill.AddXP(-2000000000);
+            foreach (var skill in Values) skill.AddXP(-2000000000);
 
         }
     }

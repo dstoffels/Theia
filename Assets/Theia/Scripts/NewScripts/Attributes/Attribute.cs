@@ -11,20 +11,19 @@ namespace Stats
     public class Attribute : Stat<AttributeData>, IStatSubject, IStatObserver
     {
 
-        [ShowInInspector]
         int baseLevel;
         int raceModifier;
 
         SkillPoints skillPoints = new SkillPoints();
 
-        const int FIRST_BONUS_AT = 20;
+        const int FIRST_BONUS_AT = 10;
         int nextBonusAt = FIRST_BONUS_AT;
         int lastBonusAt = 0;
         int skillBonus = 0;
 
-        public void Update(StatEvent statEvent)
+        public void Update(StatValue statValue)
         {
-            skillPoints.Set(statEvent);
+            skillPoints.Set(statValue);
             SetSkillBonus();
         }
 
@@ -56,7 +55,7 @@ namespace Stats
 
         public void NotifyDependents()
         {
-            foreach (var observer in observers) observer.Update(new StatEvent(name, level));
+            foreach (var observer in observers) observer.Update(new StatValue(name, level));
         }
 
         public void Attach(IStatObserver observer) => observers.Add(observer);
@@ -84,7 +83,7 @@ namespace Stats
             return total;
         }
 
-        public void Set(StatEvent statEvent)
+        public void Set(StatValue statEvent)
         {
             if (skillValues == null) skillValues = new Dictionary<string, int>();
             if (!skillValues.ContainsKey(statEvent.name)) skillValues.Add(statEvent.name, statEvent.value);

@@ -10,7 +10,7 @@ namespace Stats
     [Serializable]
     public abstract class Stat<Data> : IStat where Data : BaseData
     {
-        [ReadOnly]
+        [HideInInspector]
         public Data data;
         protected List<IStatObserver> observers = new List<IStatObserver>();
         public string name => data.name;

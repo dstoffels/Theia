@@ -9,17 +9,25 @@ namespace Entities
 {
     public class Entity : NetworkBehaviour
     {
+        public RaceData race;
+        public Attributes attributes;
+        public Skills skills;
         public Entity() { }
 
         [Button]
         private void Init()
         {
-            Attributes attributes = GetComponent<Attributes>();
-            Skills skills = GetComponent<Skills>();
-            Debug.Log(skills["Unarmed"].level);
+            attributes = GetComponent<Attributes>();
+            attributes.Init();
+
+            skills = GetComponent<Skills>();
+            skills.Init();
         }
 
-
+        private void OnValidate()
+        {
+            Init();
+        }
     }
 
     

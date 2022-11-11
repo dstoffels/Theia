@@ -55,7 +55,7 @@ public class AreaBuffSkill : BuffSkill
         foreach (EntityOLD candidate in candidates)
         {
             // add buff or replace if already in there
-            candidate.skills.AddOrRefreshBuff(new Buff(this, skillLevel));
+            candidate.skillsOLD.AddOrRefreshBuff(new Buff(this, skillLevel));
 
             // show effect on target
             SpawnEffect(caster, candidate);

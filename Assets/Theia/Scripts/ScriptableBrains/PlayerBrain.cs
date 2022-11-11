@@ -67,20 +67,20 @@ public class PlayerBrain : CommonBrain
         if (EventTradeStarted(player))
         {
             // cancel casting (if any), set target, go to trading
-            player.skills.CancelCast(); // just in case
+            player.skillsOLD.CancelCast(); // just in case
             player.target = player.trading.FindPlayerFromInvitation();
             return "TRADING";
         }
         if (EventCraftingStarted(player))
         {
             // cancel casting (if any), go to crafting
-            player.skills.CancelCast(); // just in case
+            player.skillsOLD.CancelCast(); // just in case
             return "CRAFTING";
         }
         if (EventMoveStart(player))
         {
             // cancel casting (if any)
-            player.skills.CancelCast();
+            player.skillsOLD.CancelCast();
             return "MOVING";
         }
         if (EventSkillRequest(player))
@@ -91,23 +91,23 @@ public class PlayerBrain : CommonBrain
             {
                 // user wants to cast a skill.
                 // check self (alive, mana, weapon etc.) and target and distance
-                SkillOLD skill = player.skills.skills[player.skills.currentSkill];
+                SkillOLD skill = player.skillsOLD.skills[player.skillsOLD.currentSkill];
                 player.nextTarget = player.target; // return to this one after any corrections by skills.CastCheckTarget
-                if (player.skills.CastCheckSelf(skill) &&
-                    player.skills.CastCheckTarget(skill) &&
-                    player.skills.CastCheckDistance(skill, out Vector3 destination))
+                if (player.skillsOLD.CastCheckSelf(skill) &&
+                    player.skillsOLD.CastCheckTarget(skill) &&
+                    player.skillsOLD.CastCheckDistance(skill, out Vector3 destination))
                 {
                     // start casting and cancel movement in any case
                     // (player might move into attack range * 0.8 but as soon as we
                     //  are close enough to cast, we fully commit to the cast.)
                     player.movement.Reset();
-                    player.skills.StartCast(skill);
+                    player.skillsOLD.StartCast(skill);
                     return "CASTING";
                 }
                 else
                 {
                     // checks failed. reset the attempted current skill
-                    player.skills.currentSkill = -1;
+                    player.skillsOLD.currentSkill = -1;
                     player.nextTarget = null; // nevermind, clear again (otherwise it's shown in UITarget)
                     return "IDLE";
                 }
@@ -145,14 +145,14 @@ public class PlayerBrain : CommonBrain
         if (EventCancelAction(player))
         {
             // cancel casting (if any) and stop moving
-            player.skills.CancelCast();
+            player.skillsOLD.CancelCast();
             //player.movement.Reset(); <- done locally. doing it here would reset localplayer to the slightly behind server position otherwise
             return "IDLE";
         }
         if (EventTradeStarted(player))
         {
             // cancel casting (if any), stop moving, set target, go to trading
-            player.skills.CancelCast();
+            player.skillsOLD.CancelCast();
             player.movement.Reset();
             player.target = player.trading.FindPlayerFromInvitation();
             return "TRADING";
@@ -160,7 +160,7 @@ public class PlayerBrain : CommonBrain
         if (EventCraftingStarted(player))
         {
             // cancel casting (if any), stop moving, go to crafting
-            player.skills.CancelCast();
+            player.skillsOLD.CancelCast();
             player.movement.Reset();
             return "CRAFTING";
         }
@@ -182,14 +182,14 @@ public class PlayerBrain : CommonBrain
             // (no MOUNTED state because we'd need MOUNTED_STUNNED, etc. too)
             if (!player.mountControl.IsMounted())
             {
-                SkillOLD skill = player.skills.skills[player.skills.currentSkill];
-                if (player.skills.CastCheckSelf(skill) &&
-                    player.skills.CastCheckTarget(skill) &&
-                    player.skills.CastCheckDistance(skill, out Vector3 destination))
+                SkillOLD skill = player.skillsOLD.skills[player.skillsOLD.currentSkill];
+                if (player.skillsOLD.CastCheckSelf(skill) &&
+                    player.skillsOLD.CastCheckTarget(skill) &&
+                    player.skillsOLD.CastCheckDistance(skill, out Vector3 destination))
                 {
                     //Debug.Log("MOVING->EventSkillRequest: early cast started while sliding to destination...");
                     // player.rubberbanding.ResetMovement(); <- DO NOT DO THIS.
-                    player.skills.StartCast(skill);
+                    player.skillsOLD.StartCast(skill);
                     return "CASTING";
                 }
             }
@@ -241,7 +241,7 @@ public class PlayerBrain : CommonBrain
         {
             // cancel cast & movement
             // (only clear current skill if we don't continue cast after stunned)
-            player.skills.CancelCast(!continueCastAfterStunned);
+            player.skillsOLD.CancelCast(!continueCastAfterStunned);
             player.movement.Reset();
             return "STUNNED";
         }
@@ -272,14 +272,14 @@ public class PlayerBrain : CommonBrain
         if (EventCancelAction(player))
         {
             // cancel casting
-            player.skills.CancelCast();
+            player.skillsOLD.CancelCast();
             UseNextTargetIfAny(player); // if user selected a new target while casting
             return "IDLE";
         }
         if (EventTradeStarted(player))
         {
             // cancel casting (if any), stop moving, set target, go to trading
-            player.skills.CancelCast();
+            player.skillsOLD.CancelCast();
             player.movement.Reset();
 
             // set target to trade target instead of next target (clear that)
@@ -290,9 +290,9 @@ public class PlayerBrain : CommonBrain
         if (EventTargetDisappeared(player))
         {
             // cancel if the target matters for this skill
-            if (player.skills.skills[player.skills.currentSkill].cancelCastIfTargetDied)
+            if (player.skillsOLD.skills[player.skillsOLD.currentSkill].cancelCastIfTargetDied)
             {
-                player.skills.CancelCast();
+                player.skillsOLD.CancelCast();
                 UseNextTargetIfAny(player); // if user selected a new target while casting
                 return "IDLE";
             }
@@ -300,9 +300,9 @@ public class PlayerBrain : CommonBrain
         if (EventTargetDied(player))
         {
             // cancel if the target matters for this skill
-            if (player.skills.skills[player.skills.currentSkill].cancelCastIfTargetDied)
+            if (player.skillsOLD.skills[player.skillsOLD.currentSkill].cancelCastIfTargetDied)
             {
-                player.skills.CancelCast();
+                player.skillsOLD.CancelCast();
                 UseNextTargetIfAny(player); // if user selected a new target while casting
                 return "IDLE";
             }
@@ -312,13 +312,13 @@ public class PlayerBrain : CommonBrain
             // apply the skill after casting is finished
             // note: we don't check the distance again. it's more fun if players
             //       still cast the skill if the target ran a few steps away
-            SkillOLD skill = player.skills.skills[player.skills.currentSkill];
+            SkillOLD skill = player.skillsOLD.skills[player.skillsOLD.currentSkill];
 
             // apply the skill on the target
-            player.skills.FinishCast(skill);
+            player.skillsOLD.FinishCast(skill);
 
             // clear current skill for now
-            player.skills.currentSkill = -1;
+            player.skillsOLD.currentSkill = -1;
 
             // use next target if the user tried to target another while casting
             UseNextTargetIfAny(player);
@@ -366,7 +366,7 @@ public class PlayerBrain : CommonBrain
         if (EventStunned(player))
         {
             // stop trading
-            player.skills.CancelCast();
+            player.skillsOLD.CancelCast();
             player.movement.Reset();
             player.trading.Cleanup();
             return "STUNNED";
@@ -525,11 +525,11 @@ public class PlayerBrain : CommonBrain
                         // in range already?
                         // -> we don't use skills.CastCheckDistance because we want to
                         // move a bit closer (attackToMoveRangeRatio)
-                        float range = player.skills.skills[player.useSkillWhenCloser].castRange * player.attackToMoveRangeRatio;
+                        float range = player.skillsOLD.skills[player.useSkillWhenCloser].castRange * player.attackToMoveRangeRatio;
                         if (Utils.ClosestDistance(player, player.target) <= range)
                         {
                             // then stop moving and start attacking
-                            ((PlayerSkills)player.skills).CmdUse(player.useSkillWhenCloser);
+                            ((PlayerSkills)player.skillsOLD).CmdUse(player.useSkillWhenCloser);
 
                             // reset
                             player.useSkillWhenCloser = -1;

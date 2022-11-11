@@ -40,10 +40,10 @@ public partial class UITarget : MonoBehaviour
                 nameText.text = target.name;
 
                 // target buffs
-                UIUtils.BalancePrefabs(buffSlotPrefab.gameObject, target.skills.buffs.Count, buffsPanel);
-                for (int i = 0; i < target.skills.buffs.Count; ++i)
+                UIUtils.BalancePrefabs(buffSlotPrefab.gameObject, target.skillsOLD.buffs.Count, buffsPanel);
+                for (int i = 0; i < target.skillsOLD.buffs.Count; ++i)
                 {
-                    Buff buff = target.skills.buffs[i];
+                    Buff buff = target.skillsOLD.buffs[i];
                     UIBuffSlot slot = buffsPanel.GetChild(i).GetComponent<UIBuffSlot>();
 
                     // refresh

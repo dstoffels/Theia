@@ -61,6 +61,7 @@ using System.IO;
 using System.Collections.Generic;
 using SQLite; // from https://github.com/praeclarum/sqlite-net
 using UnityEngine.Events;
+using Stats;
 
 public partial class Database : MonoBehaviour
 {
@@ -112,7 +113,10 @@ public partial class Database : MonoBehaviour
         public bool online { get; set; }
         public DateTime lastsaved { get; set; }
         public bool deleted { get; set; }
+
+        public string race { get; set; }
     }
+
     class character_inventory
     {
         public string character { get; set; }
@@ -536,7 +540,7 @@ public partial class Database : MonoBehaviour
                 player.strength.value                         = row.strength;
                 player.intelligence.value                     = row.intelligence;
                 player.experience.current                     = row.experience;
-                ((PlayerSkills)player.skills).skillExperience = row.skillExperience;
+                ((PlayerSkills)player.skillsOLD).skillExperience = row.skillExperience;
                 player.gold                                   = row.gold;
                 player.isGameMaster                           = row.gamemaster;
                 player.itemMall.coins                         = row.coins;
@@ -565,8 +569,8 @@ public partial class Database : MonoBehaviour
                 LoadInventory(player.inventory);
                 LoadEquipment((PlayerEquipment)player.equipment);
                 LoadItemCooldowns(player);
-                LoadSkills((PlayerSkills)player.skills);
-                LoadBuffs((PlayerSkills)player.skills);
+                LoadSkills((PlayerSkills)player.skillsOLD);
+                LoadBuffs((PlayerSkills)player.skillsOLD);
                 LoadQuests(player.quests);
                 LoadGuildOnDemand(player.guild);
 
@@ -747,19 +751,20 @@ public partial class Database : MonoBehaviour
             strength = player.strength.value,
             intelligence = player.intelligence.value,
             experience = player.experience.current,
-            skillExperience = ((PlayerSkills)player.skills).skillExperience,
+            skillExperience = ((PlayerSkills)player.skillsOLD).skillExperience,
             gold = player.gold,
             coins = player.itemMall.coins,
             gamemaster = player.isGameMaster,
             online = online,
-            lastsaved = DateTime.UtcNow
+            lastsaved = DateTime.UtcNow,
+            race = "race name",
         });
 
         SaveInventory(player.inventory);
         SaveEquipment((PlayerEquipment)player.equipment);
         SaveItemCooldowns(player);
-        SaveSkills((PlayerSkills)player.skills);
-        SaveBuffs((PlayerSkills)player.skills);
+        SaveSkills((PlayerSkills)player.skillsOLD);
+        SaveBuffs((PlayerSkills)player.skillsOLD);
         SaveQuests(player.quests);
         if (player.guild.InGuild())
             SaveGuild(player.guild.guild, false); // TODO only if needs saving? but would be complicated

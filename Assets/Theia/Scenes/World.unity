@@ -23132,6 +23132,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  race: {fileID: 11400000, guid: b23b43e20c7e61641a17c1204bc472d0, type: 2}
+  attributes: {fileID: 648899510}
+  skills: {fileID: 648899509}
 --- !u!114 &648899512
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,10 +16,10 @@ public class BuffSkillEffect : SkillEffect
         // recasted
         if (target != null)
         {
-            int index = target.skills.GetBuffIndexByName(buffName);
+            int index = target.skillsOLD.GetBuffIndexByName(buffName);
             if (index != -1)
             {
-                Buff buff = target.skills.buffs[index];
+                Buff buff = target.skillsOLD.buffs[index];
                 if (lastRemainingTime >= buff.BuffTimeRemaining()) {
                     transform.position = target.collider.bounds.center;
                     lastRemainingTime = buff.BuffTimeRemaining();

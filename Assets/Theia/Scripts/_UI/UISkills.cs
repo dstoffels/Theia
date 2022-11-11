@@ -25,13 +25,13 @@ public partial class UISkills : MonoBehaviour
             {
                 // instantiate/destroy enough slots
                 // (we only care about non status skills)
-                UIUtils.BalancePrefabs(slotPrefab.gameObject, player.skills.skills.Count, content);
+                UIUtils.BalancePrefabs(slotPrefab.gameObject, player.skillsOLD.skills.Count, content);
 
                 // refresh all
-                for (int i = 0; i < player.skills.skills.Count; ++i)
+                for (int i = 0; i < player.skillsOLD.skills.Count; ++i)
                 {
                     UISkillSlot slot = content.GetChild(i).GetComponent<UISkillSlot>();
-                    SkillOLD skill = player.skills.skills[i];
+                    SkillOLD skill = player.skillsOLD.skills[i];
 
                     bool isPassive = skill.data is PassiveSkill;
 
@@ -40,13 +40,13 @@ public partial class UISkills : MonoBehaviour
                     slot.dragAndDropable.dragable = skill.level > 0 && !isPassive;
 
                     // can we cast it? checks mana, cooldown etc.
-                    bool canCast = player.skills.CastCheckSelf(skill);
+                    bool canCast = player.skillsOLD.CastCheckSelf(skill);
 
                     // if movement does NOT support navigation then we need to
                     // check distance too. otherwise distance doesn't matter
                     // because we can navigate anywhere.
                     if (!player.movement.CanNavigate())
-                        canCast &= player.skills.CastCheckDistance(skill, out Vector3 _);
+                        canCast &= player.skillsOLD.CastCheckDistance(skill, out Vector3 _);
 
                     // click event
                     slot.button.interactable = skill.level > 0 &&
@@ -56,7 +56,7 @@ public partial class UISkills : MonoBehaviour
                     int icopy = i;
                     slot.button.onClick.SetListener(() => {
                         // try use the skill or walk closer if needed
-                        ((PlayerSkills)player.skills).TryUse(icopy);
+                        ((PlayerSkills)player.skillsOLD).TryUse(icopy);
                     });
 
                     // image
@@ -70,11 +70,11 @@ public partial class UISkills : MonoBehaviour
                     slot.descriptionText.text = skill.ToolTip(showRequirements: skill.level == 0);
 
                     // learn / upgrade
-                    if (skill.level < skill.maxLevel && ((PlayerSkills)player.skills).CanUpgrade(skill))
+                    if (skill.level < skill.maxLevel && ((PlayerSkills)player.skillsOLD).CanUpgrade(skill))
                     {
                         slot.upgradeButton.gameObject.SetActive(true);
                         slot.upgradeButton.GetComponentInChildren<Text>().text = skill.level == 0 ? "Learn" : "Upgrade";
-                        slot.upgradeButton.onClick.SetListener(() => { ((PlayerSkills)player.skills).CmdUpgrade(icopy); });
+                        slot.upgradeButton.onClick.SetListener(() => { ((PlayerSkills)player.skillsOLD).CmdUpgrade(icopy); });
                     }
                     else slot.upgradeButton.gameObject.SetActive(false);
 
@@ -86,7 +86,7 @@ public partial class UISkills : MonoBehaviour
                 }
 
                 // skill experience
-                skillExperienceText.text = ((PlayerSkills)player.skills).skillExperience.ToString();
+                skillExperienceText.text = ((PlayerSkills)player.skillsOLD).skillExperience.ToString();
             }
         }
         else panel.SetActive(false);

@@ -54,7 +54,7 @@ public partial class UICharacterInfo : MonoBehaviour
                 levelText.text = player.level.current.ToString();
                 currentExperienceText.text = player.experience.current.ToString();
                 maximumExperienceText.text = player.experience.max.ToString();
-                skillExperienceText.text = ((PlayerSkills)player.skills).skillExperience.ToString();
+                skillExperienceText.text = ((PlayerSkills)player.skillsOLD).skillExperience.ToString();
 
                 // attributes (show spendable if >1 so it's more obvious)
                 // (each Attribute component has .PointsSpendable. can use any.)

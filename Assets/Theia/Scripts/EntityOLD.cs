@@ -34,6 +34,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using Mirror;
 using TMPro;
+using Stats;
 
 [Serializable] public class UnityEventEntity : UnityEvent<EntityOLD> {}
 [Serializable] public class UnityEventEntityInt : UnityEvent<EntityOLD, int> {}
@@ -53,13 +54,15 @@ using TMPro;
 public abstract partial class EntityOLD : NetworkBehaviour
 {
     [Header("Components")]
+    public Attributes attributes;
+    public Skills skills;
     public Level level;
     public Health health;
     public ManaOLD mana;
     public Combat combat;
     public Equipment equipment;
     public Movement movement;
-    public SkillsOLD skills;
+    public SkillsOLD skillsOLD;
     public Animator animator;
 #pragma warning disable CS0109 // member does not hide accessible member
     public new Collider collider;
@@ -88,12 +91,12 @@ public abstract partial class EntityOLD : NetworkBehaviour
         {
             // sum up manually. Linq.Sum() is HEAVY(!) on GC and performance (190 KB/call!)
             float passiveBonus = 0;
-            foreach (SkillOLD skill in skills.skills)
+            foreach (SkillOLD skill in skillsOLD.skills)
                 if (skill.level > 0 && skill.data is PassiveSkill passiveSkill)
                     passiveBonus += passiveSkill.speedBonus.Get(skill.level);
 
             float buffBonus = 0;
-            foreach (Buff buff in skills.buffs)
+            foreach (Buff buff in skillsOLD.buffs)
                 buffBonus += buff.speedBonus;
 
             // base + passives + buffs

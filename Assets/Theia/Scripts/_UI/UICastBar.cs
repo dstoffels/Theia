@@ -12,12 +12,12 @@ public partial class UICastBar : MonoBehaviour
     {
         PlayerOLD player = PlayerOLD.localPlayer;
         if (player != null &&
-            player.state == "CASTING" && player.skills.currentSkill != -1 &&
-            player.skills.skills[player.skills.currentSkill].showCastBar)
+            player.state == "CASTING" && player.skillsOLD.currentSkill != -1 &&
+            player.skillsOLD.skills[player.skillsOLD.currentSkill].showCastBar)
         {
             panel.SetActive(true);
 
-            SkillOLD skill = player.skills.skills[player.skills.currentSkill];
+            SkillOLD skill = player.skillsOLD.skills[player.skillsOLD.currentSkill];
             float ratio = (skill.castTime - skill.CastTimeRemaining()) / skill.castTime;
 
             slider.value = ratio;
