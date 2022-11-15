@@ -10,11 +10,5 @@ namespace Stats
     {
         [TextArea(3, 20), PropertyOrder(999)]
         public string description;
-
-        /// <summary>
-        /// Returns an array of all BaseData assets in the project of a specified type.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-
     }
 }

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468e50fe6641e0c4eb51c80b61ba02e9, type: 3}
+  m_Name: Stamina
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  description: This represents a character's physical endurance. It is the amount
+    of energy you have to spend on corporeal abilities. Stamina is a full scale vital,
+    meaning its minimum is the inverse of the maximum and debility occurs when the
+    current level drops below zero.
+  primaryAttribute: {fileID: 11400000, guid: 6c6b0483049b16b499a4b55e75bf3ede, type: 2}
+  secondaryAttributes:
+  - {fileID: 11400000, guid: d51834e2b9342fe4daf575c9dde1c537, type: 2}
+  - {fileID: 11400000, guid: a96130e0761ea90469a8b7afedde2eff, type: 2}
+  - {fileID: 11400000, guid: 8e89823a9e3c9854e9d5eb390300dc52, type: 2}
+  recoveryAttribute: {fileID: 11400000, guid: 6c6b0483049b16b499a4b55e75bf3ede, type: 2}
+  isFullScale: 1
+  isEquilibrium: 0

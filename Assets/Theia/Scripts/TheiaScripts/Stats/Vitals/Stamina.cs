@@ -12,7 +12,8 @@ namespace StatsOLD
             set { _current = Mathf.Clamp(value, min, max); StartRecovery(); }
         }
 
-        public override float max => att.constitution + (att.strength - Global.Attribute.AVERAGE) + (att.agility - Global.Attribute.AVERAGE) + (att.dexterity - Global.Attribute.AVERAGE);
+        public override float max => 
+            att.constitution + (att.strength - Global.Attribute.AVERAGE) + (att.agility - Global.Attribute.AVERAGE) + (att.dexterity - Global.Attribute.AVERAGE);
 
         public override float min => -max;
 

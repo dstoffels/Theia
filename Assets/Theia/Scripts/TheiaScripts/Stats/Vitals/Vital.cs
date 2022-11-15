@@ -10,7 +10,7 @@ namespace StatsOLD
     /// Vitals include Stamina, Mana, Blood and Temperature, which derive from the Vital abstract class,
     /// </summary>
     [RequireComponent(typeof(Attributes))]
-    public abstract class Vital : SerializedMonoBehaviour, IVital
+    public abstract class Vital : SerializedMonoBehaviour
     {
         protected float _current;
         [ShowInInspector]

@@ -14,7 +14,7 @@ namespace Stats
         int baseLevel;
         int raceModifier;
 
-        SkillPoints skillPoints = new SkillPoints();
+        StatValues skillPoints = new StatValues();
 
         const int FIRST_BONUS_AT = 10;
         int nextBonusAt = FIRST_BONUS_AT;
@@ -23,7 +23,7 @@ namespace Stats
 
         public void Update(StatValue statValue)
         {
-            skillPoints.Set(statValue);
+            skillPoints.Add(statValue);
             SetSkillBonus();
         }
 
@@ -45,7 +45,7 @@ namespace Stats
             }
         }
 
-        bool NeedsUpdate() => skillPoints.total >= nextBonusAt || skillPoints.total < lastBonusAt;
+        bool NeedsUpdate() => skillPoints.Total >= nextBonusAt || skillPoints.Total < lastBonusAt;
 
         void SetLevel()
         {
@@ -67,27 +67,6 @@ namespace Stats
             this.baseLevel = baseLevel;
             this.raceModifier = raceModifier;
             SetLevel();
-        }
-    }
-
-    struct SkillPoints
-    {
-        public int total => Get();
-        private Dictionary<string, int> skillValues;
-
-        int Get()
-        {
-            if (skillValues == null) skillValues = new Dictionary<string, int>();
-            int total = 0;
-            foreach (var skillValue in skillValues.Values) total += skillValue;
-            return total;
-        }
-
-        public void Set(StatValue statEvent)
-        {
-            if (skillValues == null) skillValues = new Dictionary<string, int>();
-            if (!skillValues.ContainsKey(statEvent.name)) skillValues.Add(statEvent.name, statEvent.value);
-            skillValues[statEvent.name] = statEvent.value;
         }
     }
 }

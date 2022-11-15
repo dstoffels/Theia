@@ -5,17 +5,18 @@ using Entities;
 
 namespace Stats
 {
-    public interface IStat
+
+    public interface INameable
     {
         public string name { get; }
+    }
+    public interface IStat : INameable
+    {
         public string description { get; }
         public int level { get; }
-        //public float progress { get; }
-
     }
-    public interface IStatSubject
+    public interface IStatSubject : INameable
     {
-        public string name { get; }
         public void Attach(IStatObserver observer);
         public void Detach(IStatObserver observer);
         public void NotifyDependents();
@@ -23,53 +24,46 @@ namespace Stats
     }
 
 
-    public interface IStatObserver
+    public interface IStatObserver : INameable
     {
-        public string name { get; }
         public void Update(StatValue statValue);
     }
 
-    
-
+    /// <summary>
+    /// An immutable key-value pair (string-float) for holding stat values . Used as argument when updating IStatObservers.
+    /// </summary>
     public struct StatValue
     {
-        public string name;
-        public int value;
-        public StatValue(string statName, int value)
+        public string name { get; private set; }
+        public int value { get; private set; }
+        
+        public StatValue(string name, int value)
         {
-            name = statName;
+            this.name = name;
             this.value = value;
         }
     }
 
-    public struct StatValues
+    /// <summary>
+    /// A string/int dictionary for StatMangers to track the values of other stats.
+    /// </summary>
+    public class StatValues : Dictionary<string, int>
     {
-        public int this[string key] => statValues[key];
-        public int this[BaseData key] => statValues[key.name];
-
-        private Dictionary<string, int> statValues;
-        private void Init()
-        {
-            if (statValues is null) statValues = new Dictionary<string, int>();
-        }
-
+        public int this[BaseData key] => this[key.name];
         public int Total
         {
             get
             {
-                Init();
                 int total = 0;
-                foreach (var value in statValues.Values) total += value;
+                foreach (var value in Values) total += value;
                 return total;
             }
         }
 
-        public void Set(StatValue statValue)
+        public void Add(StatValue stat)
         {
-            Init();
-            if (!statValues.ContainsKey(statValue.name)) statValues.Add(statValue.name, statValue.value);
-            else statValues[statValue.name] = statValue.value;
+            try { this[stat.name] = stat.value; }
+            catch { Add(stat.name, stat.value); }
         }
     }
-
 }

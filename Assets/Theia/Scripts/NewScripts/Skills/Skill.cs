@@ -9,14 +9,17 @@ namespace Stats
     [HideReferenceObjectPicker]
     public class Skill : Stat<SkillData>, IStatObserver, IStatSubject
     {
-        Dictionary<string, int> attributeValues = new Dictionary<string, int>();
+        StatValues attributeValues = new StatValues();
         public int aptitude { get; private set; }
-        void SetAptitude(StatValue statEvent)
+        void SetAptitude(StatValue statValue)
         {
-            if (!attributeValues.ContainsKey(statEvent.name)) attributeValues.Add(statEvent.name, statEvent.value);
-            attributeValues[statEvent.name] = statEvent.value;
+            attributeValues.Add(statValue);
             aptitude = 0;
-            foreach (var attValue in attributeValues.Values) aptitude += attValue;
+            foreach (var att in attributeValues)
+                aptitude += Mathf.FloorToInt(
+                    att.Key == data.primaryAttribute.name ? att.Value :
+                    att.Key == data.secondaryAttribute.name ? att.Value / 2 : 0
+                    );
             SetLevel();
         }
 
@@ -29,7 +32,7 @@ namespace Stats
             SetProficiency();
         }
 
-        const float FIRST_LEVELUP_AT = 1000;
+        const int FIRST_LEVELUP_AT = 1000;
         const float LEVELUP_MULTIPLIER = 1.02f;
 
         float nextLevelupAt = FIRST_LEVELUP_AT;
