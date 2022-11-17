@@ -42,26 +42,26 @@ namespace Stats.Values
     /// Used for setting and getting the starting levels of all attributes during character creation or 
     /// loading/saving characters to the database.
     /// </summary>
-    public struct StartingLevels
-    {
-        // Called only during character creation or when a character is loaded.
-        public void Set(AttributeDict dict, Dictionary<string,int> startingLevels, Action LoadAttributes)
-        { 
-            LoadAttributes.Invoke();
-            foreach (var level in startingLevels)
-                dict[level.Key].SetStartingLevel(level.Value);
-        }
+    //public struct StartingLevels
+    //{
+    //    // Called only during character creation or when a character is loaded.
+    //    public void Set(AttributeDict dict, Dictionary<string,int> startingLevels, Action LoadAttributes)
+    //    { 
+    //        LoadAttributes.Invoke();
+    //        foreach (var level in startingLevels)
+    //            dict[level.Key].SetStartingLevel(level.Value);
+    //    }
 
-        // Called when saving a character to the database. 
-        public static Dictionary<string, int> Get(AttributeDict dict)
-        {
-            var startingLevels = new Dictionary<string, int>();
+    //    // Called when saving a character to the database. 
+    //    public static Dictionary<string, int> Get(AttributeDict dict)
+    //    {
+    //        var startingLevels = new Dictionary<string, int>();
 
-            foreach (var att in dict)
-                startingLevels.Add(att.Key, att.Value.startingLevel);
-            return startingLevels;
-        }
-    }
+    //        foreach (var att in dict)
+    //            startingLevels.Add(att.Key, att.Value.startingLevel);
+    //        return startingLevels;
+    //    }
+    //}
 
     /// <summary>
     /// A container for calculating the skill points and resultant skill bonus for attributes.
@@ -143,13 +143,13 @@ namespace Stats.Values
     }
 }
 
-public static class DTwenty
+public static class D20
 {
     private static Random random = new Random();
     public static int Roll() => random.Next(1, 21);
 }
 
-public static class DOneHundred
+public static class D100
 {
     private static Random random = new Random();
     public static int Roll() => random.Next(1, 101);

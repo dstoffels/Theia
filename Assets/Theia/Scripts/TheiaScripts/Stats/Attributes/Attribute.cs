@@ -1,45 +1,64 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using Sirenix.OdinInspector;
 using Stats.Values;
 
 namespace Stats
 {
-    public interface IAttributeBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
+    // TODO: Implement interfaces to decouple
+    public interface iStatBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Attribute
+    public class Attribute : BaseStat<AttributeData>, iStat
     {
-        [ShowInInspector]
-        public int level => startingLevel + skillBonus;
+        [ShowInInspector, ReadOnly]
+        public int level { get; private set; }
+        private void SetLevel() => level = startingLevel + raceModifier + skillBonus;
 
         //starting level is intialized at character creation, customized manually and modified by species
-        public int startingLevel { get; private set; }
+        public int startingLevel { get; private set; } = 10;
+            
+        public int raceModifier { get; private set; } = 0;
 
         // The skill bonus is how an attribute grows. Skill levels are derived from two attributes each (skill base).
         // A skill's parent attributes earn skill points each time it levels up (20 skill points per level)
-        private int skillBonus;
-        
-        public void CalculateSkillBonus()
+        public int skillBonus { get; private set; }
+
+        private static readonly int FIRST_BONUS_AT = 10;
+        private int nextBonusAt = FIRST_BONUS_AT;
+        private int lastBonusAt = 0;
+        public int skillPoints { get; private set; }
+        private bool needsUpdate => skillPoints >= nextBonusAt || skillPoints < lastBonusAt;
+
+        public void Update()
         {
-            skillBonus = SkillBonus.Get(skills, data);
-            skills.SetSkillBases();
+            if (needsUpdate)
+            {
+                skillBonus = 0;
+                nextBonusAt = FIRST_BONUS_AT;
+                lastBonusAt = 0;
+
+                while (needsUpdate)
+                {
+                    lastBonusAt = nextBonusAt;
+                    nextBonusAt += FIRST_BONUS_AT;
+                    skillBonus++;
+                }
+                SetLevel();
+            }
         }
 
-        //executed at character creation and whenever character is loaded
-        public void SetStartingLevel(int level)
+        public void Load(int startingLevel, int raceModifier)
         {
-            startingLevel = level;
-            skills.SetSkillBases();
+            this.startingLevel = startingLevel;
+            this.raceModifier = raceModifier;
+            SetLevel();
         }
 
-        /*REFERENCES*/
-        [HideInInspector] public AttributeData data;
-        [HideInInspector] public Skills skills;
-
-        public Attribute(AttributeData data, Skills skills)
+        public override void Init(AttributeData data)
         {
-            this.data = data;
-            this.skills = skills;
+            base.Init(data);
+            SetLevel();
         }
     }
 }

@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 namespace Stats
 {
     // [CreateAssetMenu]
-    public class AttributeData : StatData
+    public class AttributeData : BaseData
     {
 
     }

@@ -7,51 +7,24 @@ using System;
 namespace Stats
 {
     [RequireComponent(typeof(Skills)), DisallowMultipleComponent]
-    public class Attributes : SerializedMonoBehaviour
+    public class Attributes : StatManager<Attribute, AttributeData>, iSkillProvider
     {
-        [ReadOnly] public AttributeTemplate template; 
-        [ReadOnly] public AttributeDict attributes = new AttributeDict();
 
         // Accessors //
-        public int strength => attributes["Strength"].level;
-        public int constitution => attributes["Strength"].level;
-        public int agility => attributes["Agility"].level;
-        public int dexterity => attributes["Dexterity"].level;
-        public int acuity => attributes["Acuity"].level;
-        public int intellect => attributes["Intellect"].level;
-        public int discipline => attributes["Discipline"].level;
-        public int ardor => attributes["Ardor"].level;
-
-        public StartingLevels startingLevels;
-
-        public void LoadAttributesFromTemplate()
-        {
-            var skills = GetComponent<Skills>();
-
-            foreach (var data in template.attributeList)
-                if(!attributes.ContainsKey(data.name))
-                    attributes.Add(data.name, new Attribute(data, skills));
-        }
-
-        /*TESTING*/
-        private void OnValidate()
-        {
-            LoadAttributesFromTemplate();
-        }
-
-        private void OnEnable()
-        {
-            SetStartingLevels();
-        }
-
-        [Button]
-        void SetStartingLevels(int level = Global.Attribute.AVERAGE)
-        {
-            foreach (var att in attributes.Values)
-                att.SetStartingLevel(level);
-        }
+        public int strength => this["Strength"].level;
+        public int constitution => this["Strength"].level;
+        public int agility => this["Agility"].level;
+        public int dexterity => this["Dexterity"].level;
+        public int acuity => this["Acuity"].level;
+        public int intellect => this["Intellect"].level;
+        public int discipline => this["Discipline"].level;
+        public int ardor => this["Ardor"].level;
+        public int GetAptitude(AttributeData pri, AttributeData sec) => this[pri].level + this[sec].level / 2;
     }
 
-    // A unique dictionary for attributes, strictly for cleanliness/readability.
-    public class AttributeDict : Dictionary<string, Attribute> { }
+
+    public interface iSkillProvider
+    {
+        int GetAptitude(AttributeData pri, AttributeData sec);
+    }
 }

@@ -7,12 +7,10 @@ using Sirenix.OdinInspector;
 namespace Stats
 {
     [CreateAssetMenu(menuName = "Skills/Skill")]
-    public class SkillData : StatData
+    public class SkillData : BaseData
     {
         public AttributeData primaryAttribute;
         public AttributeData secondaryAttribute;
         public Domain domain;
-        [ListDrawerSettings(Expanded = true)]
-        public List<Ability> abilities;
     }
 }

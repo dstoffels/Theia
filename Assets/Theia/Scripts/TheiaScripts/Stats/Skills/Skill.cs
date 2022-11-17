@@ -7,10 +7,10 @@ namespace Stats
     public interface ISkillBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Skill
+    public class Skill : BaseStat<SkillData>, iStat
     {
         [ShowInInspector]
-        public int Level => skillBase + proficiency;
+        public int level => skillBase + proficiency;
 
         // The skill base is derived from a skill's parent attributes (primary & secondary).
         private int skillBase;
@@ -31,8 +31,13 @@ namespace Stats
             xp = Mathf.Max(0, xp);
 
             // Trigger the skill's attributes to check for a levelup
-            primary.CalculateSkillBonus();
-            secondary.CalculateSkillBonus();
+            //primary.CalculateSkillBonus();
+            //secondary.CalculateSkillBonus();
+        }
+
+        public void Update()
+        {
+            throw new System.NotImplementedException();
         }
 
         private Proficiency _proficiency;
@@ -41,13 +46,13 @@ namespace Stats
         /*REFERENCES & WRAPPERS*/
         [HideInInspector] public SkillData data;
         [HideInInspector] public Attributes attributes;
-        Attribute primary => attributes.attributes[data.primaryAttribute.name];
-        Attribute secondary => attributes.attributes[data.secondaryAttribute.name];
+        Attribute primary => attributes[data.primaryAttribute.name];
+        Attribute secondary => attributes[data.secondaryAttribute.name];
 
-        public Skill(SkillData data, Attributes attributes)
-        {
-            this.data = data;
-            this.attributes = attributes;
-        }
+        //public Skill(SkillData data, Attributes attributes)
+        //{
+        //    this.data = data;
+        //    this.attributes = attributes;
+        //}
     }
 }

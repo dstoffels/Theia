@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04c00a2aba9610047981021daeed9099, type: 3}
-  m_Name: Attribute Template
+  m_Name: Attributes Template
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,7 +21,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  attributeList:
+  data:
+  - {fileID: 11400000, guid: f3e880495ebd40447b0b66475f487966, type: 2}
   - {fileID: 11400000, guid: 498aac0627bc3aa4a902398b3d885c4c, type: 2}
   - {fileID: 11400000, guid: c540938bf8145584995a65c8501f1061, type: 2}
   - {fileID: 11400000, guid: ddc9daf4b43621c4d89a48184a802c1b, type: 2}
@@ -29,4 +30,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ae25337c23de48c4ca5ab1d02365852c, type: 2}
   - {fileID: 11400000, guid: c44ea525644ba934085bc39362f150e0, type: 2}
   - {fileID: 11400000, guid: 55106acf660707b47a855b340e0bb34a, type: 2}
-  - {fileID: 11400000, guid: f3e880495ebd40447b0b66475f487966, type: 2}

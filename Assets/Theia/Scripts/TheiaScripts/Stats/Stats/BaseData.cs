@@ -5,9 +5,9 @@ using Sirenix.OdinInspector;
 
 namespace Stats
 {
-    public class StatData : SerializedScriptableObject
+    public abstract class BaseData : SerializedScriptableObject
     {
         [TextArea(2, 10), PropertyOrder(999)]
-        public string tooltip;
+        public string description;
     }
 }

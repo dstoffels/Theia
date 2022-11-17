@@ -5,9 +5,9 @@ using Sirenix.OdinInspector;
 
 namespace Stats
 {
-    public class AttributeTemplate : SerializedScriptableObject
+    [CreateAssetMenu(menuName = "Atts Template")]
+    public class AttributeTemplate : StatTemplate<AttributeData>
     {
-        [AssetList]
-        public List<AttributeData> attributeList = new List<AttributeData>();
+    
     }
 }

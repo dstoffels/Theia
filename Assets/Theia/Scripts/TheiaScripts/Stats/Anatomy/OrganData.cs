@@ -24,7 +24,7 @@ public class Attack
 {
     public Stats.OrganData FindOrgan(Player target)
     {
-        var roll = DOneHundred.Roll();
+        var roll = D100.Roll();
         var count = 0f;
 
         foreach (var organ in target.anatomy.organs.Values)
