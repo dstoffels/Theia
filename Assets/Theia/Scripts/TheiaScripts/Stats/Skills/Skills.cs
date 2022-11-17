@@ -5,6 +5,11 @@ using Sirenix.OdinInspector;
 
 namespace Stats
 {
+    public interface iSkillProvider : iStatProvider
+    {
+        int GetSkillPoints(AttributeData att);
+    }
+
     [RequireComponent(typeof(Attributes)), DisallowMultipleComponent]
     public class Skills : StatManager<Skill, SkillData>, iSkillProvider
     {
@@ -15,11 +20,12 @@ namespace Stats
                 total += skill.data.primaryAttribute == att ? skill.proficiency * 2 : skill.data.secondaryAttribute == att ? skill.proficiency : 0;
             return total;
         }
+        public int GetLevel(BaseData stat) => this[stat.name].level;
 
-        public void NotifyDependents(BaseData statData)
+        public void NotifyConsumers(BaseData attribute)
         {
             foreach (var skill in all)
-                if (skill.data.primaryAttribute == statData || skill.data.secondaryAttribute == statData)
+                if (skill.data.primaryAttribute == attribute || skill.data.secondaryAttribute == attribute)
                     skill.Update();
         }
         public void Init(iAttributeProvider attributeProvider)
@@ -27,11 +33,8 @@ namespace Stats
             InitializeTemplate();
             foreach (var skill in all) skill.SetProvider(attributeProvider);
         }
+
     }
 
 
-    public interface iSkillProvider : iProvider
-    {
-        int GetSkillPoints(AttributeData att);
-    }
 }

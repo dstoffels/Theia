@@ -7,7 +7,7 @@ namespace Stats
     public interface ISkillBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Skill : BaseStat<SkillData>, iStat, iConsumer<iAttributeProvider>
+    public class Skill : BaseStat<SkillData>, iStat, iStatConsumer<iAttributeProvider>
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }
@@ -22,7 +22,9 @@ namespace Stats
 
         private void SetAptitude()
         {
-            apititude = attributes.GetAptitude(data.primaryAttribute, data.secondaryAttribute);
+            int pri = attributes.GetLevel(data.primaryAttribute);
+            int sec = attributes.GetLevel(data.secondaryAttribute);
+            apititude = pri + sec / 2;
             SetLevel();
         }
 
@@ -63,13 +65,13 @@ namespace Stats
                     nextBonusAt += xpRequired;
                     proficiency++;
                 }
-                attributes.NotifyDependents(data.primaryAttribute);
-                attributes.NotifyDependents(data.secondaryAttribute);
+                attributes.NotifyConsumers(data.primaryAttribute);
+                attributes.NotifyConsumers(data.secondaryAttribute);
                 SetLevel();
             }
         }
 
-        public override void Update()
+        public void Update()
         {
             SetAptitude();
         }

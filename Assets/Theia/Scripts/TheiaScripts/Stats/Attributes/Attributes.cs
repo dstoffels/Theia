@@ -6,6 +6,11 @@ using System;
 
 namespace Stats
 {
+    /// <summary>
+    /// Provides an interface to the attribute stat manager to retrieve values using AttributeData.
+    /// </summary>
+    public interface iAttributeProvider : iStatProvider { }
+
     [RequireComponent(typeof(Skills)), DisallowMultipleComponent]
     public class Attributes : StatManager<Attribute, AttributeData>, iAttributeProvider
     {
@@ -19,27 +24,20 @@ namespace Stats
         public int intellect => this["Intellect"].level;
         public int discipline => this["Discipline"].level;
         public int ardor => this["Ardor"].level;
-        public int GetAptitude(AttributeData pri, AttributeData sec) => this[pri].level + this[sec].level / 2;
+
+        public int GetLevel(BaseData stat) => this[stat.name].level;
+        public void NotifyConsumers(BaseData statData)
+        {
+            foreach (var att in all)
+                if (att.data == statData) 
+                    att.Update();
+        }
 
         public void Init(iSkillProvider skillProvider)
         {
             InitializeTemplate();
             foreach (var att in all) att.SetProvider(skillProvider);
         }
-
-        public void NotifyDependents(BaseData statData) 
-        {
-            foreach (var att in all)
-                if (att.data == statData) 
-                    att.Update();
-        }
     } 
 
-    /// <summary>
-    /// Provides an interface to the attribute stat manager to retrieve values using AttributeData.
-    /// </summary>
-    public interface iAttributeProvider : iProvider
-    {
-        int GetAptitude(AttributeData pri, AttributeData sec);
-    }
 }
