@@ -14064,8 +14064,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 370969808}
-  - component: {fileID: 370969807}
   - component: {fileID: 370969806}
+  - component: {fileID: 370969807}
   - component: {fileID: 370969805}
   - component: {fileID: 370969804}
   - component: {fileID: 370969803}
@@ -14324,120 +14324,12 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 2eda9b48e18f65040be7dbb63381d418, type: 2}
-    - {fileID: 370969806}
-    - {fileID: 11400000, guid: 6cc85435bd38a424ab9a72ebc6879f35, type: 2}
-    - {fileID: 11400000, guid: df819c145f172bb4ab9c82f155effcd7, type: 2}
-    - {fileID: 11400000, guid: 7a7dd39442e8b094083be253fe77d51e, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: skillset
-      Entry: 7
-      Data: 0|Stats.Skillset, uMMORPG
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Stats.SkillData,
-        uMMORPG]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 4
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 0
-    - Name: $v
-      Entry: 7
-      Data: 2|Stats.Skill, uMMORPG
-    - Name: data
-      Entry: 10
-      Data: 0
-    - Name: attributes
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 2
-    - Name: $v
-      Entry: 7
-      Data: 3|Stats.Skill, uMMORPG
-    - Name: data
-      Entry: 10
-      Data: 2
-    - Name: attributes
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 3
-    - Name: $v
-      Entry: 7
-      Data: 4|Stats.Skill, uMMORPG
-    - Name: data
-      Entry: 10
-      Data: 3
-    - Name: attributes
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 4
-    - Name: $v
-      Entry: 7
-      Data: 5|Stats.Skill, uMMORPG
-    - Name: data
-      Entry: 10
-      Data: 4
-    - Name: attributes
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   template: {fileID: 11400000, guid: 1b584cb8a4f8f6247a026612b14f6061, type: 2}
 --- !u!4 &370969808
 Transform:

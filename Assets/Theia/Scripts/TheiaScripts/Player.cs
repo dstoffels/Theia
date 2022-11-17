@@ -66,5 +66,8 @@ public struct PlayerHelpers
         player.celerity ??= player.GetComponent<Celerity>();
         player.gear ??= player.GetComponent<InventoryStuff.Gear>();
         player.armor ??= player.GetComponent<Armor>();
+
+        player.attributes.Init(player.skills);
+        player.skills.Init(player.attributes);
     }
 }

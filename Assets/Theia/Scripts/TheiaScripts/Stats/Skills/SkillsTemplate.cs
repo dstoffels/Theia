@@ -8,8 +8,7 @@ using Sirenix.OdinInspector;
 namespace Stats
 {
     [CreateAssetMenu(menuName = "Skills/Skill Template")]
-    public class SkillsTemplate : SerializedScriptableObject
+    public class SkillsTemplate : StatTemplate<SkillData>
     {
-        public List<SkillData> skillsList = new List<SkillData>();
     }
 }

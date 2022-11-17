@@ -9,11 +9,12 @@ namespace Stats
     public interface iStatBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Attribute : BaseStat<AttributeData>, iStat
+    public class Attribute : BaseStat<AttributeData>, iStat, iConsumer<iSkillProvider>
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }
         private void SetLevel() => level = startingLevel + raceModifier + skillBonus;
+        
 
         //starting level is intialized at character creation, customized manually and modified by species
         public int startingLevel { get; private set; } = 10;
@@ -27,10 +28,12 @@ namespace Stats
         private static readonly int FIRST_BONUS_AT = 10;
         private int nextBonusAt = FIRST_BONUS_AT;
         private int lastBonusAt = 0;
-        public int skillPoints { get; private set; }
-        private bool needsUpdate => skillPoints >= nextBonusAt || skillPoints < lastBonusAt;
 
-        public void Update()
+        public int skillPoints { get; private set; }
+        private iSkillProvider skills;
+        private void SetSkillPoints() => skillPoints = skills.GetSkillPoints(data);
+
+        private void SetSkillBonus()
         {
             if (needsUpdate)
             {
@@ -45,8 +48,10 @@ namespace Stats
                     skillBonus++;
                 }
                 SetLevel();
+                skills.NotifyDependents(data);
             }
         }
+        private bool needsUpdate => skillPoints >= nextBonusAt || skillPoints < lastBonusAt;
 
         public void Load(int startingLevel, int raceModifier)
         {
@@ -55,9 +60,16 @@ namespace Stats
             SetLevel();
         }
 
-        public override void Init(AttributeData data)
+        public override void Update()
         {
-            base.Init(data);
+            SetSkillPoints();
+            SetSkillBonus();
+        }
+
+        public void SetProvider(iSkillProvider provider)
+        {
+            skills = provider;
+            Update();
             SetLevel();
         }
     }

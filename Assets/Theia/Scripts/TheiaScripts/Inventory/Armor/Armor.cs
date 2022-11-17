@@ -20,7 +20,7 @@ namespace InventoryStuff.Armor
         [ShowInInspector]
         public float hindrance => Mathf.Max(0, GetTotalHindrance() - armorLevel);
 
-        private float armorLevel => skills.skillset[template.armorSkill].Level;
+        private float armorLevel => skills[template.armorSkill].level;
 
         [ShowInInspector] public float weight => GetTotalArmorWeight();
 

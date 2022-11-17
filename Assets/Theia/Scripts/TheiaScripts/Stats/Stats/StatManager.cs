@@ -14,18 +14,18 @@ namespace Stats
         [ShowInInspector, DictionaryDrawerSettings(IsReadOnly =true)]
         protected Dictionary<string, Stat> stats = new Dictionary<string, Stat>();
 
-        public virtual void Init()
-        {
-            foreach (var data in template.data)
-            {
-                stats.Add(data.name, new Stat());
-                stats[data.name].Init(data);
-            }
-        }
+        public Dictionary<string, Stat>.ValueCollection all => stats.Values;
 
-        private void OnValidate()
+        public void InitializeTemplate()
         {
-            Init();
+            if (template)
+            {
+                foreach (var data in template.data)
+                {
+                    stats.Add(data.name, new Stat());
+                    stats[data.name].Init(data);
+                }
+            }
         }
     }
 }

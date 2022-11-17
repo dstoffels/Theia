@@ -88,13 +88,13 @@ namespace Stats.Values
         {
             int skillPoints = 0;
 
-            foreach (var skill in skills.skillset.Values)
+            foreach (var skill in skills.all)
             {
                 if (skill.data.primaryAttribute == data)
-                    skillPoints += skill.proficiency * 2;
+                    skillPoints += skill._proficiency * 2;
 
                 if (skill.data.secondaryAttribute == data)
-                    skillPoints += skill.proficiency;
+                    skillPoints += skill._proficiency;
             }
 
             return skillPoints;
@@ -109,9 +109,9 @@ namespace Stats.Values
         const float FIRST_LEVEL = 100f; // Level 1 is earned at 100xp 
         const float LEVEL_MULTIPLIER = 1.02f; // Subsequent level requirements grow at a rate of 2%.
 
-        public float nextLevelAt;
+        public static float nextLevelAt = 0;
 
-        public int Get(float xp)
+        public static int Get(float xp)
         {
             int proficiency = 0;
             var requiredXp = nextLevelAt = FIRST_LEVEL;
