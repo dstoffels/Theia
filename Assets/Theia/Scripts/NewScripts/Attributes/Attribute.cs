@@ -69,4 +69,9 @@ namespace Stats
             SetLevel();
         }
     }
+
+    interface iLevel
+    {
+        float level { get; }
+    }
 }

@@ -6,39 +6,38 @@ using Sirenix.OdinInspector;
 
 namespace Stats
 {
+    [HideReferenceObjectPicker]
     public class Vital : Stat<VitalData>, IVital, IStatObserver
     {
-        private StatValues attributes = new StatValues();
+        StatValues attributes = new StatValues();
 
-        new public float level { get; private set; }
+        float _level;
+        [HideInInspector]
+        new public float level { get { return _level; } private set { _level = Mathf.Clamp(value, min, max); } }
 
-        public float max { get; private set; }
+        public float max { get; private set; } = 10;
 
         public float min => data.isFullScale ? -max : 0;
 
         public float threshold => data.isFullScale ? 0 : max / 2;
         public float debility => Mathf.Abs(Mathf.Min(threshold, level));
 
-        public bool isRecovering { get; private set; }
+        public bool isRecovering { get; private set; } = true;
         float ptsRecoveredPerPulse => attributes[data.recoveryAttribute] / 10 * data.avgVitalPtsPerPulse;
-        public void StartRecovery()
-        {
-            //if (!isRecovering)
-                //StartCoroutine(Recover());
-        }
 
+        /// <summary>
+        /// A Coroutine that must be started by parent Monobehaviour.
+        /// </summary>
         public IEnumerator Recover()
         {
             var pulse = new WaitForSecondsRealtime(VitalData.RECOVERY_PULSE);
-            isRecovering = true;
-
             while (level != max)
             {
-                level += ptsRecoveredPerPulse;
+                //if (isRecovering)
+                level += 0.066f;
+                Debug.Log(level);
                 yield return pulse;
             }
-
-            isRecovering = false;
         }
 
         public void Update(StatValue statValue)

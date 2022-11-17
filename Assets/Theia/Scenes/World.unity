@@ -23079,6 +23079,7 @@ GameObject:
   - component: {fileID: 648899511}
   - component: {fileID: 648899510}
   - component: {fileID: 648899509}
+  - component: {fileID: 648899514}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -23147,6 +23148,7 @@ MonoBehaviour:
   race: {fileID: 11400000, guid: b23b43e20c7e61641a17c1204bc472d0, type: 2}
   attributes: {fileID: 648899510}
   skills: {fileID: 648899509}
+  vitals: {fileID: 648899514}
 --- !u!114 &648899512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23178,6 +23180,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &648899514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648899508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b9f1d788f43494d9e49c6d1288606f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  template: {fileID: 11400000, guid: b4e746ac55f9121419fddc000c3c2c8b, type: 2}
 --- !u!1 &649532478
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ namespace Entities
         public RaceData race;
         public Attributes attributes;
         public Skills skills;
+        public Vitals vitals;
         public Entity() { }
 
         [Button]
@@ -22,6 +23,9 @@ namespace Entities
 
             skills = GetComponent<Skills>();
             skills.Init();
+
+            vitals = GetComponent<Vitals>();
+            vitals.Init();
         }
 
         private void OnValidate()
