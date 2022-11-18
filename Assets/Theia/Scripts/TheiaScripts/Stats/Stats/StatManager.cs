@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 namespace Stats
 {
-    public abstract class StatManager<Stat, Data> : SerializedMonoBehaviour where Data: BaseData where Stat : BaseStat<Data>, new()
+    public abstract class StatManager<Stat, Data> : SerializedMonoBehaviour, iStatConsumerManager where Data: BaseData where Stat : BaseStat<Data>, new()
     {
         public Stat this[string key] => stats[key];
         public Stat this[Data key] => stats[key.name];
@@ -26,6 +26,13 @@ namespace Stats
                     stats[data.name].Init(data);
                 }
             }
+        }
+
+        public void NotifyConsumers() { foreach (var stat in all) stat.Update(); }
+
+        public void Init(iStatProvider<Data> provider)
+        {
+            throw new NotImplementedException();
         }
     }
 }

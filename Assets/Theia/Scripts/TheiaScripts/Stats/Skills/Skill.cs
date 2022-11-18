@@ -7,7 +7,7 @@ namespace Stats
     public interface ISkillBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Skill : BaseStat<SkillData>, iStat, iStatConsumer<iAttributeProvider>
+    public class Skill : BaseStat<SkillData>, iStat, iStatConsumer
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }
@@ -35,7 +35,7 @@ namespace Stats
         //[ShowInInspector, ReadOnly]
         public int xp { get; private set; }
 
-        [Button(Style =ButtonStyle.FoldoutButton)]
+        [Button(Style = ButtonStyle.FoldoutButton)]
         public void AddXp(int amount=5000)
         {
             xp = Mathf.Max(0, xp + amount);
@@ -65,18 +65,18 @@ namespace Stats
                     nextBonusAt += xpRequired;
                     proficiency++;
                 }
-                attributes.NotifyConsumers(data.primaryAttribute);
-                attributes.NotifyConsumers(data.secondaryAttribute);
+                attributes.NotifyConsumers();
+                attributes.NotifyConsumers();
                 SetLevel();
             }
         }
 
-        public void Update()
+        public override void Update()
         {
             SetAptitude();
         }
 
-        public void SetProvider(iAttributeProvider provider)
+        public void AddProvider(iAttributeProvider provider)
         {
             attributes = provider;
             Update();

@@ -16,6 +16,7 @@ public class Player : NetworkBehaviour
 
     public Attributes attributes;
     public Skills skills;
+    public Vitals vitals;
     public Anatomy anatomy;
     //public Stamina stamina;
     //public Mana mana;
@@ -59,6 +60,7 @@ public struct PlayerHelpers
         player.attributes ??= player.GetComponent<Attributes>();
         player.skills ??= player.GetComponent<Skills>();
         player.anatomy ??= player.GetComponent<Anatomy>();
+        player.vitals ??= player.GetComponent<Vitals>();
         //player.stamina ??= player.GetComponent<Stamina>();
         //player.mana ??= player.GetComponent<Mana>();
         //player.blood ??= player.GetComponent<Blood>();
@@ -67,7 +69,8 @@ public struct PlayerHelpers
         player.gear ??= player.GetComponent<InventoryStuff.Gear>();
         player.armor ??= player.GetComponent<Armor>();
 
-        player.attributes.Init(player.skills);
+        player.attributes.Init(player.skills, player.vitals);
         player.skills.Init(player.attributes);
+        player.vitals.Init(player.attributes);
     }
 }

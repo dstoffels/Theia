@@ -6,12 +6,12 @@ using Stats.Values;
 
 namespace Stats
 {
-    class Vitals : StatManager<NewVital, VitalData>
+    public class Vitals : StatManager<NewVital, VitalData>, iStatConsumerManager
     {
         public void Init(iAttributeProvider attributeProvider)
         {
             InitializeTemplate();
-            foreach (var vital in all) vital.SetProvider(attributeProvider);
+            foreach (var vital in all) vital.AddProvider(attributeProvider);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Stats
         public string description => data.description;
         public void Init(Data data) => this.data = data;
 
+        public abstract void Update();
     }
 
     public interface iStat

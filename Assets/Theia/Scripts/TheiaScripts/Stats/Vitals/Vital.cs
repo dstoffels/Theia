@@ -14,7 +14,7 @@ namespace Stats
     {
         protected float _current;
         [ShowInInspector]
-        public virtual float current
+        public virtual float level
         {
             get => _current;
             set { _current = Mathf.Clamp(value, min, max); StartRecovery(); }
@@ -39,9 +39,9 @@ namespace Stats
             var pulse = new WaitForSecondsRealtime(Recovery.PULSE_TIME);
             isRecovering = true;
 
-            while (current != max)
+            while (level != max)
             {
-                current += pointsPerPulse;
+                level += pointsPerPulse;
                 yield return pulse;
             }
 

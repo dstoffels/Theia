@@ -5,17 +5,24 @@ using Sirenix.OdinInspector;
 
 namespace Stats
 {
-    public interface iStatProvider
+    public interface iStatProvider<TProviderData> where TProviderData : BaseData
     {
-        int GetLevel(BaseData stat);
-        void NotifyConsumers(BaseData statData);
+        int GetLevel(TProviderData stat);
     }
 
-    public interface iStatConsumer<TProvider> where TProvider : iStatProvider
+    public interface iStatConsumer
     {
-        void SetProvider(TProvider provider);
-
         void Update();
+    }
+
+    public interface iObservable
+    {
+        void AddProvider(iStatConsumerManager provider);
+    }
+
+    public interface iStatConsumerManager
+    {
+        void NotifyConsumers();
     }
 
 }

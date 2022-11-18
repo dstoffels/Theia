@@ -6,7 +6,7 @@ namespace Stats
     [DisallowMultipleComponent]
     public class Stamina : Vital
     {
-        public override float current
+        public override float level
         {
             get { return _current; }
             set { _current = Mathf.Clamp(value, min, max); StartRecovery(); }
@@ -18,7 +18,7 @@ namespace Stats
 
         protected override float threshold => 0;
 
-        public override float debility => Mathf.Abs(Mathf.Min(0, current));
+        public override float debility => Mathf.Abs(Mathf.Min(0, level));
 
         protected override float pointsPerPulse => att.constitution / Global.Attribute.AVERAGE * Recovery.AvgVitalPtsPerPulse;
     }

@@ -15,7 +15,7 @@ namespace Stats
         float ardorOffset => att.ardor / ardorMod; // ardor offsets debilitation
 
         float agilityModifier => att.agility - Global.Attribute.AVERAGE; // each agility point = 1%
-        float debilitation => Mathf.Min(0, temp.current + ardorOffset); // debilitation is a penalty derived from negative temperature (cold)
+        float debilitation => Mathf.Min(0, temp.level + ardorOffset); // debilitation is a penalty derived from negative temperature (cold)
 
 
         Temperature _temp;

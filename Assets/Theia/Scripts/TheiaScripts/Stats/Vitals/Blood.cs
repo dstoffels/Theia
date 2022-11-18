@@ -9,7 +9,7 @@ namespace Stats
     [DisallowMultipleComponent]
     public class Blood : Vital
     {
-        public override float current
+        public override float level
         {
             get { return _current; }
             set { _current = Mathf.Clamp(value, min, max); StartRecovery(); }
@@ -21,7 +21,7 @@ namespace Stats
 
         protected override float threshold => max / 2;
 
-        public override float debility => Mathf.Max(0, threshold - current);
+        public override float debility => Mathf.Max(0, threshold - level);
 
         [ShowInInspector]
         protected override float pointsPerPulse => att.constitution / Global.Attribute.AVERAGE * Recovery.AvgBloodPerPulse;
@@ -33,9 +33,9 @@ namespace Stats
             var pulse = new WaitForSecondsRealtime(Recovery.PULSE_TIME);
             isRecovering = true;
 
-            while(current != max)
+            while(level != max)
             {
-                current += pointsPerPulse + anatomy.totalBloodLoss;
+                level += pointsPerPulse + anatomy.totalBloodLoss;
                 yield return pulse;
             }
 

@@ -12,17 +12,17 @@ namespace Stats
         public override float min => -max;
         protected override float threshold => att.discipline / 2;
 
-        public bool hot => current > threshold;
-        public bool cold => current < -threshold;
+        public bool hot => level > threshold;
+        public bool cold => level < -threshold;
 
         public override float debility
         {
             get
             {
                 if (hot) 
-                    return current - threshold;
+                    return level - threshold;
                 if (cold)
-                    return Mathf.Abs(current + threshold);
+                    return Mathf.Abs(level + threshold);
                 return 0;
             }
         }
@@ -35,11 +35,11 @@ namespace Stats
             var pulse = new WaitForSecondsRealtime(Recovery.PULSE_TIME);
             isRecovering = true;
 
-            while (current != 0)
+            while (level != 0)
             {
-                if (current > 0) current -= pointsPerPulse;
-                if (current < 0) current += pointsPerPulse;
-                if (current < zeroPoint && current > -zeroPoint) current = 0;    // set level to zero to avoid bouncing back and forth.
+                if (level > 0) level -= pointsPerPulse;
+                if (level < 0) level += pointsPerPulse;
+                if (level < zeroPoint && level > -zeroPoint) level = 0;    // set level to zero to avoid bouncing back and forth.
 
                 yield return pulse;
             }

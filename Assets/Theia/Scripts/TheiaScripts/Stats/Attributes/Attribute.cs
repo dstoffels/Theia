@@ -9,7 +9,7 @@ namespace Stats
     public interface iStatBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Attribute : BaseStat<AttributeData>, iStat, iStatConsumer<iSkillProvider>
+    public class Attribute : BaseStat<AttributeData>, iStat, iStatConsumer, iObservable
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }
@@ -30,7 +30,6 @@ namespace Stats
         private int lastBonusAt = 0;
 
         public int skillPoints { get; private set; }
-        private iSkillProvider skills;
         private void SetSkillPoints() => skillPoints = skills.GetSkillPoints(data);
 
         private void SetSkillBonus()
@@ -48,7 +47,8 @@ namespace Stats
                     skillBonus++;
                 }
                 SetLevel();
-                skills.NotifyConsumers(data);
+                skills.NotifyConsumers();
+                vitals.NotifyConsumers();
             }
         }
         private bool needsUpdate => skillPoints >= nextBonusAt || skillPoints < lastBonusAt;
@@ -60,17 +60,27 @@ namespace Stats
             SetLevel();
         }
 
-        public void Update()
+        public override void Update()
         {
             SetSkillPoints();
             SetSkillBonus();
         }
 
-        public void SetProvider(iSkillProvider provider)
+        private iSkillProviderManager skills;
+        public void AddProvider(iSkillProviderManager skillManager)
         {
-            skills = provider;
+            skills = skillManager;
             Update();
             SetLevel();
+            skills.NotifyConsumers();
+        }
+        iStatConsumerManager vitals;
+        public void AddProvider(iStatConsumerManager vitalsManager)
+        {
+            vitals = vitalsManager;
+            Update();
+            SetLevel();
+            vitals.NotifyConsumers();
         }
     }
 }

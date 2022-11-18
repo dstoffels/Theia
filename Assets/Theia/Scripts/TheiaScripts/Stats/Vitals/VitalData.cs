@@ -11,9 +11,9 @@ namespace Stats
     {
         public AttributeData primaryAttribute;
         [AssetList]
-        public AttributeData[] secondaryAttributes;
+        public List<AttributeData> secondaryAttributes;
         [AssetList]
-        public AttributeData[] recoveryAttributes;
+        public List<AttributeData> recoveryAttributes;
 
         public bool isFullScale;
         public bool isEquilibrium;
