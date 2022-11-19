@@ -7,26 +7,18 @@ namespace Stats
 {
 
     [RequireComponent(typeof(Attributes)), DisallowMultipleComponent]
-    public class Skills : StatManager<Skill, SkillData>, iSkillProviderManager
+    public class Skills : StatManager<Skill, SkillData>, iStatConsumerManager<AttributeData>, iStatProviderManager<SkillData>
     {
-        public int GetSkillPoints(AttributeData att)
-        {
-            int total = 0;
-            foreach (var skill in all)
-                total += skill.data.primaryAttribute == att ? skill.proficiency * 2 : skill.data.secondaryAttribute == att ? skill.proficiency : 0;
-            return total;
-        }
-        public int GetLevel(SkillData stat) => this[stat.name].level;
+        public iStatProvider<SkillData>[] Get() => all;
 
-        public void Init(iAttributeProvider attributeProvider)
+        public void SubscribeAll(iStatProviderManager<AttributeData> providers)
         {
-            InitializeTemplate();
-            foreach (var skill in all) skill.AddProvider(attributeProvider);
+            if(!initialized)
+                foreach (var skill in all)
+                    foreach (var att in providers.Get())
+                        skill.Subscribe(att);
+            initialized = true;
         }
-    }
-    public interface iSkillProviderManager : iStatProvider<SkillData>, iStatConsumerManager
-    {
-        int GetSkillPoints(AttributeData att);
     }
 
 }

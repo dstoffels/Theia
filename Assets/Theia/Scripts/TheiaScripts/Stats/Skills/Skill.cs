@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using Sirenix.OdinInspector;
 using Stats.Values;
 
@@ -7,29 +8,31 @@ namespace Stats
     public interface ISkillBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Skill : BaseStat<SkillData>, iStat, iStatConsumer
+    public class Skill : BaseStat<SkillData>, iStat, iStatConsumer<AttributeData>, iStatProvider<SkillData>
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }
 
-        private void SetLevel() => level = apititude + proficiency;
+        private void SetLevel()
+        {
+            level = aptitude + proficiency;
+            NotifyObservers();
+        }
         
 
         // Aptitude is derived from a skill's parent attributes (primary & secondary). 
-        public int apititude { get; private set; }
-
-        private iAttributeProvider attributes;
+        public int aptitude { get; private set; }
 
         private void SetAptitude()
         {
-            int pri = attributes.GetLevel(data.primaryAttribute);
-            int sec = attributes.GetLevel(data.secondaryAttribute);
-            apititude = pri + sec / 2;
+            aptitude = 0;
+            foreach (var provider in providers)
+            {
+                var statValue = provider.GetStatValue();
+                aptitude += statValue.data == data.primaryAttribute ? statValue.value : statValue.data == data.secondaryAttribute ? statValue.value / 2 : 0;
+            }
             SetLevel();
         }
-
-        // Called by the skill's attributes whenever they level up or the character is created/loaded.
-
 
         // Players earn xp in a skill by using constituent abilities, leveling up the skill's proficiency at exponential increments.
         //[ShowInInspector, ReadOnly]
@@ -65,24 +68,29 @@ namespace Stats
                     nextBonusAt += xpRequired;
                     proficiency++;
                 }
-                attributes.NotifyConsumers();
-                attributes.NotifyConsumers();
                 SetLevel();
             }
         }
 
-        public override void Update()
+        public void Subscribe(iStatProvider<AttributeData> provider)
         {
+            var stat = provider.GetStatValue();
+            if (data.Contains(stat.data)) provider.AddConsumer(this);
+            SetLevel();
+        }
+
+        private List<iStatProvider<AttributeData>> providers = new List<iStatProvider<AttributeData>>();
+        public void Update(iStatProvider<AttributeData> provider)
+        {
+            if (provider != null && !providers.Contains(provider)) providers.Add(provider);
             SetAptitude();
         }
 
-        public void AddProvider(iAttributeProvider provider)
-        {
-            attributes = provider;
-            Update();
-        }
+        private List<iStatConsumer<SkillData>> observers = new List<iStatConsumer<SkillData>>();
+        public void AddConsumer(iStatConsumer<SkillData> observer) { if (!observers.Contains(observer)) observers.Add(observer); }
 
-        public int _proficiency => Proficiency.Get(xp);
+        public void NotifyObservers() { foreach (var observer in observers) observer.Update(this); }
+        public StatValue<SkillData> GetStatValue() => new StatValue<SkillData>(data, proficiency);
 
     }
 }

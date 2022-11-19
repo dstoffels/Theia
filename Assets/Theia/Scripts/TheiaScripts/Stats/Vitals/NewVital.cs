@@ -7,7 +7,7 @@ using Stats.Values;
 namespace Stats
 {
     [HideReferenceObjectPicker]
-    public class NewVital : BaseStat<VitalData>, iStatConsumer
+    public class NewVital : BaseStat<VitalData>, iStatConsumer<AttributeData>
     {
         [ShowInInspector, ReadOnly]
         public float level { get; set; }
@@ -19,23 +19,20 @@ namespace Stats
         private void SetMax()
         {
             max = 0;
-            foreach (var att in data.secondaryAttributes) max += attributes.GetLevel(att) / 2;
-            max += attributes.GetLevel(data.primaryAttribute);
+
+        }
+
+        // TODO: implement update and list of providers
+        public void Update(iStatProvider<AttributeData> provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Subscribe(iStatProvider<AttributeData> provider)
+        {
+            throw new NotImplementedException();
         }
 
         public int min => throw new NotImplementedException();
-        private iAttributeProvider attributes;
-
-        public void AddProvider(iAttributeProvider provider)
-        {
-            attributes = provider;
-            Update();
-        }
-
-        public override void Update()
-        {
-            SetMax();
-        }
-
     }
 }

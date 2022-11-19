@@ -5,24 +5,44 @@ using Sirenix.OdinInspector;
 
 namespace Stats
 {
-    public interface iStatProvider<TProviderData> where TProviderData : BaseData
+    /// <summary>
+    /// Must hold a list of its observers to notify whenever it changes
+    /// </summary>
+    public interface iStatProvider<TData> where TData : BaseData
     {
-        int GetLevel(TProviderData stat);
+        StatValue<TData> GetStatValue();
+        void AddConsumer(iStatConsumer<TData> observer);
+        void NotifyObservers();
     }
 
-    public interface iStatConsumer
+    public interface iStatConsumer<TData> where TData : BaseData
     {
-        void Update();
+        void Update(iStatProvider<TData> provider);
+        void Subscribe(iStatProvider<TData> provider);
     }
 
-    public interface iObservable
+
+    public struct StatValue<TData> where TData : BaseData
     {
-        void AddProvider(iStatConsumerManager provider);
+        public TData data;
+        public int value;
+
+        public StatValue(TData data, int value)
+        {
+            this.data = data;
+            this.value = value;
+        }
     }
 
-    public interface iStatConsumerManager
+    public interface iStatProviderManager<TData> where TData : BaseData
     {
-        void NotifyConsumers();
+        iStatProvider<TData>[] Get();
+    }
+
+
+    public interface iStatConsumerManager<TConsumes> where TConsumes : BaseData
+    {
+        void SubscribeAll(iStatProviderManager<TConsumes> providers);
     }
 
 }

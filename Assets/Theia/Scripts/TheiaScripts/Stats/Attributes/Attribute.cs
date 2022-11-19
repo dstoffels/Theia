@@ -9,12 +9,17 @@ namespace Stats
     public interface iStatBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Attribute : BaseStat<AttributeData>, iStat, iStatConsumer, iObservable
+    public class Attribute : BaseStat<AttributeData>, iStat, iStatConsumer<SkillData>, iStatProvider<AttributeData>
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }
-        private void SetLevel() => level = startingLevel + raceModifier + skillBonus;
-        
+        private void SetLevel()
+        {
+            level = startingLevel + raceModifier + skillBonus;
+            NotifyObservers();
+        }
+
+
 
         //starting level is intialized at character creation, customized manually and modified by species
         public int startingLevel { get; private set; } = 10;
@@ -30,7 +35,17 @@ namespace Stats
         private int lastBonusAt = 0;
 
         public int skillPoints { get; private set; }
-        private void SetSkillPoints() => skillPoints = skills.GetSkillPoints(data);
+        private void SetSkillPoints()
+        {
+            skillPoints = 0;
+            foreach (var provider in providers)
+            {
+                var skill = provider.GetStatValue();
+                skillPoints += skill.data.primaryAttribute == data ? skill.value * 2 : skill.data.secondaryAttribute == data ? skill.value : 0;
+            }
+
+            SetSkillBonus();
+        }
 
         private void SetSkillBonus()
         {
@@ -47,8 +62,6 @@ namespace Stats
                     skillBonus++;
                 }
                 SetLevel();
-                skills.NotifyConsumers();
-                vitals.NotifyConsumers();
             }
         }
         private bool needsUpdate => skillPoints >= nextBonusAt || skillPoints < lastBonusAt;
@@ -59,28 +72,31 @@ namespace Stats
             this.raceModifier = raceModifier;
             SetLevel();
         }
-
-        public override void Update()
+        public void Subscribe(iStatProvider<SkillData> provider)
         {
+
+            var stat = provider.GetStatValue();
+            if (stat.data.Contains(data)) provider.AddConsumer(this);
+            SetLevel();
+        }
+
+        private List<iStatProvider<SkillData>> providers = new List<iStatProvider<SkillData>>();
+        public void Update(iStatProvider<SkillData> provider)
+        {
+            if (provider != null && !providers.Contains(provider))
+            {
+                providers.Add(provider);
+                SetLevel();
+            }
             SetSkillPoints();
-            SetSkillBonus();
         }
+        public void NotifyObservers() { foreach (var observer in observers) observer.Update(this); }
 
-        private iSkillProviderManager skills;
-        public void AddProvider(iSkillProviderManager skillManager)
-        {
-            skills = skillManager;
-            Update();
-            SetLevel();
-            skills.NotifyConsumers();
-        }
-        iStatConsumerManager vitals;
-        public void AddProvider(iStatConsumerManager vitalsManager)
-        {
-            vitals = vitalsManager;
-            Update();
-            SetLevel();
-            vitals.NotifyConsumers();
-        }
+        public StatValue<AttributeData> GetStatValue() => new StatValue<AttributeData>(data, level);
+
+        private List<iStatConsumer<AttributeData>> observers = new List<iStatConsumer<AttributeData>>();
+        public void AddConsumer(iStatConsumer<AttributeData> observer) { if (!observers.Contains(observer)) observers.Add(observer); }
+
     }
+
 }

@@ -66,40 +66,40 @@ namespace Stats.Values
     /// <summary>
     /// A container for calculating the skill points and resultant skill bonus for attributes.
     /// </summary>
-    public struct SkillBonus
-    {
-        const int SKILLPOINTS_PER_LEVEL = 20;
+    //public struct SkillBonus
+    //{
+    //    const int SKILLPOINTS_PER_LEVEL = 20;
 
-        public static int Get(Skills skills, AttributeData data)
-        {
-            int skillBonus = 0;
-            int nextLevel = SKILLPOINTS_PER_LEVEL;
-            int sp = GetSkillPoints(skills, data);
+    //    public static int Get(Skills skills, AttributeData data)
+    //    {
+    //        int skillBonus = 0;
+    //        int nextLevel = SKILLPOINTS_PER_LEVEL;
+    //        int sp = GetSkillPoints(skills, data);
 
-            while (sp >= nextLevel)
-            {
-                nextLevel += SKILLPOINTS_PER_LEVEL;
-                skillBonus++;
-            }
-            return skillBonus;
-        }
+    //        while (sp >= nextLevel)
+    //        {
+    //            nextLevel += SKILLPOINTS_PER_LEVEL;
+    //            skillBonus++;
+    //        }
+    //        return skillBonus;
+    //    }
 
-        static int GetSkillPoints(Skills skills, AttributeData data)
-        {
-            int skillPoints = 0;
+    //    static int GetSkillPoints(Skills skills, AttributeData data)
+    //    {
+    //        int skillPoints = 0;
 
-            foreach (var skill in skills.all)
-            {
-                if (skill.data.primaryAttribute == data)
-                    skillPoints += skill._proficiency * 2;
+    //        foreach (var skill in skills.all)
+    //        {
+    //            if (skill.data.primaryAttribute == data)
+    //                skillPoints += skill._proficiency * 2;
 
-                if (skill.data.secondaryAttribute == data)
-                    skillPoints += skill._proficiency;
-            }
+    //            if (skill.data.secondaryAttribute == data)
+    //                skillPoints += skill._proficiency;
+    //        }
 
-            return skillPoints;
-        }
-    }
+    //        return skillPoints;
+    //    }
+    //}
 
     /// <summary>
     /// Calculates a skill's proficiency based on its xp.

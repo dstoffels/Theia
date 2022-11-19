@@ -8,7 +8,7 @@ namespace Stats
 {
 
     [RequireComponent(typeof(Skills)), DisallowMultipleComponent]
-    public class Attributes : StatManager<Attribute, AttributeData>, iAttributeProvider
+    public class Attributes : StatManager<Attribute, AttributeData>, iStatProviderManager<AttributeData>, iStatConsumerManager<SkillData>
     {
         // Accessors //
         public int strength => this["Strength"].level;
@@ -20,22 +20,15 @@ namespace Stats
         public int discipline => this["Discipline"].level;
         public int ardor => this["Ardor"].level;
 
-        public int GetLevel(AttributeData stat) => this[stat.name].level;
+        public iStatProvider<AttributeData>[] Get() => all;
 
-        public void Init(iSkillProviderManager skills, iStatConsumerManager vitals)
+        public void SubscribeAll(iStatProviderManager<SkillData> providers)
         {
-            InitializeTemplate();
-            foreach (var att in all)
-            {
-                att.AddProvider(skills);
-                att.AddProvider(vitals);
-            }
+            if(!initialized)
+                foreach (var att in all)
+                    foreach (var skill in providers.Get())
+                        att.Subscribe(skill);
+            initialized = true;
         }
-
     } 
-    /// <summary>
-    /// Provides an interface to the attribute stat manager to retrieve values using AttributeData.
-    /// </summary>
-    public interface iAttributeProvider : iStatProvider<AttributeData>, iStatConsumerManager { }
-
 }

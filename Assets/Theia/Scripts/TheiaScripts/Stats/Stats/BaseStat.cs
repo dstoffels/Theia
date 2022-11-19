@@ -7,15 +7,13 @@ namespace Stats
     public abstract class BaseStat<Data> where Data : BaseData
     {
         /// <summary>
-        /// Scriptable object with all stat data that is "plugged in" to the stat.
+        /// StatData Scriptable object that is "plugged in" to the stat to provide le data.
         /// </summary>
         [HideInInspector]
         public Data data;
         public string name => data.name;
         public string description => data.description;
         public void Init(Data data) => this.data = data;
-
-        public abstract void Update();
     }
 
     public interface iStat

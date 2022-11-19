@@ -17,5 +17,10 @@ namespace Stats
 
         public bool isFullScale;
         public bool isEquilibrium;
+
+        public override bool Contains(BaseData statName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

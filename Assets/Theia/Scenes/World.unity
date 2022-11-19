@@ -14066,13 +14066,13 @@ GameObject:
   - component: {fileID: 370969808}
   - component: {fileID: 370969806}
   - component: {fileID: 370969807}
+  - component: {fileID: 370969800}
   - component: {fileID: 370969802}
   - component: {fileID: 370969801}
   - component: {fileID: 370969809}
   - component: {fileID: 370969811}
   - component: {fileID: 370969813}
   - component: {fileID: 370969812}
-  - component: {fileID: 370969800}
   m_Layer: 0
   m_Name: PLAYER
   m_TagString: Untagged
@@ -14101,7 +14101,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  template: {fileID: 0}
+  template: {fileID: 11400000, guid: 4bce4b41a975f8649ac7d4db552dfb4f, type: 2}
 --- !u!114 &370969801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14686,6 +14686,7 @@ MonoBehaviour:
   syncInterval: 0.1
   attributes: {fileID: 370969806}
   skills: {fileID: 370969807}
+  vitals: {fileID: 370969800}
   anatomy: {fileID: 370969801}
   gear: {fileID: 370969811}
   armor: {fileID: 370969809}

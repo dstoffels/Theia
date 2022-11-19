@@ -37,6 +37,7 @@ public class Player : NetworkBehaviour
         PlayerHelpers.AssignComponents(this);
     }
 
+
     private void Update()
     {
         if (Input.GetMouseButtonUp(0))
@@ -69,8 +70,9 @@ public struct PlayerHelpers
         player.gear ??= player.GetComponent<InventoryStuff.Gear>();
         player.armor ??= player.GetComponent<Armor>();
 
-        player.attributes.Init(player.skills, player.vitals);
-        player.skills.Init(player.attributes);
-        player.vitals.Init(player.attributes);
+        player.attributes.InitializeTemplate();
+        player.skills.InitializeTemplate();
+        player.attributes.SubscribeAll(player.skills);
+        player.skills.SubscribeAll(player.attributes);
     }
 }

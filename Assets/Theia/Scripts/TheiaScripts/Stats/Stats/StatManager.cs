@@ -5,16 +5,27 @@ using Sirenix.OdinInspector;
 
 namespace Stats
 {
-    public abstract class StatManager<Stat, Data> : SerializedMonoBehaviour, iStatConsumerManager where Data: BaseData where Stat : BaseStat<Data>, new()
+    public abstract class StatManager<TStat, TData> : SerializedMonoBehaviour
+        where TData: BaseData 
+        where TStat : BaseStat<TData>, new()
     {
-        public Stat this[string key] => stats[key];
-        public Stat this[Data key] => stats[key.name];
+        protected bool initialized;
+        public TStat this[string key] => stats[key];
+        public TStat this[TData key] => stats[key.name];
 
-        public StatTemplate<Data> template;
+        public StatTemplate<TData> template;
         [ShowInInspector, DictionaryDrawerSettings(IsReadOnly =true)]
-        protected Dictionary<string, Stat> stats = new Dictionary<string, Stat>();
+        protected Dictionary<string, TStat> stats = new Dictionary<string, TStat>();
 
-        public Dictionary<string, Stat>.ValueCollection all => stats.Values;
+        public TStat[] all
+        {
+            get
+            {
+                TStat[] _all = new TStat[stats.Count];
+                stats.Values.CopyTo(_all,0);
+                return _all;
+            }
+        }
 
         public void InitializeTemplate()
         {
@@ -22,17 +33,10 @@ namespace Stats
             {
                 foreach (var data in template.data)
                 {
-                    stats.Add(data.name, new Stat());
-                    stats[data.name].Init(data);
+                    stats.Add(data.name, new TStat());
+                    this[data].Init(data);
                 }
             }
-        }
-
-        public void NotifyConsumers() { foreach (var stat in all) stat.Update(); }
-
-        public void Init(iStatProvider<Data> provider)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -12,5 +12,7 @@ namespace Stats
         public AttributeData primaryAttribute;
         public AttributeData secondaryAttribute;
         public Domain domain;
+
+        public override bool Contains(BaseData stat) => stat == primaryAttribute || stat == secondaryAttribute;
     }
 }
