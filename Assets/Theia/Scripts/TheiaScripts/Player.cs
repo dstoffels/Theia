@@ -72,7 +72,9 @@ public struct PlayerHelpers
 
         player.attributes.InitializeTemplate();
         player.skills.InitializeTemplate();
+        player.vitals.InitializeTemplate();
         player.attributes.SubscribeAll(player.skills);
         player.skills.SubscribeAll(player.attributes);
+        player.vitals.SubscribeAll(player.attributes);
     }
 }

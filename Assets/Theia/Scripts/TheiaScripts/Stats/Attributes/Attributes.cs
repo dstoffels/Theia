@@ -24,11 +24,9 @@ namespace Stats
 
         public void SubscribeAll(iStatProviderManager<SkillData> providers)
         {
-            if(!initialized)
-                foreach (var att in all)
-                    foreach (var skill in providers.Get())
-                        att.Subscribe(skill);
-            initialized = true;
+            foreach (var att in all)
+                foreach (var skill in providers.Get())
+                    att.Subscribe(skill);
         }
     } 
 }

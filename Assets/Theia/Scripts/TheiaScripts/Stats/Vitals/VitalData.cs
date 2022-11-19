@@ -18,9 +18,9 @@ namespace Stats
         public bool isFullScale;
         public bool isEquilibrium;
 
-        public override bool Contains(BaseData statName)
+        public override bool Contains(BaseData stat)
         {
-            throw new NotImplementedException();
+            return stat == primaryAttribute || secondaryAttributes.Contains((AttributeData)stat) || recoveryAttributes.Contains((AttributeData)stat);
         }
     }
 }

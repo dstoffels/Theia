@@ -34,15 +34,15 @@ namespace Stats
         }
     }
 
-    public interface iStatProviderManager<TData> where TData : BaseData
+    public interface iStatProviderManager<TProviderData> where TProviderData : BaseData
     {
-        iStatProvider<TData>[] Get();
+        iStatProvider<TProviderData>[] Get();
     }
 
 
-    public interface iStatConsumerManager<TConsumes> where TConsumes : BaseData
+    public interface iStatConsumerManager<TConsumerData> where TConsumerData : BaseData
     {
-        void SubscribeAll(iStatProviderManager<TConsumes> providers);
+        void SubscribeAll(iStatProviderManager<TConsumerData> providers);
     }
 
 }

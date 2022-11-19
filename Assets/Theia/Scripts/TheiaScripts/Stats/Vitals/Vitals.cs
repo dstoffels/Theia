@@ -6,7 +6,7 @@ using Stats.Values;
 
 namespace Stats
 {
-    public class Vitals : StatManager<NewVital, VitalData>
+    public class Vitals : StatManager<NewVital, VitalData>, iStatConsumerManager<AttributeData>
     {
         public void Init(Attributes attributes)
         {
@@ -15,6 +15,13 @@ namespace Stats
             {
                 
             }
+        }
+
+        public void SubscribeAll(iStatProviderManager<AttributeData> providers)
+        {
+            foreach (var vital in all)
+                foreach (var att in providers.Get())
+                    vital.Subscribe(att);
         }
     }
 }

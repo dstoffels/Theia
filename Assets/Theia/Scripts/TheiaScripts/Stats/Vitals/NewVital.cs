@@ -19,18 +19,26 @@ namespace Stats
         private void SetMax()
         {
             max = 0;
-
+            foreach (var provider in providers)
+            {
+                var stat = provider.GetStatValue();
+                max += stat.data == data.primaryAttribute ? stat.value * 2 : data.secondaryAttributes.Contains(stat.data) ? stat.value : 0;
+            }
         }
+        
 
-        // TODO: implement update and list of providers
+        private List<iStatProvider<AttributeData>> providers = new List<iStatProvider<AttributeData>>();
         public void Update(iStatProvider<AttributeData> provider)
         {
-            throw new NotImplementedException();
+            if (!providers.Contains(provider)) providers.Add(provider);
+            SetMax();
         }
 
         public void Subscribe(iStatProvider<AttributeData> provider)
         {
-            throw new NotImplementedException();
+            var stat = provider.GetStatValue();
+            if (data.Contains(stat.data)) provider.AddConsumer(this);
+            Update(provider);
         }
 
         public int min => throw new NotImplementedException();

@@ -9,7 +9,6 @@ namespace Stats
         where TData: BaseData 
         where TStat : BaseStat<TData>, new()
     {
-        protected bool initialized;
         public TStat this[string key] => stats[key];
         public TStat this[TData key] => stats[key.name];
 

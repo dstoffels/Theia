@@ -74,7 +74,6 @@ namespace Stats
         }
         public void Subscribe(iStatProvider<SkillData> provider)
         {
-
             var stat = provider.GetStatValue();
             if (stat.data.Contains(data)) provider.AddConsumer(this);
             SetLevel();
