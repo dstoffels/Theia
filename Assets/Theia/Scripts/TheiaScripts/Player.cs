@@ -1,3 +1,4 @@
+using System;
 using Mirror;
 using Stats;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class Player : NetworkBehaviour
     public Attributes attributes;
     public Skills skills;
     public Vitals vitals;
-    public Anatomy anatomy;
+    //public Anatomy anatomy;
     //public Stamina stamina;
     //public Mana mana;
     //public Blood blood;
@@ -34,7 +35,14 @@ public class Player : NetworkBehaviour
 
     private void OnValidate()
     {
+        Init();
+    }
+
+    [Button]
+    public void Init()
+    {
         PlayerHelpers.AssignComponents(this);
+        PlayerHelpers.InitializeComponents(this);
     }
 
 
@@ -60,7 +68,7 @@ public struct PlayerHelpers
     {
         player.attributes ??= player.GetComponent<Attributes>();
         player.skills ??= player.GetComponent<Skills>();
-        player.anatomy ??= player.GetComponent<Anatomy>();
+        //player.anatomy ??= player.GetComponent<Anatomy>();
         player.vitals ??= player.GetComponent<Vitals>();
         //player.stamina ??= player.GetComponent<Stamina>();
         //player.mana ??= player.GetComponent<Mana>();
@@ -70,11 +78,17 @@ public struct PlayerHelpers
         player.gear ??= player.GetComponent<InventoryStuff.Gear>();
         player.armor ??= player.GetComponent<Armor>();
 
+    }
+
+    public static void InitializeComponents(Player player)
+    {
         player.attributes.InitializeTemplate();
         player.skills.InitializeTemplate();
         player.vitals.InitializeTemplate();
+
         player.attributes.SubscribeAll(player.skills);
         player.skills.SubscribeAll(player.attributes);
         player.vitals.SubscribeAll(player.attributes);
+
     }
 }

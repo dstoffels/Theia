@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using Stats.Values;
 
 namespace Stats
 {
@@ -20,19 +19,20 @@ namespace Stats
 
         [ShowInInspector, ReadOnly]
         public int max { get; private set; }
+        public int min { get; private set; }
+        public int threshold { get; private set; }
+        public float debility => data.GetDebility(this);
         private void SetMax()
         {
-            max = 0;
-            foreach (var provider in providers)
-            {
-                var stat = provider.GetStatValue();
-                max += stat.data == data.primaryAttribute ? stat.value * 2 : data.secondaryAttributes.Contains(stat.data) ? stat.value : 0;
-            }
+            max = data.GetMax(providers);
+            min = data.GetMin(this);
+            threshold = data.GetThreshold(this);
+            //foreach (var provider in providers)
+            //{
+            //    var stat = provider.GetStatValue();
+            //    max += stat.data == data.primaryAttribute ? stat.value * 2 : data.secondaryAttributes.Contains(stat.data) ? stat.value : 0;
+            //}
         }
-        public int min => data.isFullScale ? -max : 0;
-
-        public int threshold => data.isFullScale ? 0 : max / 2;
-        public float debility => Mathf.Min(0, level - threshold);
 
         private List<iStatProvider<AttributeData>> providers = new List<iStatProvider<AttributeData>>();
         public void Update(iStatProvider<AttributeData> provider)
