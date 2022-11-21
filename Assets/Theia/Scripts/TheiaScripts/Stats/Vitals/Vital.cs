@@ -12,41 +12,28 @@ namespace Stats
     // Still allows for Vitals StatManager so entity/player class doesn't have to manage.
 
     [HideReferenceObjectPicker]
-    public class Vital : BaseStat<VitalData>, iStatConsumer<AttributeData>
+    public class Vital : ConsumerStat<VitalData, AttributeData>
     {
+        private float _level;
         [ShowInInspector, ReadOnly]
-        public float level { get; set; }
+        public float level
+        {
+            get { return _level; }
+            set { _level = Mathf.Clamp(value, min, max); } // StartRecovery();
+        }
 
         [ShowInInspector, ReadOnly]
         public int max { get; private set; }
         public int min { get; private set; }
         public int threshold { get; private set; }
         public float debility => data.GetDebility(this);
-        private void SetMax()
+        public override void Update(StatValue<AttributeData> providerValue)
         {
-            max = data.GetMax(providers);
+            base.Update(providerValue);
+            providerValues.Add(providerValue);
+            max = data.GetMax(providerValues);
             min = data.GetMin(this);
             threshold = data.GetThreshold(this);
-            //foreach (var provider in providers)
-            //{
-            //    var stat = provider.GetStatValue();
-            //    max += stat.data == data.primaryAttribute ? stat.value * 2 : data.secondaryAttributes.Contains(stat.data) ? stat.value : 0;
-            //}
         }
-
-        private List<iStatProvider<AttributeData>> providers = new List<iStatProvider<AttributeData>>();
-        public void Update(iStatProvider<AttributeData> provider)
-        {
-            if (!providers.Contains(provider)) providers.Add(provider);
-            SetMax();
-        }
-
-        public void Subscribe(iStatProvider<AttributeData> provider)
-        {
-            var stat = provider.GetStatValue();
-            if (data.Contains(stat.data)) provider.AddConsumer(this);
-            Update(provider);
-        }
-
     }
 }

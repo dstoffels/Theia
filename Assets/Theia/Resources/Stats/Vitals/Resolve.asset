@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3163f4c884183d64a992845650567437, type: 3}
-  m_Name: Vitals Template
+  m_Script: {fileID: 11500000, guid: 5458c304d09195447be8ac7fd5736658, type: 3}
+  m_Name: Resolve
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,6 +21,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  data:
-  - {fileID: 11400000, guid: f84d479aabd367e4aae2308e1ce9b03b, type: 2}
-  - {fileID: 11400000, guid: cd02363e085cce24a877f861dda06196, type: 2}
+  description: 
+  primaryAttribute: {fileID: 11400000, guid: ae25337c23de48c4ca5ab1d02365852c, type: 2}
+  secondaryAttributes:
+  - {fileID: 11400000, guid: f3e880495ebd40447b0b66475f487966, type: 2}
+  - {fileID: 11400000, guid: c44ea525644ba934085bc39362f150e0, type: 2}
+  - {fileID: 11400000, guid: c540938bf8145584995a65c8501f1061, type: 2}

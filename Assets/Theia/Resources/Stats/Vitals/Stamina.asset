@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3163f4c884183d64a992845650567437, type: 3}
-  m_Name: Vitals Template
+  m_Script: {fileID: 11500000, guid: 5458c304d09195447be8ac7fd5736658, type: 3}
+  m_Name: Stamina
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,6 +21,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  data:
-  - {fileID: 11400000, guid: f84d479aabd367e4aae2308e1ce9b03b, type: 2}
-  - {fileID: 11400000, guid: cd02363e085cce24a877f861dda06196, type: 2}
+  description: 
+  primaryAttribute: {fileID: 11400000, guid: ddc9daf4b43621c4d89a48184a802c1b, type: 2}
+  secondaryAttributes:
+  - {fileID: 11400000, guid: 498aac0627bc3aa4a902398b3d885c4c, type: 2}
+  - {fileID: 11400000, guid: b34de46cbbe354542b0b619386765a35, type: 2}
+  - {fileID: 11400000, guid: 55106acf660707b47a855b340e0bb34a, type: 2}

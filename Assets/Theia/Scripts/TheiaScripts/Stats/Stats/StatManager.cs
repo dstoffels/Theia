@@ -32,8 +32,11 @@ namespace Stats
             {
                 foreach (var data in template.data)
                 {
-                    stats.Add(data.name, new TStat());
-                    this[data].Init(data);
+                    if (!stats.ContainsKey(data.name))
+                    {
+                        stats.Add(data.name, new TStat());
+                        this[data].Init(data);
+                    }
                 }
             }
         }

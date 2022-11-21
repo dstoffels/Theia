@@ -8,15 +8,19 @@ namespace Stats
     public interface ISkillBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Skill : BaseStat<SkillData>, iStat, iStatConsumer<AttributeData>, iStatProvider<SkillData>
+    public class Skill : ProviderStat<SkillData, AttributeData>
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }
 
         private void SetLevel()
         {
-            level = aptitude + proficiency;
-            NotifyObservers();
+            int newLevel = aptitude + proficiency;
+            if (level != newLevel)
+            {
+                level= newLevel;
+                NotifyObservers();
+            }
         }
         
 
@@ -25,16 +29,10 @@ namespace Stats
 
         private void SetAptitude()
         {
-            aptitude = 0;
-            foreach (var provider in providers)
-            {
-                var statValue = provider.GetStatValue();
-                aptitude += statValue.data == data.primaryAttribute ? 
-                    statValue.value : 
-                    statValue.data == data.secondaryAttribute ? 
-                    statValue.value / 2 : 
-                    0;
-            }
+            aptitude = providerValues.Reduce(att =>
+                att.data == data.primaryAttribute ? att.value :
+                att.data == data.secondaryAttribute ? att.value / 2 : 0
+            );
             SetLevel();
         }
 
@@ -76,25 +74,12 @@ namespace Stats
             }
         }
 
-        public void Subscribe(iStatProvider<AttributeData> provider)
+        public override void Update(StatValue<AttributeData> providerValue)
         {
-            var stat = provider.GetStatValue();
-            if (data.Contains(stat.data)) provider.AddConsumer(this);
-            Update(provider);
-        }
-
-        private List<iStatProvider<AttributeData>> providers = new List<iStatProvider<AttributeData>>();
-        public void Update(iStatProvider<AttributeData> provider)
-        {
-            if (provider != null && !providers.Contains(provider)) providers.Add(provider);
+            base.Update(providerValue);
             SetAptitude();
         }
 
-        private List<iStatConsumer<SkillData>> observers = new List<iStatConsumer<SkillData>>();
-        public void AddConsumer(iStatConsumer<SkillData> observer) { if (!observers.Contains(observer)) observers.Add(observer); }
-
-        public void NotifyObservers() { foreach (var observer in observers) observer.Update(this); }
-        public StatValue<SkillData> GetStatValue() => new StatValue<SkillData>(data, proficiency);
-
+        public override StatValue<SkillData> GetStatValue() => new StatValue<SkillData>(data, proficiency);
     }
 }
