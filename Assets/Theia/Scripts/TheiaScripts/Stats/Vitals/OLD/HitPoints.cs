@@ -2,8 +2,9 @@
 using System.Collections;
 using UnityEngine;
 using Stats.Values;
+using Stats;
 
-namespace Stats
+namespace StatsOLD
 {
     [RequireComponent(typeof(Anatomy), typeof(Attributes))]
     public class HitPoints : SerializedMonoBehaviour

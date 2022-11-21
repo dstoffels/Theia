@@ -8,17 +8,17 @@ namespace Stats
     /// <summary>
     /// Must hold a list of its observers to notify whenever it changes
     /// </summary>
-    public interface iStatProvider<TData> where TData : BaseData
+    public interface iStatProvider<TProviderData> where TProviderData : BaseData
     {
-        StatValue<TData> GetStatValue();
-        void AddConsumer(iStatConsumer<TData> observer);
+        StatValue<TProviderData> GetStatValue();
+        void AddConsumer(iStatConsumer<TProviderData> observer);
         void NotifyObservers();
     }
 
-    public interface iStatConsumer<TData> where TData : BaseData
+    public interface iStatConsumer<TProviderData> where TProviderData : BaseData
     {
-        void Update(iStatProvider<TData> provider);
-        void Subscribe(iStatProvider<TData> provider);
+        void Update(iStatProvider<TProviderData> provider);
+        void Subscribe(iStatProvider<TProviderData> provider);
     }
 
 

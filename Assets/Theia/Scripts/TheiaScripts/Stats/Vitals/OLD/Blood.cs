@@ -2,10 +2,12 @@
 using System.Collections;
 using UnityEngine;
 using Stats.Values;
+using Stats;
 
-namespace Stats
+
+namespace StatsOLD
 {
-    [RequireComponent(typeof(Anatomy))]
+    //[RequireComponent(typeof(Anatomy))
     [DisallowMultipleComponent]
     public class Blood : Vital
     {

@@ -1,8 +1,9 @@
 ﻿using Sirenix.OdinInspector;
 using Stats.Values;
 using UnityEngine;
+using Stats;
 
-namespace Stats
+namespace StatsOLD
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Attributes))]

@@ -1,4 +1,4 @@
-﻿namespace Stats
+﻿namespace StatsOLD
 {
     public interface IVital
     {

@@ -1,59 +1,52 @@
-﻿using Sirenix.OdinInspector;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using Stats.Values;
 
 namespace Stats
 {
-    /// <summary>
-    /// Vitals include Stamina, Mana, Blood and Temperature, which derive from the Vital abstract class,
-    /// </summary>
-    [RequireComponent(typeof(Attributes))]
-    public abstract class Vital : SerializedMonoBehaviour, IVital
+    // TODO: figure out if the scriptable object route is the right way to go. i.e.
+    // ALL logic for vitals will be stored in VitalData classes
+    // Hit points can be "plugged in" to body parts.
+    // Avoid having to write cases for each vitalData in the vital class, while allowing for flexibility when changes are made down the road
+    // Still allows for Vitals StatManager so entity/player class doesn't have to manage.
+
+    [HideReferenceObjectPicker]
+    public class Vital : BaseStat<VitalData>, iStatConsumer<AttributeData>
     {
-        protected float _current;
-        [ShowInInspector]
-        public virtual float level
+        [ShowInInspector, ReadOnly]
+        public float level { get; set; }
+
+        [ShowInInspector, ReadOnly]
+        public int max { get; private set; }
+        private void SetMax()
         {
-            get => _current;
-            set { _current = Mathf.Clamp(value, min, max); StartRecovery(); }
-        }
-        public abstract float max { get; }
-        public abstract float min { get; }
-        protected abstract float threshold { get; }
-        public abstract float debility { get; }
-
-        /*RECOVERY*/
-        protected bool isRecovering;
-        protected abstract float pointsPerPulse { get; }
-
-        public virtual void StartRecovery()
-        {
-            if (!isRecovering)
-                StartCoroutine(Recover());
-        }
-
-        protected virtual IEnumerator Recover()
-        {
-            var pulse = new WaitForSecondsRealtime(Recovery.PULSE_TIME);
-            isRecovering = true;
-
-            while (level != max)
+            max = 0;
+            foreach (var provider in providers)
             {
-                level += pointsPerPulse;
-                yield return pulse;
+                var stat = provider.GetStatValue();
+                max += stat.data == data.primaryAttribute ? stat.value * 2 : data.secondaryAttributes.Contains(stat.data) ? stat.value : 0;
             }
-
-            isRecovering = false;
         }
+        public int min => data.isFullScale ? -max : 0;
 
-        protected Attributes _att;
-        protected Attributes att => _att ?? (_att = GetComponent<Attributes>());
+        public int threshold => data.isFullScale ? 0 : max / 2;
+        public float debility => Mathf.Min(0, level - threshold);
 
-        private void Start()
+        private List<iStatProvider<AttributeData>> providers = new List<iStatProvider<AttributeData>>();
+        public void Update(iStatProvider<AttributeData> provider)
         {
-            StartRecovery();
+            if (!providers.Contains(provider)) providers.Add(provider);
+            SetMax();
         }
+
+        public void Subscribe(iStatProvider<AttributeData> provider)
+        {
+            var stat = provider.GetStatValue();
+            if (data.Contains(stat.data)) provider.AddConsumer(this);
+            Update(provider);
+        }
+
     }
 }

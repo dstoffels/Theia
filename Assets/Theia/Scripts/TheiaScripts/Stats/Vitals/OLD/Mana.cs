@@ -2,8 +2,9 @@
 using System.Collections;
 using UnityEngine;
 using Stats.Values;
+using Stats;
 
-namespace Stats
+namespace StatsOLD
 {
     [DisallowMultipleComponent]
     public class Mana : Vital

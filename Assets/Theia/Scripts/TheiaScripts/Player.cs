@@ -6,7 +6,7 @@ using InventoryStuff;
 using Items;
 using Sirenix.OdinInspector;
 
-[RequireComponent(typeof(Attributes), typeof(Skills), typeof(Anatomy))]
+[RequireComponent(typeof(Attributes), typeof(Skills))]
 //[RequireComponent(typeof(Stamina), typeof(Mana), typeof(Blood))]
 //[RequireComponent(typeof(Temperature), typeof(Celerity))]
 [RequireComponent(typeof(Gear), typeof(Armor))]

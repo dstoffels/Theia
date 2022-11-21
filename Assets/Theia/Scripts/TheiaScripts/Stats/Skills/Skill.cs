@@ -29,7 +29,11 @@ namespace Stats
             foreach (var provider in providers)
             {
                 var statValue = provider.GetStatValue();
-                aptitude += statValue.data == data.primaryAttribute ? statValue.value : statValue.data == data.secondaryAttribute ? statValue.value / 2 : 0;
+                aptitude += statValue.data == data.primaryAttribute ? 
+                    statValue.value : 
+                    statValue.data == data.secondaryAttribute ? 
+                    statValue.value / 2 : 
+                    0;
             }
             SetLevel();
         }
@@ -76,7 +80,7 @@ namespace Stats
         {
             var stat = provider.GetStatValue();
             if (data.Contains(stat.data)) provider.AddConsumer(this);
-            SetLevel();
+            Update(provider);
         }
 
         private List<iStatProvider<AttributeData>> providers = new List<iStatProvider<AttributeData>>();
