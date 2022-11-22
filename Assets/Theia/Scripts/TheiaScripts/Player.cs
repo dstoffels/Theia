@@ -38,6 +38,11 @@ public class Player : NetworkBehaviour
         Init();
     }
 
+    private void Reset()
+    {
+        Init();
+    }
+
     [Button]
     public void Init()
     {

@@ -21,8 +21,6 @@ namespace Stats
         void Subscribe(iStatProvider<TProviderData> provider);
     }
 
-
-
     public interface iStatProviderManager<TProviderData> where TProviderData : BaseData
     {
         iStatProvider<TProviderData>[] Get();

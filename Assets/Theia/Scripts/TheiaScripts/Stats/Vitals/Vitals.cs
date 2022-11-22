@@ -15,14 +15,20 @@ namespace Stats
                     vital.Subscribe(att);
         }
 
-        public float debility
+        public float impairment
         {
             get
             {
                 float total = 0;
-                foreach (var vital in all) total += vital.debility;
+                foreach (var vital in all) total += vital.impairment;
                 return total;
             }
+        }
+
+        private void Start()
+        {
+            foreach (var vital in all)
+                StartCoroutine(vital.Recover());
         }
     }
 }

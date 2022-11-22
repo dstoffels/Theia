@@ -2,21 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System.Collections;
 
 namespace Stats
 {
-    // TODO: figure out if the scriptable object route is the right way to go. i.e.
-    // ALL logic for vitals will be stored in VitalData classes
-    // Hit points can be "plugged in" to body parts.
-    // Avoid having to write cases for each vitalData in the vital class, while allowing for flexibility when changes are made down the road
-    // Still allows for Vitals StatManager so entity/player class doesn't have to manage.
-
     [HideReferenceObjectPicker]
-    public class Vital : ConsumerStat<VitalData, AttributeData>
+    public class Vital : ProviderStat<VitalData, AttributeData>
     {
-        private float _level;
+        private int _level;
         [ShowInInspector, ReadOnly]
-        public float level
+        public int level
         {
             get { return _level; }
             set { _level = Mathf.Clamp(value, min, max); } // StartRecovery();
@@ -25,15 +20,33 @@ namespace Stats
         [ShowInInspector, ReadOnly]
         public int max { get; private set; }
         public int min { get; private set; }
+        [ShowInInspector, ReadOnly]
         public int threshold { get; private set; }
-        public float debility => data.GetDebility(this);
+        [ShowInInspector, ReadOnly]
+        public int impairment => data.GetImpairment(this);
+
+        // RECOVERY
+        [ShowInInspector]
+        public bool isRecovering { get; set; } = true;
+        public int recoveryRate { get; private set; }
+
+        public IEnumerator Recover()
+        {
+            while (true)
+            {
+                if(isRecovering) level++;
+                yield return new WaitForSeconds(recoveryRate / 1000);
+            }
+        }
+
         public override void Update(StatValue<AttributeData> providerValue)
         {
             base.Update(providerValue);
-            providerValues.Add(providerValue);
             max = data.GetMax(providerValues);
             min = data.GetMin(this);
             threshold = data.GetThreshold(this);
+            recoveryRate= data.GetRecoveryRate(this);
         }
+        public override StatValue<VitalData> GetStatValue() => new StatValue<VitalData>(data, level);
     }
 }
