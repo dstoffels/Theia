@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Stats.Anatomy
 {
-    public class Anatomy : StatManager<BodyPart, BodyPartData>, iStatConsumerManager<AttributeData>
+    public class Anatomy : StatManager<BodyPart, BodyPartData>, iStatConsumerManager<AttributeData>, iStatProviderManager<BodyPartData>
     {
         public void SubscribeAll(iStatProviderManager<AttributeData> providers)
         {
@@ -21,7 +21,7 @@ namespace Stats.Anatomy
             get
             {
                 float total = 0;
-                foreach (var vital in all) total += vital.impairment;
+                foreach (var vital in all) total += vital.impairment; 
                 return total;
             }
         }
@@ -31,5 +31,7 @@ namespace Stats.Anatomy
             foreach(var bodypart in all)
                 StartCoroutine(bodypart.Recover());
         }
+
+        public iStatProvider<BodyPartData>[] Get() => all;
     }
 }

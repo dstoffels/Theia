@@ -18,4 +18,13 @@ namespace Stats.Anatomy
         [ShowInInspector]
         public bool crippled => level == min;
     }
+
+    public interface iBodyPartProvider
+    {
+
+    }
+    public interface iBodyPartConsumer
+    {
+
+    }
 }

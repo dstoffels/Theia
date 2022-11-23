@@ -14122,7 +14122,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  template: {fileID: 0}
+  template: {fileID: 11400000, guid: e9f547766141f1e4cb19d25b415167fe, type: 2}
 --- !u!114 &370969806
 MonoBehaviour:
   m_ObjectHideFlags: 0

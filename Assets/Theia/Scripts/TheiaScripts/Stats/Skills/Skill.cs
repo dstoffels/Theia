@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using Stats.Values;
+using Stats.IoC;
 
 namespace Stats
 {
     public interface ISkillBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Skill : ProviderStat<SkillData, AttributeData>
+    public class Skill : ProviderStat<SkillData, AttributeData>, iProvider<int>
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }
@@ -30,8 +30,8 @@ namespace Stats
         private void SetAptitude()
         {
             aptitude = providerValues.Reduce(att =>
-                att.data == data.primaryAttribute ? att.value :
-                att.data == data.secondaryAttribute ? att.value / 2 : 0
+                att.data == _data.primaryAttribute ? att.value :
+                att.data == _data.secondaryAttribute ? att.value / 2 : 0
             );
             SetLevel();
         }
@@ -56,6 +56,9 @@ namespace Stats
         private float lastBonusAt = 0;
 
         private bool needsUpdate => xp >= nextBonusAt || xp < lastBonusAt;
+
+        BaseData iProvider<int>.data => throw new System.NotImplementedException();
+
         private void SetProficiency()
         {
             if (needsUpdate)
@@ -80,6 +83,19 @@ namespace Stats
             SetAptitude();
         }
 
-        public override StatValue<SkillData> GetStatValue() => new StatValue<SkillData>(data, proficiency);
+        public override StatValue<SkillData> GetStatValue() => new StatValue<SkillData>(_data, proficiency);
+
+        public int GetValue(iConsumer<int> consumer) =>
+            _data.primaryAttribute == consumer.data ?
+                proficiency :
+            _data.secondaryAttribute == consumer.data ?
+                proficiency / 2 :
+            0;
+
+
+        public void AddConsumer(iConsumer<int> consumer)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

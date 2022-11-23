@@ -42,8 +42,8 @@ namespace Stats
         private void SetSkillPoints()
         {
             skillPoints = providerValues.Reduce(skill =>
-                skill.data.primaryAttribute == data ? skill.value * 2 :
-                skill.data.secondaryAttribute == data ? skill.value : 0
+                skill.data.primaryAttribute == _data ? skill.value * 2 :
+                skill.data.secondaryAttribute == _data ? skill.value : 0
             );
             SetSkillBonus();
         }
@@ -80,7 +80,7 @@ namespace Stats
             SetSkillPoints();
         }
 
-        public override StatValue<AttributeData> GetStatValue() => new StatValue<AttributeData>(data, level);
+        public override StatValue<AttributeData> GetStatValue() => new StatValue<AttributeData>(_data, level);
     }
 
 }

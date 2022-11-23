@@ -14,7 +14,7 @@ namespace Stats
         public int level
         {
             get => _level;
-            protected set => _level = Mathf.Clamp(value, min, max);  // StartRecovery();
+            protected set => _level = Mathf.Clamp(value, min, max);
         }
 
         [ShowInInspector, ReadOnly]
@@ -23,7 +23,7 @@ namespace Stats
         [ShowInInspector, ReadOnly]
         public int threshold { get; private set; }
         [ShowInInspector, ReadOnly]
-        public int impairment => data.GetImpairment(this);
+        public int impairment => _data.GetImpairment(this);
 
         // RECOVERY
         [ShowInInspector]
@@ -42,12 +42,12 @@ namespace Stats
         public override void Update(StatValue<AttributeData> providerValue)
         {
             base.Update(providerValue);
-            max = data.GetMax(providerValues);
-            min = data.GetMin(this);
-            threshold = data.GetThreshold(this);
-            recoveryRate= data.GetRecoveryRate(this);
+            max = _data.GetMax(providerValues);
+            min = _data.GetMin(this);
+            threshold = _data.GetThreshold(this);
+            recoveryRate= _data.GetRecoveryRate(this);
         }
-        public override StatValue<TVitalData> GetStatValue() => new StatValue<TVitalData>(data, level);
+        public override StatValue<TVitalData> GetStatValue() => new StatValue<TVitalData>(_data, level);
     }
 
     public interface iVital

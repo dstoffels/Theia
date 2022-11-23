@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c19e124757f905840a231f113d89b244, type: 3}
-  m_Name: Face
+  m_Name: Cranium
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -27,5 +27,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 55106acf660707b47a855b340e0bb34a, type: 2}
   - {fileID: 11400000, guid: ddc9daf4b43621c4d89a48184a802c1b, type: 2}
   isEssential: 1
-  vulnerability: 1
+  vulnerability: 2
   parent: {fileID: 0}

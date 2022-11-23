@@ -13,7 +13,7 @@ namespace Stats
         public virtual void Subscribe(iStatProvider<TConsumedData> provider)
         {
             var stat = provider.GetStatValue();
-            if (data.Contains(stat.data))
+            if (_data.Contains(stat.data))
             {
                 provider.AddConsumer(this);
                 Update(stat);

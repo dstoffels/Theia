@@ -23,4 +23,4 @@ MonoBehaviour:
     SerializationNodes: []
   data:
   - {fileID: 11400000, guid: 88cd3839c78c3544e80e3b70941af492, type: 2}
-  hitPoints: {fileID: 11400000, guid: b787eb78c87635f4f8667d057afc757b, type: 2}
+  - {fileID: 11400000, guid: 6ed3be6834e9f8b4d9a3f59261278fb2, type: 2}
