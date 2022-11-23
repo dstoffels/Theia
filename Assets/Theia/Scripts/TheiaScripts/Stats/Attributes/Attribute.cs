@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using Sirenix.OdinInspector;
-using Stats.Values;
+﻿using Sirenix.OdinInspector;
+using Stats.IoC;
 
 namespace Stats
 {
@@ -9,7 +7,7 @@ namespace Stats
     public interface iStatBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Attribute : ProviderStat<AttributeData, SkillData>
+    public class Attribute : BaseStat<AttributeData>, iConsumer<int>, iProvider<int>
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }
@@ -19,7 +17,7 @@ namespace Stats
             if (level != newLevel)
             {
                 level = newLevel;
-                NotifyObservers();
+                consumers.Notify(this);
             }
         }
 
@@ -41,10 +39,9 @@ namespace Stats
         public int skillPoints { get; private set; }
         private void SetSkillPoints()
         {
-            skillPoints = providerValues.Reduce(skill =>
-                skill.data.primaryAttribute == _data ? skill.value * 2 :
-                skill.data.secondaryAttribute == _data ? skill.value : 0
-            );
+            skillPoints= 0;
+            foreach (var skillVal in providers.Values)
+                skillPoints += skillVal;
             SetSkillBonus();
         }
 
@@ -67,6 +64,7 @@ namespace Stats
         }
         private bool needsUpdate => skillPoints >= nextBonusAt || skillPoints < lastBonusAt;
 
+
         //public void Load(int startingLevel, int raceModifier)
         //{
         //    this.startingLevel = startingLevel;
@@ -74,13 +72,29 @@ namespace Stats
         //    SetLevel();
         //}
 
-        public override void Update(StatValue<SkillData> skillValue)
+
+        // CONSUMER INTERFACE
+        private Providers<int> providers = new Providers<int>();
+        public void Subscribe(iProvider<int> provider)
         {
-            base.Update(skillValue);
+            if (data.Contains(provider.GetData()))
+            {
+                provider.AddConsumer(this);
+                Update(provider);
+            }
+        }
+
+        public void Update(iProvider<int> provider)
+        {
+            providers.Update(provider, this);
             SetSkillPoints();
         }
 
-        public override StatValue<AttributeData> GetStatValue() => new StatValue<AttributeData>(_data, level);
+        // PROVIDER INTERFACE
+        private Consumers<int> consumers = new Consumers<int>();
+        public int GetValue(iConsumer<int> consumer) => level;
+        public void AddConsumer(iConsumer<int> consumer) => consumers.Add(consumer);
+        public BaseData GetData() => data;
     }
 
 }

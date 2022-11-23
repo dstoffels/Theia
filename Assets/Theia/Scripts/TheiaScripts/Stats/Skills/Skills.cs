@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Stats.IoC;
 
 namespace Stats
 {
 
     [RequireComponent(typeof(Attributes)), DisallowMultipleComponent]
-    public class Skills : StatManager<Skill, SkillData>, iStatConsumerManager<AttributeData>, iStatProviderManager<SkillData>
+    public class Skills : StatManager<Skill, SkillData>, iConsumerManager<int>, iProviderManager<int>
     {
-        public iStatProvider<SkillData>[] Get() => all;
-
-        public void SubscribeAll(iStatProviderManager<AttributeData> providers)
+        public iProvider<int>[] GetProviders() => all;
+        public void SubscribeAll(iProviderManager<int> providerManager)
         {
             foreach (var skill in all)
-                foreach (var att in providers.Get())
+                foreach (var att in providerManager.GetProviders())
                     skill.Subscribe(att);
         }
     }

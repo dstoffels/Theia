@@ -2,7 +2,7 @@
 {
     public interface iConsumer<T>
     {
-        BaseData data { get; }
+        BaseData GetData();
         void Subscribe(iProvider<T> provider);
         void Update(iProvider<T> provider);
     }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using Stats.Values;
+using Stats.IoC;
 
 namespace Stats
 {
@@ -20,15 +20,17 @@ namespace Stats
              stat == primaryAttribute || secondaryAttributes.Contains((AttributeData)stat);
         
 
-        public virtual int GetMax(ProviderValues<AttributeData> providerValues) => 
-            providerValues.Reduce(att => 
-                att.data == primaryAttribute ? 
-                    att.value * 2 : 
-                secondaryAttributes.Contains(att.data) ? 
-                    att.value : 
-                0
-            );  
-        
+        public virtual int GetMax(Providers<int> providers)
+        {
+            int max = 0;
+            foreach (var att in providers)
+                max += att.Key == primaryAttribute ?
+                             att.Value * 2 :
+                         secondaryAttributes.Contains((AttributeData)att.Key) ?
+                             att.Value :
+                         0;
+            return max;
+        }        
         public virtual int GetMin(iVital vital) => -vital.max;
         public virtual int GetThreshold(iVital vital) => 0;
         public virtual int GetImpairment(iVital vital) => Mathf.Min(0, vital.level);

@@ -2,7 +2,7 @@
 {
     public interface iProvider<T>
     {
-        BaseData data { get; }
+        BaseData GetData();
         T GetValue(iConsumer<T> consumer);
         void AddConsumer(iConsumer<T> consumer);
     }

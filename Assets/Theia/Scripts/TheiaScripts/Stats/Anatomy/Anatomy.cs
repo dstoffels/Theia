@@ -1,21 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using Stats.IoC;
 using UnityEngine;
 
 
 namespace Stats.Anatomy
 {
-    public class Anatomy : StatManager<BodyPart, BodyPartData>, iStatConsumerManager<AttributeData>, iStatProviderManager<BodyPartData>
+    public class Anatomy : StatManager<BodyPart, BodyPartData>, iConsumerManager<int>
     {
-        public void SubscribeAll(iStatProviderManager<AttributeData> providers)
-        {
-            foreach (var bodypart in all)
-                foreach (var att in providers.Get())
-                    bodypart.Subscribe(att);
-
-        }
-
         public float impairment
         {
             get
@@ -26,12 +19,18 @@ namespace Stats.Anatomy
             }
         }
 
+        public void SubscribeAll(iProviderManager<int> providerManager)
+        {
+            foreach (var bodypart in all)
+                foreach (var att in providerManager.GetProviders())
+                    bodypart.Subscribe(att);
+        }
+
         private void Start()
         {
             foreach(var bodypart in all)
                 StartCoroutine(bodypart.Recover());
         }
 
-        public iStatProvider<BodyPartData>[] Get() => all;
     }
 }

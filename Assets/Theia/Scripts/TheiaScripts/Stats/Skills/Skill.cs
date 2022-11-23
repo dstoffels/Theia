@@ -8,7 +8,7 @@ namespace Stats
     public interface ISkillBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Skill : ProviderStat<SkillData, AttributeData>, iProvider<int>
+    public class Skill : BaseStat<SkillData>, iProvider<int>, iConsumer<int>
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }
@@ -19,7 +19,7 @@ namespace Stats
             if (level != newLevel)
             {
                 level= newLevel;
-                NotifyObservers();
+                consumers.Notify(this);
             }
         }
         
@@ -29,10 +29,14 @@ namespace Stats
 
         private void SetAptitude()
         {
-            aptitude = providerValues.Reduce(att =>
-                att.data == _data.primaryAttribute ? att.value :
-                att.data == _data.secondaryAttribute ? att.value / 2 : 0
-            );
+            aptitude = 0;
+            foreach (var att in providers)
+                aptitude +=
+                    data.primaryAttribute == att.Key ?
+                        att.Value :
+                    data.secondaryAttribute == att.Key ?
+                        att.Value / 2:
+                    0;
             SetLevel();
         }
 
@@ -57,8 +61,6 @@ namespace Stats
 
         private bool needsUpdate => xp >= nextBonusAt || xp < lastBonusAt;
 
-        BaseData iProvider<int>.data => throw new System.NotImplementedException();
-
         private void SetProficiency()
         {
             if (needsUpdate)
@@ -77,25 +79,35 @@ namespace Stats
             }
         }
 
-        public override void Update(StatValue<AttributeData> providerValue)
+        //CONSUMER INTERFACE
+        private Providers<int> providers = new Providers<int>();
+        public void Subscribe(iProvider<int> provider)
         {
-            base.Update(providerValue);
+            if (data.Contains(provider.GetData()))
+            {
+                provider.AddConsumer(this);
+                Update(provider);
+            }
+        }
+
+        public void Update(iProvider<int> provider)
+        {
+            providers.Update(provider, this);
             SetAptitude();
         }
 
-        public override StatValue<SkillData> GetStatValue() => new StatValue<SkillData>(_data, proficiency);
 
+        // PROVIDER INTERFACE
+        private Consumers<int> consumers = new Consumers<int>();
+        public void AddConsumer(iConsumer<int> consumer) => consumers.Add(consumer);
         public int GetValue(iConsumer<int> consumer) =>
-            _data.primaryAttribute == consumer.data ?
+            data.primaryAttribute == consumer.GetData() ?
                 proficiency :
-            _data.secondaryAttribute == consumer.data ?
+            data.secondaryAttribute == consumer.GetData() ?
                 proficiency / 2 :
             0;
 
+        public BaseData GetData() => data;
 
-        public void AddConsumer(iConsumer<int> consumer)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

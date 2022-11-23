@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections;
+using Stats.IoC;
 
 namespace Stats
 {
     [HideReferenceObjectPicker]
-    public abstract class VitalBase<TVitalData> : ProviderStat<TVitalData, AttributeData>, iVital where TVitalData : VitalData
+    public abstract class VitalBase<TVitalData> : BaseStat<TVitalData>, iVital, iConsumer<int> where TVitalData : VitalData
     {
         protected int _level;
         [ShowInInspector, ReadOnly]
@@ -23,7 +24,7 @@ namespace Stats
         [ShowInInspector, ReadOnly]
         public int threshold { get; private set; }
         [ShowInInspector, ReadOnly]
-        public int impairment => _data.GetImpairment(this);
+        public int impairment => data.GetImpairment(this);
 
         // RECOVERY
         [ShowInInspector]
@@ -39,15 +40,26 @@ namespace Stats
             }
         }
 
-        public override void Update(StatValue<AttributeData> providerValue)
+        // CONSUMER INTERFACE
+        private Providers<int> providers = new Providers<int>();
+        public void Subscribe(iProvider<int> provider)
         {
-            base.Update(providerValue);
-            max = _data.GetMax(providerValues);
-            min = _data.GetMin(this);
-            threshold = _data.GetThreshold(this);
-            recoveryRate= _data.GetRecoveryRate(this);
+            if (data.Contains(provider.GetData()))
+            {
+                provider.AddConsumer(this);
+                Update(provider);
+            }
         }
-        public override StatValue<TVitalData> GetStatValue() => new StatValue<TVitalData>(_data, level);
+
+        public void Update(iProvider<int> provider)
+        {
+            providers.Update(provider, this);
+            max = data.GetMax(providers);
+            min = data.GetMin(this);
+            threshold = data.GetThreshold(this);
+            recoveryRate= data.GetRecoveryRate(this);
+        }
+        public BaseData GetData() => data;
     }
 
     public interface iVital

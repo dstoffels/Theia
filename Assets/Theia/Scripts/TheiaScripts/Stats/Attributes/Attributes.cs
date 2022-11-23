@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
+using Stats.IoC;
 
 namespace Stats
 {
 
     [RequireComponent(typeof(Skills)), DisallowMultipleComponent]
-    public class Attributes : StatManager<Attribute, AttributeData>, iStatProviderManager<AttributeData>, iStatConsumerManager<SkillData>
+    public class Attributes : StatManager<Attribute, AttributeData>, iProviderManager<int>, iConsumerManager<int>
     {
         // Accessors //
         public int strength => this["Strength"].level;
@@ -20,12 +21,12 @@ namespace Stats
         public int discipline => this["Discipline"].level;
         public int ardor => this["Ardor"].level;
 
-        public iStatProvider<AttributeData>[] Get() => all;
+        iProvider<int>[] iProviderManager<int>.GetProviders() => all;
 
-        public void SubscribeAll(iStatProviderManager<SkillData> providers)
+        public void SubscribeAll(iProviderManager<int> providerManager)
         {
             foreach (var att in all)
-                foreach (var skill in providers.Get())
+                foreach (var skill in providerManager.GetProviders())
                     att.Subscribe(skill);
         }
     } 

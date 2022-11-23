@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Stats.Values;
+using Stats.IoC;
+using UnityEditor.VersionControl;
 
 namespace Stats
 {
-    public class Vitals : StatManager<Vital, VitalData>, iStatConsumerManager<AttributeData>
+    public class Vitals : StatManager<Vital, VitalData>, iConsumerManager<int>
     {
-        public void SubscribeAll(iStatProviderManager<AttributeData> providers)
-        {
-            foreach (var vital in all)
-                foreach (var att in providers.Get())
-                    vital.Subscribe(att);
-        }
-
         public float impairment
         {
             get
@@ -25,6 +20,12 @@ namespace Stats
             }
         }
 
+        public void SubscribeAll(iProviderManager<int> providerManager)
+        {
+            foreach (var vital in all)
+                foreach (var att in providerManager.GetProviders())
+                    vital.Subscribe(att);
+        }
         private void Start()
         {
             foreach (var vital in all)
