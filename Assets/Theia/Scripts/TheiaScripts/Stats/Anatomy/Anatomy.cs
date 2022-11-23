@@ -1,70 +1,35 @@
-﻿using Sirenix.OdinInspector;
+﻿using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using InventoryStuff.Armor;
-using StatsOLD;
 
 
-namespace Stats
+namespace Stats.Anatomy
 {
-    // TODO: need to sort out methods for randomly selecting organs, randomly selecting upper/lower organs and ensuring that if a crippled organ is selected it will rerun the method or select the next in line.
-    [RequireComponent(typeof(Attributes), typeof(HitPoints), typeof(Armor))]
-    public class Anatomy : SerializedMonoBehaviour
+    public class Anatomy : StatManager<BodyPart, BodyPartData>, iStatConsumerManager<AttributeData>
     {
-        [PropertyOrder(-2)]
-        public AnatomyTemplate template;
-
-        [DictionaryDrawerSettings(IsReadOnly = true)]
-        public Organs organs = new Organs();
-
-        // Impairment is the total debilitation across all Organs, subtracted from any combat abilities when performed.
-        [ShowInInspector]
-        public float impairment => GetDebilityFromOrgans(); 
-
-        [ShowInInspector]
-        public float totalBloodLoss => GetBloodLossFromOrgans();
-
-
-        [Button, PropertyOrder(-1)]
-        public void LoadAnatomyTemplate()
+        public void SubscribeAll(iStatProviderManager<AttributeData> providers)
         {
-            var attributes = GetComponent<Attributes>();
-            var hp = GetComponent<HitPoints>();
-            var armor = GetComponent<Armor>();
+            foreach (var bodypart in all)
+                foreach (var att in providers.Get())
+                    bodypart.Subscribe(att);
 
-            foreach (var organData in template.organList)
+        }
+
+        public float impairment
+        {
+            get
             {
-                if(!organs.ContainsKey(organData))
-                    organs.Add(organData, new Organ(organData, this, hp, armor));
+                float total = 0;
+                foreach (var vital in all) total += vital.impairment;
+                return total;
             }
         }
 
-        private float GetDebilityFromOrgans()
+        private void Start()
         {
-            var total = 0f;
-            foreach (var organ in organs.Values)
-                total += organ.debility;
-            return total;
-        }
-
-        private float GetBloodLossFromOrgans()
-        {
-            var total = 0f;
-            foreach (var organ in organs.Values)
-                total += organ.bloodLossPerPulse;
-            return total;
-        }
-
-        /*COMPONENT REFERENCES*/
-        Blood _blood;
-        Blood blood => _blood ?? (_blood = GetComponent<Blood>());
-
-        void OnValidate()
-        {
-            LoadAnatomyTemplate();
+            foreach(var bodypart in all)
+                StartCoroutine(bodypart.Recover());
         }
     }
-
-    // unique dictionary for Anatomy
-    public class Organs : Dictionary<OrganData, Organ> { }
 }

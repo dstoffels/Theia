@@ -4,9 +4,9 @@ using Stats.Values;
 using static UnityEngine.Mathf;
 using System.Collections;
 using InventoryStuff.Armor;
-using StatsOLD;
+using Stats;
 
-namespace Stats
+namespace StatsOLD
 {
     [HideReferenceObjectPicker]
     [RequireComponent(typeof(HitPoints), typeof(Anatomy), typeof(Armor))]

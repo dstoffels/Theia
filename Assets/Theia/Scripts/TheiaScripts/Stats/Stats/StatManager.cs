@@ -6,14 +6,14 @@ using Sirenix.OdinInspector;
 namespace Stats
 {
     public abstract class StatManager<TStat, TData> : SerializedMonoBehaviour
-        where TData: BaseData 
         where TStat : BaseStat<TData>, new()
+        where TData: BaseData 
     {
         public TStat this[string key] => stats[key];
         public TStat this[TData key] => stats[key.name];
 
         public StatTemplate<TData> template;
-        [ShowInInspector, DictionaryDrawerSettings(IsReadOnly =true)]
+        [ShowInInspector, DictionaryDrawerSettings(IsReadOnly =true), HideLabel]
         protected Dictionary<string, TStat> stats = new Dictionary<string, TStat>();
 
         public TStat[] all
@@ -26,7 +26,7 @@ namespace Stats
             }
         }
 
-        public void InitializeTemplate()
+        public virtual void InitializeTemplate()
         {
             if (template)
             {

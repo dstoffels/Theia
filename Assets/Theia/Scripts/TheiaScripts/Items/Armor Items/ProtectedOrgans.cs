@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Items.Armor;
-using Stats;
+using StatsOLD;
 
 namespace InventoryStuff.Armor
 {
@@ -29,9 +29,9 @@ namespace InventoryStuff.Armor
             {
                 foreach (var organ in armor.coverage)
                 {
-                    if (dict.ContainsKey(organ)) dict[organ].AddProtection(armor.protection);
-                    if (!dict.ContainsKey(organ)) dict.Add(organ, new Protection(armor.protection));
-                    if (armor.isImmuneToSoftSpots) dict[organ].AddFullProtection(armor.protection);
+                    //if (dict.ContainsKey(organ)) dict[organ].AddProtection(armor.protection);
+                    //if (!dict.ContainsKey(organ)) dict.Add(organ, new Protection(armor.protection));
+                    //if (armor.isImmuneToSoftSpots) dict[organ].AddFullProtection(armor.protection);
                 }
             }
         }

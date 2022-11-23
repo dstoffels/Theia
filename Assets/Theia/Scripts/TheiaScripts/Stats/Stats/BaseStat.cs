@@ -13,12 +13,6 @@ namespace Stats
         public TData data;
         public string name => data.name;
         public string description => data.description;
-        public void Init(TData data) => this.data = data;
-    }
-
-    public interface iStat // TODO: remove
-    {
-        string name { get; }
-        int level { get; }
+        public virtual void Init(TData data) => this.data = data;
     }
 }

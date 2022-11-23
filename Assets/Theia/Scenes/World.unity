@@ -14067,6 +14067,7 @@ GameObject:
   - component: {fileID: 370969806}
   - component: {fileID: 370969807}
   - component: {fileID: 370969800}
+  - component: {fileID: 370969801}
   - component: {fileID: 370969809}
   - component: {fileID: 370969811}
   - component: {fileID: 370969812}
@@ -14100,6 +14101,28 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   template: {fileID: 11400000, guid: 4bce4b41a975f8649ac7d4db552dfb4f, type: 2}
+--- !u!114 &370969801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370969799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ccc080dc842424a830d09415fc6056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  template: {fileID: 0}
 --- !u!114 &370969806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14564,6 +14587,7 @@ MonoBehaviour:
   attributes: {fileID: 370969806}
   skills: {fileID: 370969807}
   vitals: {fileID: 370969800}
+  anatomy: {fileID: 370969801}
   gear: {fileID: 370969811}
   armor: {fileID: 370969809}
 --- !u!114 &370969813

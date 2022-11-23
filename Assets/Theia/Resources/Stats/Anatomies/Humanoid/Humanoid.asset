@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c3125e1954d60c45888a50f0c258f51, type: 3}
+  m_Script: {fileID: 11500000, guid: f43ef60993060a946b76c511e77c82f6, type: 3}
   m_Name: Humanoid
   m_EditorClassIdentifier: 
   serializationData:
@@ -21,6 +21,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  organList:
-  - {fileID: 11400000, guid: 0a766d56535a1454b885f163ae6c76e9, type: 2}
-  - {fileID: 11400000, guid: 2babf5437cd2ff84fa12f7a00422056a, type: 2}
+  data:
+  - {fileID: 11400000, guid: 88cd3839c78c3544e80e3b70941af492, type: 2}
+  hitPoints: {fileID: 11400000, guid: b787eb78c87635f4f8667d057afc757b, type: 2}

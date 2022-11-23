@@ -7,10 +7,10 @@ namespace Stats
     [CreateAssetMenu(menuName = "Vitals/Temperature", fileName = "Temperature")]
     public class Temperature : VitalData
     {
-        public override int GetThreshold(Vital vital) => vital.max / 2;
+        public override int GetThreshold(iVital vital) => vital.max / 2;
 
 
-        public override int GetImpairment(Vital vital) =>
+        public override int GetImpairment(iVital vital) =>
             vital.level > vital.threshold ?
                 vital.level - vital.threshold :
             vital.level < -vital.threshold ?

@@ -10,6 +10,6 @@ namespace Stats
         [TextArea(2, 10), PropertyOrder(999)]
         public string description;
 
-        public abstract bool Contains(BaseData statName);
+        public abstract bool Contains(BaseData stat); // fixme: not all classes use this, configure interface
     }
 }

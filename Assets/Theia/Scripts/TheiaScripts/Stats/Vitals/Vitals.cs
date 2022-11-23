@@ -31,4 +31,6 @@ namespace Stats
                 StartCoroutine(vital.Recover());
         }
     }
+
+    
 }

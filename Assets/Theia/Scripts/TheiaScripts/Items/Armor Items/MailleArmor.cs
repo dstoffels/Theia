@@ -1,7 +1,7 @@
 ﻿using InventoryStuff.Armor;
 using Mats;
-using Stats;
 using System.Collections.Generic;
+using StatsOLD;
 
 namespace Items.Armor
 {

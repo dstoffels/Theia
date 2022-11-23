@@ -10,7 +10,7 @@ namespace Stats
         where TConsumedData : BaseData
     {
         protected ProviderValues<TConsumedData> providerValues = new ProviderValues<TConsumedData>();
-        public void Subscribe(iStatProvider<TConsumedData> provider)
+        public virtual void Subscribe(iStatProvider<TConsumedData> provider)
         {
             var stat = provider.GetStatValue();
             if (data.Contains(stat.data))

@@ -16,10 +16,9 @@ namespace Stats
         [AssetList]
         public List<AttributeData> secondaryAttributes;
 
-        public override bool Contains(BaseData stat)
-        {
-            return stat == primaryAttribute || secondaryAttributes.Contains((AttributeData)stat);
-        }
+        public override bool Contains(BaseData stat) =>
+             stat == primaryAttribute || secondaryAttributes.Contains((AttributeData)stat);
+        
 
         public virtual int GetMax(ProviderValues<AttributeData> providerValues) => 
             providerValues.Reduce(att => 
@@ -30,9 +29,9 @@ namespace Stats
                 0
             );  
         
-        public virtual int GetMin(Vital vital) => -vital.max;
-        public virtual int GetThreshold(Vital vital) => 0;
-        public virtual int GetImpairment(Vital vital) => Mathf.Min(0, vital.level);
+        public virtual int GetMin(iVital vital) => -vital.max;
+        public virtual int GetThreshold(iVital vital) => 0;
+        public virtual int GetImpairment(iVital vital) => Mathf.Min(0, vital.level);
 
         [ShowInInspector, ReadOnly]
         public static int FULL_RECOVERY_TIME_IN_MIN = 2;
@@ -41,7 +40,7 @@ namespace Stats
         /// </summary>
         /// <param name="vital"></param>
         /// <returns></returns>
-        public int GetRecoveryRate(Vital vital) => FULL_RECOVERY_TIME_IN_MIN * 60 * 1000 / (vital.max * 2);
+        public int GetRecoveryRate(iVital vital) => FULL_RECOVERY_TIME_IN_MIN * 60 * 1000 / (vital.max * 2);
 
 
 

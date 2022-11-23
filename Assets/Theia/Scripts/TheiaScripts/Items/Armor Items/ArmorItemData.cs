@@ -1,7 +1,7 @@
-﻿using InventoryStuff.Armor;
-using Stats;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using InventoryStuff.Armor;
 using UnityEngine;
+using StatsOLD;
 
 namespace Items.Armor
 {
