@@ -7,10 +7,10 @@ using InventoryStuff;
 using Items;
 using Sirenix.OdinInspector;
 using Stats.Anatomy;
+using Stats.SkillTypes;
 
 [RequireComponent(typeof(Attributes), typeof(Skills))]
-//[RequireComponent(typeof(Stamina), typeof(Mana), typeof(Blood))]
-//[RequireComponent(typeof(Temperature), typeof(Celerity))]
+[RequireComponent(typeof(Vitals), typeof(Anatomy))]
 [RequireComponent(typeof(Gear), typeof(Armor))]
 public class Player : NetworkBehaviour
 {
@@ -20,11 +20,6 @@ public class Player : NetworkBehaviour
     public Skills skills;
     public Vitals vitals;
     public Anatomy anatomy;
-    //public Stamina stamina;
-    //public Mana mana;
-    //public Blood blood;
-    //public Temperature temperature;
-    //public Celerity celerity;
     public Gear gear;
     public Armor armor;
 
@@ -76,11 +71,6 @@ public struct PlayerHelpers
         player.skills ??= player.GetComponent<Skills>();
         player.anatomy ??= player.GetComponent<Anatomy>();
         player.vitals ??= player.GetComponent<Vitals>();
-        //player.stamina ??= player.GetComponent<Stamina>();
-        //player.mana ??= player.GetComponent<Mana>();
-        //player.blood ??= player.GetComponent<Blood>();
-        //player.temperature ??= player.GetComponent<Temperature>();
-        //player.celerity ??= player.GetComponent<Celerity>();
         player.gear ??= player.GetComponent<InventoryStuff.Gear>();
         player.armor ??= player.GetComponent<Armor>();
 

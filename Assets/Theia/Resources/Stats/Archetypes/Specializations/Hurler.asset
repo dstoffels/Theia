@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e95e324594c3bfe408f31a847d770a8f, type: 3}
-  m_Name: Warrior
+  m_Name: Hurler
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,3 +21,5 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  description: 
+  domain: {fileID: 11400000, guid: 605210b380d58a244826ecae458be10a, type: 2}

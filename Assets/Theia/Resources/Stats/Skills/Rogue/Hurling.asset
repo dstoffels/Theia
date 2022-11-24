@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e95e324594c3bfe408f31a847d770a8f, type: 3}
-  m_Name: Cleric
+  m_Script: {fileID: 11500000, guid: 3b04de4567d3454478ee0ea197d02310, type: 3}
+  m_Name: Hurling
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,3 +21,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  description: 
+  primaryAttribute: {fileID: 11400000, guid: b34de46cbbe354542b0b619386765a35, type: 2}
+  secondaryAttribute: {fileID: 11400000, guid: 498aac0627bc3aa4a902398b3d885c4c, type: 2}
+  domain: {fileID: 11400000, guid: 605210b380d58a244826ecae458be10a, type: 2}
+  specialization: {fileID: 11400000, guid: ef14ceceb84f5b947b6f2532448b2b1d, type: 2}

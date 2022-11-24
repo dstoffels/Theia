@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e95e324594c3bfe408f31a847d770a8f, type: 3}
-  m_Name: Artisan
+  m_Script: {fileID: 11500000, guid: c19e124757f905840a231f113d89b244, type: 3}
+  m_Name: Thorax
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,3 +21,11 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  description: 
+  primaryAttribute: {fileID: 0}
+  secondaryAttributes:
+  - {fileID: 11400000, guid: 55106acf660707b47a855b340e0bb34a, type: 2}
+  - {fileID: 11400000, guid: ddc9daf4b43621c4d89a48184a802c1b, type: 2}
+  isEssential: 1
+  vulnerability: 4
+  parent: {fileID: 0}

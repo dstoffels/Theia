@@ -3,12 +3,12 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using Stats.IoC;
 
-namespace Stats
+namespace Stats.SkillTypes
 {
     public interface ISkillBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Skill : BaseStat<SkillData>, iProvider<int>, iConsumer<int>
+    public class Skill : BaseStat<SkillData>, iSkillProvider, iAttributeConsumer
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }
@@ -30,7 +30,7 @@ namespace Stats
         private void SetAptitude()
         {
             aptitude = 0;
-            foreach (var att in providers)
+            foreach (var att in attributes)
                 aptitude +=
                     data.primaryAttribute == att.Key ?
                         att.Value :
@@ -80,8 +80,8 @@ namespace Stats
         }
 
         //CONSUMER INTERFACE
-        private Providers<int> providers = new Providers<int>();
-        public void Subscribe(iProvider<int> provider)
+        private AttributeProviders attributes = new AttributeProviders();
+        public void Subscribe(iAttributeProvider provider)
         {
             if (data.Contains(provider.GetData()))
             {
@@ -90,24 +90,24 @@ namespace Stats
             }
         }
 
-        public void Update(iProvider<int> provider)
+        public void Update(iAttributeProvider provider)
         {
-            providers.Update(provider, this);
+            attributes.Update(provider, this);
             SetAptitude();
         }
 
 
+
         // PROVIDER INTERFACE
-        private Consumers<int> consumers = new Consumers<int>();
-        public void AddConsumer(iConsumer<int> consumer) => consumers.Add(consumer);
-        public int GetValue(iConsumer<int> consumer) =>
+        private SkillConsumers consumers = new SkillConsumers();
+        public void AddConsumer(iSkillConsumer consumer) => consumers.Add(consumer);
+        public int GetState(iSkillConsumer consumer) =>
             data.primaryAttribute == consumer.GetData() ?
-                proficiency :
+                proficiency * 2 :
             data.secondaryAttribute == consumer.GetData() ?
-                proficiency / 2 :
-            0;
+                proficiency :
+            level;
 
         public BaseData GetData() => data;
-
     }
 }

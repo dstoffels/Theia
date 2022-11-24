@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Stats.IoC
 {
-    public interface iProviderManager<T>
+    public interface iProviderManager<TProvider>
     {
-        iProvider<T>[] GetProviders();
+        TProvider[] GetProviders();
     }
 }

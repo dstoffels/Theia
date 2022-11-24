@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Stats.Anatomy
 {
-    public class Anatomy : StatManager<BodyPart, BodyPartData>, iConsumerManager<int>
+    public class Anatomy : StatManager<BodyPart, BodyPartData>, iConsumerManager<iAttributeProvider>
     {
         public float impairment
         {
@@ -19,16 +19,20 @@ namespace Stats.Anatomy
             }
         }
 
-        public void SubscribeAll(iProviderManager<int> providerManager)
+        public void SubscribeAll(iProviderManager<iAttributeProvider> providerManager)
         {
             foreach (var bodypart in all)
                 foreach (var att in providerManager.GetProviders())
+                {
                     bodypart.Subscribe(att);
+                    if (bodypart.data.parent)
+                        bodypart.Subscribe(this[bodypart.data.parent]);
+                }
         }
 
         private void Start()
         {
-            foreach(var bodypart in all)
+            foreach (var bodypart in all)
                 StartCoroutine(bodypart.Recover());
         }
 

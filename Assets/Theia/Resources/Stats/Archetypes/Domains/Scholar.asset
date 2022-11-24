@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b04de4567d3454478ee0ea197d02310, type: 3}
-  m_Name: Hurling
+  m_Script: {fileID: 11500000, guid: 53556c9475ac57d47b0dbfa54c7d8f4c, type: 3}
+  m_Name: Scholar
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,7 +21,4 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  tooltip: 
-  primaryAttribute: {fileID: 11400000, guid: b34de46cbbe354542b0b619386765a35, type: 2}
-  secondaryAttribute: {fileID: 11400000, guid: 498aac0627bc3aa4a902398b3d885c4c, type: 2}
-  domain: {fileID: 11400000, guid: 8e7e4ce6331d5e14d87b10bf7d34a4f2, type: 2}
+  description: 

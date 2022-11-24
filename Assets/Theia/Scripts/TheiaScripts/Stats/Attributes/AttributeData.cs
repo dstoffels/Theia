@@ -8,6 +8,6 @@ namespace Stats
     // [CreateAssetMenu]
     public class AttributeData : BaseData
     {
-        public override bool Contains(BaseData statName) => true;
+        public override bool Contains(BaseData stat) => stat.Contains(this);
     }
 }

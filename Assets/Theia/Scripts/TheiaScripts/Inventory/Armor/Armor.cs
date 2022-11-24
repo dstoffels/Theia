@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Items.Armor;
-using Stats;
+using Stats.SkillTypes;
 using UnityEngine;
 
 namespace InventoryStuff.Armor

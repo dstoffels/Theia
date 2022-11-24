@@ -14409,7 +14409,7 @@ MonoBehaviour:
     - Name: rightHand
       Entry: 7
       Data: 0|InventoryStuff.HandSlot, uMMORPG
-    - Name: wornItem
+    - Name: item
       Entry: 6
       Data: 
     - Name: 
@@ -14418,7 +14418,7 @@ MonoBehaviour:
     - Name: leftHand
       Entry: 7
       Data: 1|InventoryStuff.HandSlot, uMMORPG
-    - Name: wornItem
+    - Name: item
       Entry: 6
       Data: 
     - Name: 
@@ -14446,7 +14446,7 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 4|InventoryStuff.GearSlot, uMMORPG
-    - Name: wornItem
+    - Name: item
       Entry: 6
       Data: 
     - Name: 
@@ -14464,7 +14464,7 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 5|InventoryStuff.GearSlot, uMMORPG
-    - Name: wornItem
+    - Name: item
       Entry: 6
       Data: 
     - Name: 
@@ -14482,7 +14482,7 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 6|InventoryStuff.GearSlot, uMMORPG
-    - Name: wornItem
+    - Name: item
       Entry: 6
       Data: 
     - Name: 
@@ -14500,7 +14500,7 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 7|InventoryStuff.GearSlot, uMMORPG
-    - Name: wornItem
+    - Name: item
       Entry: 6
       Data: 
     - Name: 
@@ -14518,7 +14518,7 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 8|InventoryStuff.GearSlot, uMMORPG
-    - Name: wornItem
+    - Name: item
       Entry: 6
       Data: 
     - Name: 
@@ -14536,7 +14536,7 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 9|InventoryStuff.GearSlot, uMMORPG
-    - Name: wornItem
+    - Name: item
       Entry: 6
       Data: 
     - Name: 
@@ -14554,7 +14554,7 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 10|InventoryStuff.GearSlot, uMMORPG
-    - Name: wornItem
+    - Name: item
       Entry: 6
       Data: 
     - Name: 

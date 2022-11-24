@@ -18,15 +18,15 @@ namespace InventoryStuff
         public void GrabItem(IItem item)
         {
             // Try to get the item with right hand first
-            if (rightHand.wornItem == null)
+            if (rightHand.item == null)
             {
-                rightHand.wornItem = item;
+                rightHand.item = item;
                 item.currentSlot = rightHand;
             }
                 
-            else if (leftHand.wornItem == null)
+            else if (leftHand.item == null)
             {
-                leftHand.wornItem = item;
+                leftHand.item = item;
                 item.currentSlot = leftHand;
             }
             else

@@ -7,7 +7,7 @@ namespace Stats
     public interface iStatBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Attribute : BaseStat<AttributeData>, iConsumer<int>, iProvider<int>
+    public class Attribute : BaseStat<AttributeData>, iSkillConsumer, iAttributeProvider
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }
@@ -40,7 +40,7 @@ namespace Stats
         private void SetSkillPoints()
         {
             skillPoints= 0;
-            foreach (var skillVal in providers.Values)
+            foreach (var skillVal in skills.Values)
                 skillPoints += skillVal;
             SetSkillBonus();
         }
@@ -74,27 +74,30 @@ namespace Stats
 
 
         // CONSUMER INTERFACE
-        private Providers<int> providers = new Providers<int>();
-        public void Subscribe(iProvider<int> provider)
+        private SkillProviders skills = new SkillProviders();
+        public void Subscribe(iSkillProvider provider)
         {
             if (data.Contains(provider.GetData()))
             {
                 provider.AddConsumer(this);
                 Update(provider);
             }
+            else
+                SetLevel();
         }
 
-        public void Update(iProvider<int> provider)
+        public void Update(iSkillProvider provider)
         {
-            providers.Update(provider, this);
+            skills.Update(provider, this);
             SetSkillPoints();
         }
 
         // PROVIDER INTERFACE
-        private Consumers<int> consumers = new Consumers<int>();
-        public int GetValue(iConsumer<int> consumer) => level;
-        public void AddConsumer(iConsumer<int> consumer) => consumers.Add(consumer);
+        private AttributeConsumers consumers = new AttributeConsumers();
+        public void AddConsumer(iAttributeConsumer consumer) => consumers.Add(consumer);
+        public int GetState(iAttributeConsumer consumer) => level;
         public BaseData GetData() => data;
+
     }
 
 }

@@ -2,6 +2,7 @@
 using Stats;
 using System.Collections.Generic;
 using UnityEngine;
+using Stats.SkillTypes;
 
 namespace InventoryStuff.Armor
 {

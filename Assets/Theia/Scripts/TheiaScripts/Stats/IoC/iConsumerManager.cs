@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Stats.IoC
+﻿namespace Stats.IoC
 {
-    public interface iConsumerManager<T>
+    public interface iConsumerManager<TProvider>
     {
-        void SubscribeAll(iProviderManager<T> providerManager);
+        void SubscribeAll(iProviderManager<TProvider> providerManager);
     }
 }

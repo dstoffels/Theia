@@ -4,6 +4,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Stats.SkillTypes;
 
 namespace Stats
 {

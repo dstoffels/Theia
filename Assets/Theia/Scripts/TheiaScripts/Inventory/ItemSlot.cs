@@ -8,21 +8,21 @@ namespace InventoryStuff
         where Item : IItem
     {
         [LabelWidth(75)]
-        public Item wornItem;
+        public Item item;
 
         public IItem RemoveItem(IItem item)
         {
             var temp = item;
-            wornItem = default;
+            this.item = default;
             return temp;
         }
 
         public IItem WearItem(IItem newItem)
         {
-            var temp = wornItem;
+            var temp = item;
 
-            wornItem = (Item)newItem;
-            wornItem.currentSlot = this;
+            item = (Item)newItem;
+            item.currentSlot = this;
 
             if (temp == null)
                 return null;

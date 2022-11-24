@@ -8,7 +8,7 @@ using UnityEditor.VersionControl;
 
 namespace Stats
 {
-    public class Vitals : StatManager<Vital, VitalData>, iConsumerManager<int>
+    public class Vitals : StatManager<Vital, VitalData>, iConsumerManager<iAttributeProvider>
     {
         public float impairment
         {
@@ -20,12 +20,13 @@ namespace Stats
             }
         }
 
-        public void SubscribeAll(iProviderManager<int> providerManager)
+        public void SubscribeAll(iProviderManager<iAttributeProvider> providerManager)
         {
             foreach (var vital in all)
                 foreach (var att in providerManager.GetProviders())
                     vital.Subscribe(att);
         }
+
         private void Start()
         {
             foreach (var vital in all)

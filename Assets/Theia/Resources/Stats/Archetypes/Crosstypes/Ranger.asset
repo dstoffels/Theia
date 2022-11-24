@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e95e324594c3bfe408f31a847d770a8f, type: 3}
-  m_Name: Mage
+  m_Script: {fileID: 11500000, guid: 9bb2ce928b6e0c04a8587c9956d72924, type: 3}
+  m_Name: Ranger
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,3 +21,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  description: 
+  domains:
+  - {fileID: 11400000, guid: 605210b380d58a244826ecae458be10a, type: 2}
+  - {fileID: 11400000, guid: 0d058a06144d4e342888b699ef655527, type: 2}

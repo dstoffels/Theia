@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e95e324594c3bfe408f31a847d770a8f, type: 3}
-  m_Name: Rogue
+  m_Script: {fileID: 11500000, guid: 53556c9475ac57d47b0dbfa54c7d8f4c, type: 3}
+  m_Name: Mystic
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,3 +21,4 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  description: 

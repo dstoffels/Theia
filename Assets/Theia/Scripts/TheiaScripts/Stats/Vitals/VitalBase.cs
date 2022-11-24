@@ -8,7 +8,7 @@ using Stats.IoC;
 namespace Stats
 {
     [HideReferenceObjectPicker]
-    public abstract class VitalBase<TVitalData> : BaseStat<TVitalData>, iVital, iConsumer<int> where TVitalData : VitalData
+    public abstract class VitalBase<TVitalData> : BaseStat<TVitalData>, iVital, iAttributeConsumer where TVitalData : VitalData
     {
         protected int _level;
         [ShowInInspector, ReadOnly]
@@ -41,8 +41,9 @@ namespace Stats
         }
 
         // CONSUMER INTERFACE
-        private Providers<int> providers = new Providers<int>();
-        public void Subscribe(iProvider<int> provider)
+        private AttributeProviders attributes = new AttributeProviders();
+
+        public void Subscribe(iAttributeProvider provider)
         {
             if (data.Contains(provider.GetData()))
             {
@@ -51,13 +52,13 @@ namespace Stats
             }
         }
 
-        public void Update(iProvider<int> provider)
+        public void Update(iAttributeProvider provider)
         {
-            providers.Update(provider, this);
-            max = data.GetMax(providers);
+            attributes.Update(provider, this);
+            max = data.GetMax(attributes);
             min = data.GetMin(this);
             threshold = data.GetThreshold(this);
-            recoveryRate= data.GetRecoveryRate(this);
+            recoveryRate = data.GetRecoveryRate(this);
         }
         public BaseData GetData() => data;
     }

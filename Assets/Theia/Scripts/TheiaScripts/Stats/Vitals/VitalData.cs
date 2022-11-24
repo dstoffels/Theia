@@ -20,7 +20,7 @@ namespace Stats
              stat == primaryAttribute || secondaryAttributes.Contains((AttributeData)stat);
         
 
-        public virtual int GetMax(Providers<int> providers)
+        public virtual int GetMax(AttributeProviders providers)
         {
             int max = 0;
             foreach (var att in providers)
