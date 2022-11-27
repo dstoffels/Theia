@@ -15,6 +15,7 @@ namespace Stats.Anatomy
         private void checkCrippled()
         {
             crippled = level == min || parentIsCrippled;
+            isRecovering = crippled ? false : isRecovering;
             children.Notify(this);
         }
         [Button]
@@ -32,19 +33,20 @@ namespace Stats.Anatomy
             if (data.Contains(provider.GetData()))
             {
                 provider.AddConsumer(this);
-                parentIsCrippled = provider.GetState(this);
+                parentIsCrippled = provider.GetCrippled();
             }
         }
 
         public void Update(iBodyPartProvider provider)
         {
-            parentIsCrippled = provider.GetState(this);
+            parentIsCrippled = provider.GetCrippled();
             checkCrippled();
         }
 
         // PROVIDER INTERFACE
         private BodyPartConsumers children = new BodyPartConsumers();
         public void AddConsumer(iBodyPartConsumer consumer) => children.Add(consumer);
-        public bool GetState(iBodyPartConsumer consumer) => crippled;
+        public bool GetCrippled() => crippled;
+        public int GetLevel() => level;
     }
 }

@@ -18,19 +18,16 @@ namespace Stats
 
         public override bool Contains(BaseData stat) =>
              stat == primaryAttribute || secondaryAttributes.Contains((AttributeData)stat);
-        
 
-        public virtual int GetMax(AttributeProviders providers)
-        {
-            int max = 0;
-            foreach (var att in providers)
-                max += att.Key == primaryAttribute ?
-                             att.Value * 2 :
-                         secondaryAttributes.Contains((AttributeData)att.Key) ?
-                             att.Value :
-                         0;
-            return max;
-        }        
+
+        public virtual int GetMax(AttributeProviders providers) => providers.Reduce(
+            att =>
+                att.GetData() == primaryAttribute ?
+                    att.GetLevel() * 2 :
+                secondaryAttributes.Contains((AttributeData)att.GetData()) ?
+                    att.GetLevel() :
+                0);
+        
         public virtual int GetMin(iVital vital) => -vital.max;
         public virtual int GetThreshold(iVital vital) => 0;
         public virtual int GetImpairment(iVital vital) => Mathf.Min(0, vital.level);

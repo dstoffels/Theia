@@ -35,8 +35,8 @@ namespace Stats
         {
             while (true)
             {
-                if(isRecovering) level++;
                 yield return new WaitForSeconds(recoveryRate / 1000);
+                if(isRecovering) level++;
             }
         }
 

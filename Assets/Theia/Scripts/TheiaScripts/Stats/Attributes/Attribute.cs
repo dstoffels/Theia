@@ -39,9 +39,7 @@ namespace Stats
         public int skillPoints { get; private set; }
         private void SetSkillPoints()
         {
-            skillPoints= 0;
-            foreach (var skillVal in skills.Values)
-                skillPoints += skillVal;
+            skillPoints = skills.Reduce(skill => skill.GetSkillPoints(data));
             SetSkillBonus();
         }
 
@@ -95,7 +93,7 @@ namespace Stats
         // PROVIDER INTERFACE
         private AttributeConsumers consumers = new AttributeConsumers();
         public void AddConsumer(iAttributeConsumer consumer) => consumers.Add(consumer);
-        public int GetState(iAttributeConsumer consumer) => level;
+        public int GetLevel() => level;
         public BaseData GetData() => data;
 
     }

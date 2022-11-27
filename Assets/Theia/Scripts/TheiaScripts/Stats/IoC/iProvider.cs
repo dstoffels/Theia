@@ -1,14 +1,25 @@
 ﻿namespace Stats.IoC
 {
-    public interface iProvider<T, TConsumer>
+    public interface iProvider<TConsumer>
     {
         BaseData GetData();
-        T GetState(TConsumer consumer);
         void AddConsumer(TConsumer consumer);
     }
 
-    public interface iAttributeProvider: iProvider<int, iAttributeConsumer> { }
-    public interface iSkillProvider: iProvider<int, iSkillConsumer> { }
+    public interface iLevelProvider<TConsumer> : iProvider<TConsumer>
+    {
+        int GetLevel();
+    }
 
-    public interface iBodyPartProvider : iProvider<bool, iBodyPartConsumer> { }
+    public interface iAttributeProvider : iLevelProvider<iAttributeConsumer> { }
+    public interface iSkillProvider: iLevelProvider<iSkillConsumer>
+    {
+        int GetSkillPoints(AttributeData requestor);
+    }
+
+    public interface iBodyPartProvider : iLevelProvider<iBodyPartConsumer>
+    {
+        bool GetCrippled();
+
+    }
 }

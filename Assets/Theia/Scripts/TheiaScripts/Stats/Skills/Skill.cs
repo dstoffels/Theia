@@ -30,12 +30,12 @@ namespace Stats.SkillTypes
         private void SetAptitude()
         {
             aptitude = 0;
-            foreach (var att in attributes)
+            foreach (var att in attributes.Values)
                 aptitude +=
-                    data.primaryAttribute == att.Key ?
-                        att.Value :
-                    data.secondaryAttribute == att.Key ?
-                        att.Value / 2:
+                    data.primaryAttribute == att.GetData() ?
+                        att.GetLevel() :
+                    data.secondaryAttribute == att.GetData() ?
+                        att.GetLevel() / 2:
                     0;
             SetLevel();
         }
@@ -109,5 +109,14 @@ namespace Stats.SkillTypes
             level;
 
         public BaseData GetData() => data;
+
+        public int GetSkillPoints(AttributeData requestor) =>
+            data.primaryAttribute == requestor ?
+                proficiency * 2 :
+            data.secondaryAttribute == requestor ?
+                proficiency :
+            0;
+
+        public int GetLevel() => level;
     }
 }
