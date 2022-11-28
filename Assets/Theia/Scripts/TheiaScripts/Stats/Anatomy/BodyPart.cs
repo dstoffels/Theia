@@ -9,6 +9,9 @@ namespace Stats.Anatomy
     [HideReferenceObjectPicker]
     public class BodyPart : VitalBase<BodyPartData>, iBodyPartProvider, iBodyPartConsumer
     {
+        [ShowInInspector]
+        public int vulnerability { get; private set; }
+        public int SetVulnerability(int accumulator) => vulnerability = data.vulnerability + accumulator;
 
         [ShowInInspector]
         public bool crippled { get; private set; }

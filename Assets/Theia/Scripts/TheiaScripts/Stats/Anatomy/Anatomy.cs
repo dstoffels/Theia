@@ -9,12 +9,16 @@ namespace Stats.Anatomy
 {
     public class Anatomy : StatManager<BodyPart, BodyPartData>, iConsumerManager<iAttributeProvider>
     {
+        public int totalVulnerability = 0;
+
+        [ShowInInspector, ReadOnly, PropertyOrder(-1)]
         public float impairment
         {
             get
             {
                 float total = 0;
-                foreach (var vital in all) total += vital.impairment; 
+                foreach (var vital in all) 
+                    total += vital.impairment; 
                 return total;
             }
         }
@@ -36,5 +40,32 @@ namespace Stats.Anatomy
                 StartCoroutine(bodypart.Recover());
         }
 
+        public override void InitializeTemplate()
+        {
+            base.InitializeTemplate();
+
+            totalVulnerability = 0;
+            foreach (var bp in all)
+                totalVulnerability = bp.SetVulnerability(totalVulnerability); 
+        }
+
+        [Button]
+        public void Damage(BodyPartData bodyPart = null, int amt = 5)
+        {
+            if (bodyPart != null)
+                this[bodyPart].Damage(amt);
+            else
+            {
+                var die = new System.Random().Next(1, totalVulnerability + 1);
+                foreach (var bp in all)
+                {
+                    if (die <= bp.vulnerability)
+                    {
+                        bp.Damage(amt);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
