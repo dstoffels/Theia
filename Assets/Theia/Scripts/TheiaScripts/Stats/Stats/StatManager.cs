@@ -13,7 +13,7 @@ namespace Stats
         public TStat this[TData key] => stats[key.name];
 
         public StatTemplate<TData> template;
-        [ShowInInspector, DictionaryDrawerSettings(IsReadOnly =true), HideLabel]
+        [ShowInInspector, DictionaryDrawerSettings(IsReadOnly =true, KeyLabel = "", ValueLabel = ""), HideLabel]
         protected Dictionary<string, TStat> stats = new Dictionary<string, TStat>();
 
         public TStat[] all

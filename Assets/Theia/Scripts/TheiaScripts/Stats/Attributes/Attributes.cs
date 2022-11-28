@@ -5,7 +5,6 @@ using Stats.SkillTypes;
 
 namespace Stats
 {
-
     [RequireComponent(typeof(Skills)), DisallowMultipleComponent]
     public class Attributes : StatManager<Attribute, AttributeData>, iProviderManager<iAttributeProvider>, iConsumerManager<iSkillProvider>
     {

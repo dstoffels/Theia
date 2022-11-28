@@ -3,7 +3,6 @@ using Stats.IoC;
 
 namespace Stats
 {
-    // TODO: Implement interfaces to decouple
     public interface iStatBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
@@ -21,9 +20,7 @@ namespace Stats
             }
         }
 
-
-
-        //starting level is intialized at character creation, customized manually and modified by species
+        //starting level is intialized at character creation.
         public int startingLevel { get; private set; } = 10;
             
         public int raceModifier { get; private set; } = 0;
@@ -39,7 +36,7 @@ namespace Stats
         public int skillPoints { get; private set; }
         private void SetSkillPoints()
         {
-            skillPoints = skills.Reduce(skill => skill.GetSkillPoints(data));
+            skillPoints = skills.GetTotal();
             SetSkillBonus();
         }
 
@@ -72,7 +69,7 @@ namespace Stats
 
 
         // CONSUMER INTERFACE
-        private SkillProviders skills = new SkillProviders();
+        private IntProviders skills = new IntProviders();
         public void Subscribe(iSkillProvider provider)
         {
             if (data.Contains(provider.GetData()))
@@ -86,7 +83,7 @@ namespace Stats
 
         public void Update(iSkillProvider provider)
         {
-            skills.Update(provider, this);
+            skills.Update(provider.GetData(), provider.GetSkillPoints(data));
             SetSkillPoints();
         }
 

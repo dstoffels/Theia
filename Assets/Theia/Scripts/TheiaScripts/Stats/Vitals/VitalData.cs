@@ -20,12 +20,12 @@ namespace Stats
              stat == primaryAttribute || secondaryAttributes.Contains((AttributeData)stat);
 
 
-        public virtual int GetMax(AttributeProviders providers) => providers.Reduce(
+        public virtual int GetMax(IntProviders providers) => providers.Reduce(
             att =>
-                att.GetData() == primaryAttribute ?
-                    att.GetLevel() * 2 :
-                secondaryAttributes.Contains((AttributeData)att.GetData()) ?
-                    att.GetLevel() :
+                att.Key == primaryAttribute ?
+                    att.Value * 2 :
+                secondaryAttributes.Contains((AttributeData)att.Key) ?
+                    att.Value :
                 0);
         
         public virtual int GetMin(iVital vital) => -vital.max;

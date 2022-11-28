@@ -4,32 +4,38 @@
 namespace Stats.IoC
 {
     /// <summary>
-    /// A dictionary of iProviders, keyed by their data property. Used in conjunction with iConsumer, if it consumes from multiple providers.
+    /// A dictionary of provider data/values, instantiated in conjunction with iConsumer, if it consumes from multiple providers.
     /// </summary>
-    public class Providers<TProvider, TConsumer> : Dictionary<BaseData, TProvider> where TProvider : iProvider<TConsumer>
+    public class Providers<T> : Dictionary<BaseData, T>
     {
-        public void Update(TProvider provider, TConsumer consumer)
+        public void Update(BaseData providerData, T providerValue)
         {
-            if (!ContainsKey(provider.GetData()))
-                Add(provider.GetData(), provider);
+            if (!ContainsKey(providerData))
+                Add(providerData, providerValue);
             else
-                this[provider.GetData()] = provider;
+                this[providerData] = providerValue;
         }
     }
 
-    public abstract class LevelProviders<TProvider, TConsumer> : Providers<TProvider, TConsumer> where TProvider : iLevelProvider<TConsumer>
+    public class IntProviders : Providers<int>
     {
-        public delegate int ProviderReducer(TProvider provider);
-
-        public int Reduce(ProviderReducer callback, int initialValue = 0)
+        public int GetTotal()
         {
-            int total = initialValue;
-            foreach (var provider in Values)
+            int total = 0;
+            foreach (var value in Values)
+                total += value;
+            return total;
+        }
+
+        public delegate int StatValue(KeyValuePair<BaseData, int> kvp);
+
+        public int Reduce(StatValue callback)
+        {
+            int total = 0;
+            foreach (var provider in this)
                 total += callback(provider);
             return total;
         }
     }
 
-    public class AttributeProviders : LevelProviders<iAttributeProvider, iAttributeConsumer> { }
-    public class SkillProviders : LevelProviders<iSkillProvider, iSkillConsumer> { }    
 }

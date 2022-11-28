@@ -1,15 +1,12 @@
 ﻿namespace Stats.IoC
 {
-    public interface iConsumer<TProvider>
+    public interface iConsumer<TProvider> : iData
     {
-        BaseData GetData();
         void Subscribe(TProvider provider);
         void Update(TProvider provider);
-
     }
 
     public interface iAttributeConsumer : iConsumer<iAttributeProvider> { }
     public interface iSkillConsumer : iConsumer<iSkillProvider> { }
-
     public interface iBodyPartConsumer : iConsumer<iBodyPartProvider> { }
 }

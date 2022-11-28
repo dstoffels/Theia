@@ -1,8 +1,11 @@
 ﻿namespace Stats.IoC
 {
-    public interface iProvider<TConsumer>
+    public interface iData
     {
         BaseData GetData();
+    }
+    public interface iProvider<TConsumer> : iData
+    {
         void AddConsumer(TConsumer consumer);
     }
 
@@ -20,6 +23,5 @@
     public interface iBodyPartProvider : iLevelProvider<iBodyPartConsumer>
     {
         bool GetCrippled();
-
     }
 }

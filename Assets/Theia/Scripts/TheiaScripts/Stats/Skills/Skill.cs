@@ -29,14 +29,13 @@ namespace Stats.SkillTypes
 
         private void SetAptitude()
         {
-            aptitude = 0;
-            foreach (var att in attributes.Values)
-                aptitude +=
-                    data.primaryAttribute == att.GetData() ?
-                        att.GetLevel() :
-                    data.secondaryAttribute == att.GetData() ?
-                        att.GetLevel() / 2:
-                    0;
+            aptitude = attributes.Reduce(att =>
+                data.primaryAttribute == att.Key ?
+                    att.Value :
+                data.secondaryAttribute == att.Key ?
+                    att.Value / 2 :
+                0
+            );
             SetLevel();
         }
 
@@ -80,7 +79,7 @@ namespace Stats.SkillTypes
         }
 
         //CONSUMER INTERFACE
-        private AttributeProviders attributes = new AttributeProviders();
+        private IntProviders attributes = new IntProviders();
         public void Subscribe(iAttributeProvider provider)
         {
             if (data.Contains(provider.GetData()))
@@ -92,7 +91,7 @@ namespace Stats.SkillTypes
 
         public void Update(iAttributeProvider provider)
         {
-            attributes.Update(provider, this);
+            attributes.Update(provider.GetData(), provider.GetLevel());
             SetAptitude();
         }
 

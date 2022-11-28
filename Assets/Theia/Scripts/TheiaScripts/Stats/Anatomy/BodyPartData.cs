@@ -12,8 +12,8 @@ namespace Stats.Anatomy
     [InfoBox("Must have only Strength & Constitution in secondary attributes.")]
     public class BodyPartData : VitalData
     {
-        public override int GetMax(AttributeProviders providers) => base.GetMax(providers) / 2;
-        public bool isEssential;
+        public override int GetMax(IntProviders providers) => base.GetMax(providers) / 2;
+        public bool isCritical;
         public int vulnerability;
         public BodyPartData parent;
 

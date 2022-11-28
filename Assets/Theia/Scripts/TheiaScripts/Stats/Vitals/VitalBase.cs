@@ -21,7 +21,6 @@ namespace Stats
         [ShowInInspector, ReadOnly]
         public int max { get; private set; }
         public int min { get; private set; }
-        [ShowInInspector, ReadOnly]
         public int threshold { get; private set; }
         [ShowInInspector, ReadOnly]
         public int impairment => data.GetImpairment(this);
@@ -41,7 +40,7 @@ namespace Stats
         }
 
         // CONSUMER INTERFACE
-        private AttributeProviders attributes = new AttributeProviders();
+        private IntProviders attributes = new IntProviders();
 
         public void Subscribe(iAttributeProvider provider)
         {
@@ -54,7 +53,7 @@ namespace Stats
 
         public void Update(iAttributeProvider provider)
         {
-            attributes.Update(provider, this);
+            attributes.Update(provider.GetData(), provider.GetLevel());
             max = data.GetMax(attributes);
             min = data.GetMin(this);
             threshold = data.GetThreshold(this);
