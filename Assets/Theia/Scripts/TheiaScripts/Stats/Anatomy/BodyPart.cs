@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using Stats.IoC;
 using UnityEngine;
 
+// TODO: Setup iArmorConsumer
 namespace Stats.Anatomy
 {
     [HideReferenceObjectPicker]
@@ -24,7 +25,7 @@ namespace Stats.Anatomy
         [Button]
         public void Damage(int amt = 5)
         {
-            level -= amt;
+            level -= amt; // TODO: amt - armorCoverage
             isRecovering = level >= 0;
             checkCrippled();
         }
@@ -40,7 +41,7 @@ namespace Stats.Anatomy
             }
         }
 
-        public void Update(iBodyPartProvider provider)
+        public void Notify(iBodyPartProvider provider)
         {
             parentIsCrippled = provider.GetCrippled();
             checkCrippled();

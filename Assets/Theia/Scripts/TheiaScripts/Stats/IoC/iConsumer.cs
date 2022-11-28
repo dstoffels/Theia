@@ -1,9 +1,9 @@
 ﻿namespace Stats.IoC
 {
-    public interface iConsumer<TProvider> : iData
+    public interface iConsumer<TProvider>
     {
         void Subscribe(TProvider provider);
-        void Update(TProvider provider);
+        void Notify(TProvider provider);
     }
 
     public interface iAttributeConsumer : iConsumer<iAttributeProvider> { }

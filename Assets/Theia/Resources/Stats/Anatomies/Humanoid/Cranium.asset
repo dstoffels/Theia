@@ -26,6 +26,6 @@ MonoBehaviour:
   secondaryAttributes:
   - {fileID: 11400000, guid: 55106acf660707b47a855b340e0bb34a, type: 2}
   - {fileID: 11400000, guid: ddc9daf4b43621c4d89a48184a802c1b, type: 2}
-  isEssential: 1
+  isCritical: 1
   vulnerability: 2
   parent: {fileID: 0}

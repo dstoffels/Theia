@@ -85,11 +85,11 @@ namespace Stats.SkillTypes
             if (data.Contains(provider.GetData()))
             {
                 provider.AddConsumer(this);
-                Update(provider);
+                Notify(provider);
             }
         }
 
-        public void Update(iAttributeProvider provider)
+        public void Notify(iAttributeProvider provider)
         {
             attributes.Update(provider.GetData(), provider.GetLevel());
             SetAptitude();
@@ -100,12 +100,6 @@ namespace Stats.SkillTypes
         // PROVIDER INTERFACE
         private SkillConsumers consumers = new SkillConsumers();
         public void AddConsumer(iSkillConsumer consumer) => consumers.Add(consumer);
-        public int GetState(iSkillConsumer consumer) =>
-            data.primaryAttribute == consumer.GetData() ?
-                proficiency * 2 :
-            data.secondaryAttribute == consumer.GetData() ?
-                proficiency :
-            level;
 
         public BaseData GetData() => data;
 

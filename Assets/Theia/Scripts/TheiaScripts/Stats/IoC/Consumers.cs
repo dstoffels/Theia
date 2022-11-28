@@ -19,7 +19,7 @@ namespace Stats.IoC
         public void Notify(TProvider provider)
         {
             foreach (var consumer in this)
-                consumer.Update(provider);
+                consumer.Notify(provider);
         }
     }
 

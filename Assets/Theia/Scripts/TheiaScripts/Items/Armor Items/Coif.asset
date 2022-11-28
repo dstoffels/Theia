@@ -20,13 +20,26 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
-  baseWeight: 0
+    SerializationNodes:
+    - Name: size
+      Entry: 7
+      Data: Items.ItemSize, uMMORPG
+    - Name: height
+      Entry: 3
+      Data: 0
+    - Name: width
+      Entry: 3
+      Data: 0
+    - Name: depth
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
   maximumStackSize: 0
+  baseWeight: 0
   armorSlot: {fileID: 11400000, guid: 3a00a4ebdd7c1cf4c8489ea4ba4eac85, type: 2}
-  coverage:
-  - {fileID: 11400000, guid: 0a766d56535a1454b885f163ae6c76e9, type: 2}
-  - {fileID: 11400000, guid: 2babf5437cd2ff84fa12f7a00422056a, type: 2}
+  coverage: []
   consumesArmsSlot: 0
   protectionFactor: 10
   hindrance: 30

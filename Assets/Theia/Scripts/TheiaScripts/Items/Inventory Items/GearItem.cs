@@ -39,19 +39,19 @@ namespace Items
         [Button]
         public void Wear(Player player)
         {
-            var targetSlot = player.gear.slots[slot];
-            var curentlyWornItem = targetSlot.WearItem(this);
+            //var targetSlot = player.gear.slots[slot];
+            //var curentlyWornItem = targetSlot.WearItem(this);
 
-            transform.SetParent(player.transform); // TODO: will eventually have to attach this to player bones & wearableslots
+            //transform.SetParent(player.transform); // TODO: will eventually have to attach this to player bones & wearableslots
 
-            if (curentlyWornItem != null)
-                player.gear.GrabItem(curentlyWornItem);
+            //if (curentlyWornItem != null)
+            //    player.gear.GrabItem(curentlyWornItem);
         }
 
         [Button]
         public void Remove()
         {
-            owner.gear.GrabItem(currentSlot.RemoveItem(this));
+            //owner.gear.GrabItem(currentSlot.RemoveItem(this));
         }
 
 
@@ -70,7 +70,7 @@ namespace Items
             }
             else
             {
-                owner.gear.GrabItem(newItem);
+                //owner.gear.GrabItem(newItem);
                 Debug.Log("Dis bish don' fit in " + name);
                 return false;
             }

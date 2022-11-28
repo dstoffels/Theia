@@ -47,11 +47,11 @@ namespace Stats
             if (data.Contains(provider.GetData()))
             {
                 provider.AddConsumer(this);
-                Update(provider);
+                Notify(provider);
             }
         }
 
-        public void Update(iAttributeProvider provider)
+        public void Notify(iAttributeProvider provider)
         {
             attributes.Update(provider.GetData(), provider.GetLevel());
             max = data.GetMax(attributes);

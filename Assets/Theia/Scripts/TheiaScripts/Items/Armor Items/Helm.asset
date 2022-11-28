@@ -26,7 +26,7 @@ MonoBehaviour:
       Data: Items.ItemSize, uMMORPG
     - Name: height
       Entry: 3
-      Data: 20
+      Data: 15
     - Name: width
       Entry: 3
       Data: 20
@@ -40,7 +40,7 @@ MonoBehaviour:
   baseWeight: 2100
   armorSlot: {fileID: 11400000, guid: 3a00a4ebdd7c1cf4c8489ea4ba4eac85, type: 2}
   coverage:
-  - {fileID: 11400000, guid: 0a766d56535a1454b885f163ae6c76e9, type: 2}
+  - {fileID: 0}
   consumesArmsSlot: 0
   protectionFactor: 30
   hindrance: 20

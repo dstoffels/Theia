@@ -7,7 +7,7 @@ using Stats.SkillTypes;
 namespace InventoryStuff.Armor
 {
     [CreateAssetMenu(menuName = "Armor/Armor Slot Template")]
-    public class ArmorSlotTemplate : SerializedScriptableObject
+    public class ArmorSlotTemplate : StatTemplate<ArmorSlotData>
     {
         [ReadOnly]
         public SkillData armorSkill;

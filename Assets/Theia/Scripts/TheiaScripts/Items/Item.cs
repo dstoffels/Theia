@@ -44,7 +44,7 @@ namespace Items
         [Button]
         public void PickUp(Player player)
         {
-            player.gear.GrabItem(this);
+            //player.gear.GrabItem(this);
             transform.SetParent(player.transform);
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;

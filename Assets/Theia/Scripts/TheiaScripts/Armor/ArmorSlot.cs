@@ -1,11 +1,9 @@
 ﻿using Sirenix.OdinInspector;
 using Items.Armor;
 using Items;
-using InventoryStuff;
 using Stats;
-using InventoryStuff.Armor;
 
-namespace ArmorTypes
+namespace InventoryStuff.Armor
 {
     [HideReferenceObjectPicker]
     public class ArmorSlot : BaseStat<ArmorSlotData>, IWearableItemSlot

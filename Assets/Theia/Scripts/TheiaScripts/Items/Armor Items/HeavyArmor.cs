@@ -3,6 +3,7 @@ using Mats;
 using Sirenix.OdinInspector;
 using StatsOLD;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Items.Armor
 {
@@ -16,7 +17,7 @@ namespace Items.Armor
         public List<OrganData> coverage => GetAllCoverage();
 
         [ShowInInspector]
-        public float hindrance => data.hindrance * material.hindranceMultiplier;
+        public float hindrance => Mathf.FloorToInt(data.hindrance * material.hindranceMultiplier);
 
         public float protection => data.protectionFactor;
 

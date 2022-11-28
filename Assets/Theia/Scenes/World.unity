@@ -14068,10 +14068,10 @@ GameObject:
   - component: {fileID: 370969807}
   - component: {fileID: 370969800}
   - component: {fileID: 370969801}
-  - component: {fileID: 370969809}
   - component: {fileID: 370969811}
   - component: {fileID: 370969812}
   - component: {fileID: 370969813}
+  - component: {fileID: 370969802}
   m_Layer: 0
   m_Name: PLAYER
   m_TagString: Untagged
@@ -14123,6 +14123,29 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   template: {fileID: 11400000, guid: e9f547766141f1e4cb19d25b415167fe, type: 2}
+  totalVulnerability: 28
+--- !u!114 &370969802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370969799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb34fb8069c5d634794b3dd8524b54f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  template: {fileID: 11400000, guid: 1c1dee1e36bd2474b9f721f30b507845, type: 2}
 --- !u!114 &370969806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14184,200 +14207,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &370969809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370969799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f64f85a6e5c523f4994eb3a0d8e9e376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 39c95e1429841bf4d8d5bf71d6a3c309, type: 2}
-    - {fileID: 11400000, guid: 76a65dd31589fe647a470d0a1b3d1aca, type: 2}
-    - {fileID: 11400000, guid: a594654551e2e0f45b3cf346dfd35195, type: 2}
-    - {fileID: 11400000, guid: 3a00a4ebdd7c1cf4c8489ea4ba4eac85, type: 2}
-    - {fileID: 1329581012}
-    - {fileID: 623966269}
-    - {fileID: 391639010}
-    - {fileID: 11400000, guid: 2b65106c01ad9d844b5f9289ede56168, type: 2}
-    - {fileID: 11400000, guid: da6890df3bccfd54aa90f6b304d1fe32, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: armorSlots
-      Entry: 7
-      Data: 0|InventoryStuff.Armor.ArmorSlots, uMMORPG
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[InventoryStuff.Armor.ArmorSlotData,
-        uMMORPG]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 6
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 0
-    - Name: $v
-      Entry: 7
-      Data: 2|InventoryStuff.Armor.ArmorSlot, uMMORPG
-    - Name: padded
-      Entry: 6
-      Data: 
-    - Name: maille
-      Entry: 6
-      Data: 
-    - Name: heavy
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 1
-    - Name: $v
-      Entry: 7
-      Data: 3|InventoryStuff.Armor.ArmorSlot, uMMORPG
-    - Name: padded
-      Entry: 6
-      Data: 
-    - Name: maille
-      Entry: 6
-      Data: 
-    - Name: heavy
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 2
-    - Name: $v
-      Entry: 7
-      Data: 4|InventoryStuff.Armor.ArmorSlot, uMMORPG
-    - Name: padded
-      Entry: 6
-      Data: 
-    - Name: maille
-      Entry: 6
-      Data: 
-    - Name: heavy
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 3
-    - Name: $v
-      Entry: 7
-      Data: 5|InventoryStuff.Armor.ArmorSlot, uMMORPG
-    - Name: padded
-      Entry: 10
-      Data: 4
-    - Name: maille
-      Entry: 10
-      Data: 5
-    - Name: heavy
-      Entry: 10
-      Data: 6
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 7
-    - Name: $v
-      Entry: 7
-      Data: 6|InventoryStuff.Armor.ArmorSlot, uMMORPG
-    - Name: padded
-      Entry: 6
-      Data: 
-    - Name: maille
-      Entry: 6
-      Data: 
-    - Name: heavy
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 8
-    - Name: $v
-      Entry: 7
-      Data: 7|InventoryStuff.Armor.ArmorSlot, uMMORPG
-    - Name: padded
-      Entry: 6
-      Data: 
-    - Name: maille
-      Entry: 6
-      Data: 
-    - Name: heavy
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  template: {fileID: 11400000, guid: 1c1dee1e36bd2474b9f721f30b507845, type: 2}
 --- !u!114 &370969811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14588,8 +14417,7 @@ MonoBehaviour:
   skills: {fileID: 370969807}
   vitals: {fileID: 370969800}
   anatomy: {fileID: 370969801}
-  gear: {fileID: 370969811}
-  armor: {fileID: 370969809}
+  armor: {fileID: 370969802}
 --- !u!114 &370969813
 MonoBehaviour:
   m_ObjectHideFlags: 0

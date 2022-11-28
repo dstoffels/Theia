@@ -2,16 +2,15 @@ using System;
 using Mirror;
 using Stats;
 using UnityEngine;
-using InventoryStuff.Armor;
-using InventoryStuff;
 using Items;
 using Sirenix.OdinInspector;
 using Stats.Anatomy;
 using Stats.SkillTypes;
+using ArmorTypes;
 
 [RequireComponent(typeof(Attributes), typeof(Skills))]
 [RequireComponent(typeof(Vitals), typeof(Anatomy))]
-[RequireComponent(typeof(Gear), typeof(Armor))]
+[RequireComponent(typeof(Armor))]
 public class Player : NetworkBehaviour
 {
     public static Player localPlayer;
@@ -20,7 +19,7 @@ public class Player : NetworkBehaviour
     public Skills skills;
     public Vitals vitals;
     public Anatomy anatomy;
-    public Gear gear;
+    //public Gear gear;
     public Armor armor;
 
     public override void OnStartLocalPlayer()
@@ -71,7 +70,7 @@ public struct PlayerHelpers
         player.skills ??= player.GetComponent<Skills>();
         player.anatomy ??= player.GetComponent<Anatomy>();
         player.vitals ??= player.GetComponent<Vitals>();
-        player.gear ??= player.GetComponent<InventoryStuff.Gear>();
+        //player.gear ??= player.GetComponent<InventoryStuff.Gear>();
         player.armor ??= player.GetComponent<Armor>();
 
     }
@@ -82,6 +81,7 @@ public struct PlayerHelpers
         player.skills.InitializeTemplate();
         player.vitals.InitializeTemplate();
         player.anatomy.InitializeTemplate();
+        player.armor.InitializeTemplate();
 
         player.attributes.SubscribeAll(player.skills);
         player.skills.SubscribeAll(player.attributes);

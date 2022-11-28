@@ -75,13 +75,13 @@ namespace Stats
             if (data.Contains(provider.GetData()))
             {
                 provider.AddConsumer(this);
-                Update(provider);
+                Notify(provider);
             }
             else
                 SetLevel();
         }
 
-        public void Update(iSkillProvider provider)
+        public void Notify(iSkillProvider provider)
         {
             skills.Update(provider.GetData(), provider.GetSkillPoints(data));
             SetSkillPoints();

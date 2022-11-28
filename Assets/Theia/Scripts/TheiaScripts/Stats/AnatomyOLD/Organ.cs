@@ -35,7 +35,7 @@ namespace StatsOLD
         {
             if (armor.protectedOrgans.ContainsKey(data))
             {
-                var protectedOrgan = armor.protectedOrgans[data];
+                Protection protectedOrgan = armor.protectedOrgans[data];
                 return fullProtection ? protectedOrgan.fullProtection : protectedOrgan.protection;
             }
             else return 0;
