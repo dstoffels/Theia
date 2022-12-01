@@ -28,6 +28,5 @@ MonoBehaviour:
   image: {fileID: 0}
   tooltip: 
   requiresEquipment: 0
-  damageTypes:
-  - {fileID: 11400000, guid: a7b6e2bca727ee941a5ff9e4b9da8c36, type: 2}
+  damageTypes: []
   damageMultiplier: 1

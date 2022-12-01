@@ -3,5 +3,5 @@
 namespace Mats
 {
     [CreateAssetMenu(menuName = "Mats/Fabric")]
-    public class FabricMat : Mat { }
+    public class FabricMat : MaterialData { }
 }

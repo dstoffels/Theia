@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   density: 1.25
-  hindranceMultiplier: 2
-  damageMultiplier: 0
-  durability: 0
-  conductivity: 0
+  hindranceMultiplier: 1.25
+  damageMultiplier: 1
+  durability: 800
+  conductivity: 0.9

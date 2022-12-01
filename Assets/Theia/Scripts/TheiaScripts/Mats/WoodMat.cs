@@ -1,4 +1,4 @@
 ﻿namespace Mats
 {
-    public class WoodMat : Mat { }
+    public class WoodMat : MaterialData { }
 }

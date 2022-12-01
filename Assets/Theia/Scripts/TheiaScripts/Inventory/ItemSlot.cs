@@ -5,19 +5,19 @@ namespace InventoryStuff
 {
     [HideReferenceObjectPicker, InlineProperty]
     public abstract class ItemSlot<Item> : IWearableItemSlot
-        where Item : IItem
+        where Item : iItem
     {
         [LabelWidth(75)]
         public Item item;
 
-        public IItem RemoveItem(IItem item)
+        public iItem RemoveItem(iItem item)
         {
             var temp = item;
             this.item = default;
             return temp;
         }
 
-        public IItem WearItem(IItem newItem)
+        public iItem WearItem(iItem newItem)
         {
             var temp = item;
 

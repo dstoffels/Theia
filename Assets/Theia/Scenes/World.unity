@@ -11077,7 +11077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
-    SerializedBytes: 
+    SerializedBytes: []
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -14068,10 +14068,10 @@ GameObject:
   - component: {fileID: 370969807}
   - component: {fileID: 370969800}
   - component: {fileID: 370969801}
+  - component: {fileID: 370969802}
   - component: {fileID: 370969811}
   - component: {fileID: 370969812}
   - component: {fileID: 370969813}
-  - component: {fileID: 370969802}
   m_Layer: 0
   m_Name: PLAYER
   m_TagString: Untagged
@@ -14133,19 +14133,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 370969799}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb34fb8069c5d634794b3dd8524b54f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fae05bb7fb4ab147b71b8d544a37403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  template: {fileID: 11400000, guid: 1c1dee1e36bd2474b9f721f30b507845, type: 2}
 --- !u!114 &370969806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14417,7 +14407,6 @@ MonoBehaviour:
   skills: {fileID: 370969807}
   vitals: {fileID: 370969800}
   anatomy: {fileID: 370969801}
-  armor: {fileID: 370969802}
 --- !u!114 &370969813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14863,7 +14852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
-    SerializedBytes: 
+    SerializedBytes: []
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -21710,7 +21699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
-    SerializedBytes: 
+    SerializedBytes: []
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -35663,7 +35652,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: storedItems
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Items.IItem, uMMORPG]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[Items.iItem, uMMORPG]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -41960,7 +41949,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: storedItems
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Items.IItem, uMMORPG]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[Items.iItem, uMMORPG]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -43317,7 +43306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
-    SerializedBytes: 
+    SerializedBytes: []
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}

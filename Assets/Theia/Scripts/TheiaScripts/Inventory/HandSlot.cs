@@ -4,7 +4,7 @@ using Items;
 namespace InventoryStuff
 {
     [HideReferenceObjectPicker, InlineProperty]
-    public class HandSlot : ItemSlot<IItem>
+    public class HandSlot : ItemSlot<iItem>
     {
 
     }

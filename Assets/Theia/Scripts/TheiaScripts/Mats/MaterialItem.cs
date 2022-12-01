@@ -3,6 +3,6 @@ namespace Mats
 {
     public class MaterialItem : SerializedMonoBehaviour
     {
-        public Mat material;
+        public MaterialData material;
     }
 }

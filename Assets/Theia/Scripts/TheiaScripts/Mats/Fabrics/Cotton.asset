@@ -21,3 +21,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  density: 1
+  hindranceMultiplier: 1
+  damageMultiplier: 1
+  durability: 1
+  conductivity: 1

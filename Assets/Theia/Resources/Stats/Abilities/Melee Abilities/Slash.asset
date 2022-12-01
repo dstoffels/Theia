@@ -21,10 +21,12 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  predecessor: {fileID: 0}
   difficulty: 0
   staminaCost: 0
   manaCost: 0
+  replaces: {fileID: 0}
+  image: {fileID: 0}
+  tooltip: 
   requiresEquipment: 1
-  damageTypes:
-  - {fileID: 11400000, guid: ee20824cfb4cca846867c10bbee25ed8, type: 2}
+  damageTypes: []
+  damageMultiplier: 1

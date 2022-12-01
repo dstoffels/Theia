@@ -15,7 +15,7 @@ namespace InventoryStuff
 
         // TODO: will this method return/display a message for feedback?
         // TODO: may need a variation of this method to swap and/or automatically get and store an item in next available inventory
-        public void GrabItem(IItem item)
+        public void GrabItem(iItem item)
         {
             // Try to get the item with right hand first
             if (rightHand.item == null)
@@ -36,7 +36,7 @@ namespace InventoryStuff
             } 
         }
 
-        public void StowItem(IItem item)
+        public void StowItem(iItem item)
         {
             // find a suitable container to stow item in
 
@@ -54,7 +54,7 @@ namespace InventoryStuff
 
             if (Physics.Raycast(ray, out hit))
             {
-                var clickedItem = hit.transform.GetComponent<IItem>();
+                var clickedItem = hit.transform.GetComponent<iItem>();
                 clickedItem.PickUp(GetComponent<Player>());
             }
         }

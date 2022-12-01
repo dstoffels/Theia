@@ -36,11 +36,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  description: 
   maximumStackSize: 1
-  baseWeight: 2
-  width: 0
-  length: 0
-  volume: 0
+  baseWeight: 2000
   inventorySlot: {fileID: 11400000, guid: 275f15a0ce3d961408d4de5ad184b660, type: 2}
   alternateSlot: {fileID: 0}
   maxCarryWeight: 30000

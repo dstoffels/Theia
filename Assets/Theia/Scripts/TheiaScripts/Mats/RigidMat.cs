@@ -1,4 +1,4 @@
 ﻿namespace Mats
 {
-    public abstract class RigidMat : Mat { }
+    public abstract class RigidMat : MaterialData { }
 }
