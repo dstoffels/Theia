@@ -2,9 +2,11 @@
 using Theia.Stats.anatomy;
 using System.Collections.Generic;
 using Theia.Items.Base;
+using UnityEngine;
 
 namespace Theia.Items.Armor
 {
+    [CreateAssetMenu(menuName = "Armor/Armor Item")]
     public class ArmorData : ItemData
     {
         public ArmorType type;

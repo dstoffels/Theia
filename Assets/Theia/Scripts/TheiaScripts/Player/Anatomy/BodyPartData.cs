@@ -9,9 +9,9 @@ using Theia.Stats.vitals;
 namespace Theia.Stats.anatomy
 {
     [CreateAssetMenu(menuName = "Anatomy/Body Part")]
-    [InfoBox("Must have only Strength & Constitution in secondary attributes.")]
     public class BodyPartData : VitalData
     {
+    [InfoBox("Must have only Strength & Constitution in secondary attributes.")]
         public override int GetMax(IntProviders providers) => base.GetMax(providers) / 2;
         public bool critical;
         public int vulnerability;
