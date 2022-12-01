@@ -6,7 +6,7 @@ namespace Stats
     public interface iStatBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Attribute : LinkableObject<AttributeData>, iSkillConsumer, iAttributeProvider
+    public class Attribute : DataClient<AttributeData>, iSkillConsumer, iAttributeProvider
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }

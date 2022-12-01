@@ -73,10 +73,10 @@ public struct PlayerHelpers
 
     public static void InitializeComponents(Player player)
     {
-        player.attributes.InitializeTemplate();
-        player.skills.InitializeTemplate();
-        player.vitals.InitializeTemplate();
-        player.anatomy.InitializeTemplate();
+        //player.attributes.InitializeTemplate();
+        //player.skills.InitializeTemplate();
+        //player.vitals.InitializeTemplate();
+        //player.anatomy.InitializeTemplate();
 
         player.attributes.SubscribeAll(player.skills);
         player.skills.SubscribeAll(player.attributes);

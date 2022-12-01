@@ -6,7 +6,7 @@ using Stats.SkillTypes;
 namespace Stats
 {
     [RequireComponent(typeof(Skills)), DisallowMultipleComponent]
-    public class Attributes : StatManager<Attribute, AttributeData>, iProviderManager<iAttributeProvider>, iConsumerManager<iSkillProvider>
+    public class Attributes : DataClientManager<AttributeData, Attribute>, iProviderManager<iAttributeProvider>, iConsumerManager<iSkillProvider>
     {
         // Accessors //
         public int strength => this["Strength"].level;

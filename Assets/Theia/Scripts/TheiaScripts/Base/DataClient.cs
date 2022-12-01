@@ -8,7 +8,7 @@ namespace Stats
     /// A base class which derives its data from a ScriptableObject (BaseData).
     /// </summary>
     /// <typeparam name="TData"></typeparam>
-    public abstract class LinkableObject<TData> where TData : BaseData
+    public abstract class DataClient<TData> where TData : BaseData
     {
         /// <summary>
         /// StatData Scriptable object that is "plugged in" to the stat to provide le data.

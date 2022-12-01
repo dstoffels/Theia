@@ -1,32 +1,11 @@
 ﻿using Sirenix.OdinInspector;
+using Stats;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Theia.Stats.ArmorScripts
 {
-    public class Armor : MonoBehaviour
+    public class Armor : DataClientManager<ArmorSlotData, ArmorSlot>
     {
-        private Dictionary<ArmorSlotData, ArmorSlot> cache;
-
-        [ShowInInspector]
-        public Dictionary<ArmorSlotData, ArmorSlot> slots
-        {
-            get
-            {
-                if(cache is null)
-                {
-                    cache = new Dictionary<ArmorSlotData, ArmorSlot>();
-                    ArmorSlotData[] all = Resources.LoadAll<ArmorSlotData>("");
-                    foreach (var data in all)
-                    {
-                        var slot = new ArmorSlot();
-                        slot.Init(data);
-                        cache.Add(data, slot);
-                    }
-                }
-                return cache;
-            }
-        }
-
     }
 }

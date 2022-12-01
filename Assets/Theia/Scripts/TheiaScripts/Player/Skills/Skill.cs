@@ -8,7 +8,7 @@ namespace Stats.SkillTypes
     public interface ISkillBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 
     [HideReferenceObjectPicker]
-    public class Skill : LinkableObject<SkillData>, iSkillProvider, iAttributeConsumer
+    public class Skill : DataClient<SkillData>, iSkillProvider, iAttributeConsumer
     {
         [ShowInInspector, ReadOnly]
         public int level { get; private set; }

@@ -8,8 +8,9 @@ using UnityEditor.VersionControl;
 
 namespace Stats
 {
-    public class Vitals : StatManager<Vital, VitalData>, iConsumerManager<iAttributeProvider>
+    public class Vitals : DataClientManager<VitalData, Vital>, iConsumerManager<iAttributeProvider>
     {
+        protected override string assetPath => "Stats/Vitals";
         public float impairment
         {
             get

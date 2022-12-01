@@ -14100,7 +14100,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  template: {fileID: 11400000, guid: 4bce4b41a975f8649ac7d4db552dfb4f, type: 2}
+  path: Stats/Vitals
 --- !u!114 &370969801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14122,7 +14122,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  template: {fileID: 11400000, guid: e9f547766141f1e4cb19d25b415167fe, type: 2}
+  path: 
   totalVulnerability: 28
 --- !u!114 &370969802
 MonoBehaviour:
@@ -14157,7 +14157,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  template: {fileID: 11400000, guid: 2efdf2418f6f996489d3ec35450f1c66, type: 2}
+  path: 
 --- !u!114 &370969807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14179,7 +14179,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  template: {fileID: 11400000, guid: 1b584cb8a4f8f6247a026612b14f6061, type: 2}
+  path: 
 --- !u!4 &370969808
 Transform:
   m_ObjectHideFlags: 0

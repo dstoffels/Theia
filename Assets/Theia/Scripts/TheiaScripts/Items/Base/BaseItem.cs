@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 namespace Theia.Items.Base
 {
-    public abstract class BaseItem<TData> : LinkableObject<TData>, iItem
+    // TODO: do all items need to be gameobjects?
+    public abstract class BaseItem<TData> : DataClient<TData>, iItem
         where TData : ItemData
     {
         public int volume => data.size.volume;

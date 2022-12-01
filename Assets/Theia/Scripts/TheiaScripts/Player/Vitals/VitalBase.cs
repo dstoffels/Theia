@@ -8,7 +8,7 @@ using Stats.IoC;
 namespace Stats
 {
     [HideReferenceObjectPicker]
-    public abstract class VitalBase<TVitalData> : LinkableObject<TVitalData>, iVital, iAttributeConsumer where TVitalData : VitalData
+    public abstract class VitalBase<TVitalData> : DataClient<TVitalData>, iVital, iAttributeConsumer where TVitalData : VitalData
     {
         protected int _level;
         [ShowInInspector, ReadOnly]
@@ -27,7 +27,7 @@ namespace Stats
 
         // RECOVERY
         [ShowInInspector]
-        public bool isRecovering { get; set; } = true;
+        public bool recovering { get; set; } = true;
         public int recoveryRate { get; private set; }
 
         public IEnumerator Recover()
@@ -35,7 +35,7 @@ namespace Stats
             while (true)
             {
                 yield return new WaitForSeconds(recoveryRate / 1000);
-                if(isRecovering) level++;
+                if(recovering) level++;
             }
         }
 
@@ -69,7 +69,7 @@ namespace Stats
         int min { get; }
         int threshold { get; }
         int impairment { get; }
-        bool isRecovering { get; }
+        bool recovering { get; }
         int recoveryRate { get; }
         IEnumerator Recover();
     }

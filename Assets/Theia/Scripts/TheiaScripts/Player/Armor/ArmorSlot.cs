@@ -1,13 +1,14 @@
 ﻿using Sirenix.OdinInspector;
 using Stats;
 using System.Collections.Generic;
-using System.Linq;
 using Theia.Items.Armor;
 
 namespace Theia.Stats.ArmorScripts
 {
-    public class ArmorSlot : LinkableObject<ArmorSlotData>
+    [HideReferenceObjectPicker]
+    public class ArmorSlot : DataClient<ArmorSlotData>
     {
+        [ShowInInspector, ReadOnly]
         private Dictionary<ArmorType, ArmorItem> slots;
 
         public ArmorSlot()

@@ -18,7 +18,7 @@ namespace Stats.Anatomy
         private void checkCrippled()
         {
             crippled = level == min || parentIsCrippled;
-            isRecovering = crippled ? false : isRecovering;
+            recovering = crippled ? false : recovering;
             children.Notify(this);
         }
 
@@ -27,7 +27,7 @@ namespace Stats.Anatomy
         public void Damage(int amt = 5)
         {
             level -= amt; // TODO: amt - armorCoverage
-            isRecovering = level >= 0;
+            recovering = level >= 0;
             checkCrippled();
         }
 

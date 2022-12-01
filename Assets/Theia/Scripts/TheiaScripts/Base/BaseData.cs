@@ -6,7 +6,9 @@ using Sirenix.OdinInspector;
 namespace Stats
 {
     /// <summary>
-    /// BaseData is a scriptable object that both contains relevant data and acts as an identifier for anything interfaces with it.
+    /// BaseData is a scriptable object base for creating data assets that are consumed by DataClient objects. 
+    /// Primarily for storing raw data, "Data" objects can also store logic, while their clients are responsible 
+    /// for managing state.
     /// </summary>
     public abstract class BaseData : SerializedScriptableObject
     {

@@ -8,7 +8,7 @@ namespace Stats.SkillTypes
 {
 
     [RequireComponent(typeof(Attributes)), DisallowMultipleComponent]
-    public class Skills : StatManager<Skill, SkillData>, iConsumerManager<iAttributeProvider>, iProviderManager<iSkillProvider>
+    public class Skills : DataClientManager<SkillData, Skill>, iConsumerManager<iAttributeProvider>, iProviderManager<iSkillProvider>
     {
         public iSkillProvider[] GetProviders() => all;
         public void SubscribeAll(iProviderManager<iAttributeProvider> providerManager)

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Stats.Anatomy
 {
-    public class Anatomy : StatManager<BodyPart, BodyPartData>, iConsumerManager<iAttributeProvider>
+    public class Anatomy : DataClientManager<BodyPartData, BodyPart>, iConsumerManager<iAttributeProvider>
     {
         public int totalVulnerability = 0;
 
@@ -40,10 +40,9 @@ namespace Stats.Anatomy
                 StartCoroutine(bodypart.Recover());
         }
 
-        public override void InitializeTemplate()
+        protected override void InitCallback(BodyPartData data)
         {
-            base.InitializeTemplate();
-
+            base.InitCallback(data);
             totalVulnerability = 0;
             foreach (var bp in all)
                 totalVulnerability = bp.SetVulnerability(totalVulnerability); 
