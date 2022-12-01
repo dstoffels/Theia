@@ -1,7 +1,7 @@
 ﻿using Stats;
 using UnityEngine;
 
-namespace Theia.Stats.ArmorScripts
+namespace Theia.Stats.armor
 {
     public class ArmorSlotData : BaseData
     {

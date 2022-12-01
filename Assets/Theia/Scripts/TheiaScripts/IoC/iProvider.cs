@@ -1,4 +1,5 @@
 ﻿using Theia.Stats.attributes;
+using Theia.Stats.anatomy;
 
 namespace Theia.IoC
 {
@@ -25,5 +26,10 @@ namespace Theia.IoC
     public interface iBodyPartProvider : iLevelProvider<iBodyPartConsumer>
     {
         bool GetCrippled();
+    }
+
+    public interface iArmorProvider : iProvider<iArmorConsumer>
+    {
+        int GetDamageReduction(BodyPartData bodypart);
     }
 }

@@ -9,4 +9,5 @@
     public interface iAttributeConsumer : iConsumer<iAttributeProvider> { }
     public interface iSkillConsumer : iConsumer<iSkillProvider> { }
     public interface iBodyPartConsumer : iConsumer<iBodyPartProvider> { }
+    public interface iArmorConsumer : iConsumer<iArmorProvider> { }
 }

@@ -25,5 +25,6 @@ namespace Theia.IoC
 
     public class AttributeConsumers : Consumers<iAttributeConsumer, iAttributeProvider> { }
     public class SkillConsumers : Consumers<iSkillConsumer, iSkillProvider> { }
-    public class BodyPartConsumers : Consumers<iBodyPartConsumer, iBodyPartProvider> { }    
+    public class BodyPartConsumers : Consumers<iBodyPartConsumer, iBodyPartProvider> { }
+    public class ArmorSlotConsumers : Consumers<iArmorConsumer, iArmorProvider> { }
 }

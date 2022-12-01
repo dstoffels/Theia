@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Theia.Stats.anatomy
 {
-    public class Anatomy : DataClientManager<BodyPartData, BodyPart>, iConsumerManager<iAttributeProvider>
+    public class Anatomy : DataClientManager<BodyPartData, BodyPart>, iConsumerManager<iAttributeProvider>, iConsumerManager<iArmorProvider>
     {
         public int totalVulnerability = 0;
 
@@ -65,6 +65,13 @@ namespace Theia.Stats.anatomy
                     }
                 }
             }
+        }
+
+        public void SubscribeAll(iProviderManager<iArmorProvider> providerManager)
+        {
+            foreach (var bp in all)
+                foreach (var armorSlot in providerManager.GetProviders())
+                    bp.Subscribe(armorSlot);
         }
     }
 }

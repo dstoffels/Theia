@@ -9,7 +9,7 @@ using Theia.Stats.vitals;
 namespace Theia.Stats.anatomy
 {
     [HideReferenceObjectPicker]
-    public class BodyPart : VitalBase<BodyPartData>, iBodyPartProvider, iBodyPartConsumer
+    public class BodyPart : VitalBase<BodyPartData>, iBodyPartProvider, iBodyPartConsumer, iArmorConsumer
     {
         public int vulnerability { get; private set; }
         public int SetVulnerability(int accumulator) => vulnerability = data.vulnerability + accumulator;
@@ -23,11 +23,12 @@ namespace Theia.Stats.anatomy
             children.Notify(this);
         }
 
-        public int armorCoverage { get; private set; } // TODO: wire up consumer interface
+        [ShowInInspector, ReadOnly]
+        public int damageReduction { get; private set; }
 
         public void Damage(int amt = 5)
         {
-            level -= amt; // TODO: amt - armorCoverage
+            level -= amt - damageReduction;
             recovering = level >= 0;
             checkCrippled();
         }
@@ -49,10 +50,24 @@ namespace Theia.Stats.anatomy
             checkCrippled();
         }
 
+        private IntProviders armorSlots = new IntProviders();
+        public void Subscribe(iArmorProvider provider)
+        {
+            provider.AddConsumer(this);
+            Notify(provider);
+        }
+
+        public void Notify(iArmorProvider provider)
+        {
+            armorSlots.Update(provider.GetData(), provider.GetDamageReduction(data));
+            damageReduction = armorSlots.GetTotal();
+        }
+
         // PROVIDER INTERFACE
         private BodyPartConsumers children = new BodyPartConsumers();
         public void AddConsumer(iBodyPartConsumer consumer) => children.Add(consumer);
         public bool GetCrippled() => crippled;
         public int GetLevel() => level;
+
     }
 }
