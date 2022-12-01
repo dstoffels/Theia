@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using InventoryStuff;
+using Theia.Items.deprecated;
 using Sirenix.OdinInspector;
 
-namespace Items
+namespace Theia.Items.refactor
 {
     [CreateAssetMenu(menuName = "Item/Inventory Item")]
     public class InventoryItemData : ItemData

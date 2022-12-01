@@ -1,4 +1,6 @@
-﻿namespace Stats.IoC
+﻿using Theia.Stats.attributes;
+
+namespace Theia.IoC
 {
     public interface iData
     {

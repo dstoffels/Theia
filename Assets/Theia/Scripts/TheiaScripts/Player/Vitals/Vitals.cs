@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using Stats.Values;
-using Stats.IoC;
-using UnityEditor.VersionControl;
+using Theia.IoC;
 
-namespace Stats
+namespace Theia.Stats.vitals
 {
     public class Vitals : DataClientManager<VitalData, Vital>, iConsumerManager<iAttributeProvider>
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace Stats
+namespace Theia
 {
     public abstract class DataClientManager<TData, TClient> : SerializedMonoBehaviour
         where TClient : DataClient<TData>, new()

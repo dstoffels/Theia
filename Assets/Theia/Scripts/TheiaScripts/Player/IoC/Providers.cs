@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 
-namespace Stats.IoC
+namespace Theia.IoC
 {
     /// <summary>
     /// A dictionary of provider data/values, instantiated in conjunction with iConsumer, if it consumes from multiple providers.

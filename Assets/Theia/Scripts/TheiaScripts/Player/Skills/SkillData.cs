@@ -3,9 +3,10 @@ using Abilities;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using Stats.ArchetypeTypes;
+using Theia.Stats.attributes;
+using Theia.Stats.archetypes;
 
-namespace Stats.SkillTypes
+namespace Theia.Stats.skills
 {
     [CreateAssetMenu(menuName = "Skills/Skill")]
     public class SkillData : BaseData

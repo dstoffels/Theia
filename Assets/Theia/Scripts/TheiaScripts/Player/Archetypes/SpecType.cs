@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace Stats.ArchetypeTypes
+namespace Theia.Stats.archetypes
 {
     [CreateAssetMenu(menuName = "Archetypes/Specialization")]
     public class SpecType : Archetype

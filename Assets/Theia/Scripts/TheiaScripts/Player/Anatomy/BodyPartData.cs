@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Stats.IoC;
-using UnityEditor;
+using Theia.IoC;
 using UnityEngine;
+using Theia.Stats.vitals;
 
 
-namespace Stats.Anatomy
+namespace Theia.Stats.anatomy
 {
     [CreateAssetMenu(menuName = "Anatomy/Body Part")]
     [InfoBox("Must have only Strength & Constitution in secondary attributes.")]

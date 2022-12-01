@@ -1,8 +1,8 @@
-﻿using Items;
+﻿using Theia.Items.deprecated;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace InventoryStuff
+namespace Theia.Items.refactor
 {
     public class Gear : SerializedMonoBehaviour
     {

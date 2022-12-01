@@ -1,5 +1,5 @@
 ﻿using Stats;
-using Stats.Anatomy;
+using Theia.Stats.anatomy;
 using System.Collections.Generic;
 using Theia.Items.Base;
 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections;
-using Stats.IoC;
+using Theia.IoC;
 
-namespace Stats
+namespace Theia.Stats.vitals
 {
     [HideReferenceObjectPicker]
     public abstract class VitalBase<TVitalData> : DataClient<TVitalData>, iVital, iAttributeConsumer where TVitalData : VitalData
@@ -60,17 +60,5 @@ namespace Stats
             recoveryRate = data.GetRecoveryRate(this);
         }
         public BaseData GetData() => data;
-    }
-
-    public interface iVital
-    {
-        int level { get; }
-        int max { get; }
-        int min { get; }
-        int threshold { get; }
-        int impairment { get; }
-        bool recovering { get; }
-        int recoveryRate { get; }
-        IEnumerator Recover();
     }
 }

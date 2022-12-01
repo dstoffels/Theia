@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
-using Stats.IoC;
+using Theia.IoC;
 
-namespace Stats
+namespace Theia.Stats.attributes
 {
     public interface iStatBuff { } // fixme: sort out stat buffs, look at uMMORPG methods
 

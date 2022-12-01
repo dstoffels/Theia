@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using Stats;
 
-namespace Items
+namespace Theia.Items.deprecated
 {
     public class ItemData : BaseData
     {

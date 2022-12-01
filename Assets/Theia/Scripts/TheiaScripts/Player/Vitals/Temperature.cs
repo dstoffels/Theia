@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Stats
+namespace Theia.Stats.vitals
 {
     [CreateAssetMenu(menuName = "Vitals/Temperature", fileName = "Temperature")]
     public class Temperature : VitalData

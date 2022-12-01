@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
-using Items;
+using Theia.Items.deprecated;
 
-namespace InventoryStuff
+namespace Theia.Items.refactor
 {
     [HideReferenceObjectPicker, InlineProperty]
     public abstract class ItemSlot<Item> : IWearableItemSlot

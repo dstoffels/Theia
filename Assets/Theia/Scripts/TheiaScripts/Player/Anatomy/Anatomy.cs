@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Stats.IoC;
+using Theia.IoC;
 using UnityEngine;
 
 
-namespace Stats.Anatomy
+namespace Theia.Stats.anatomy
 {
     public class Anatomy : DataClientManager<BodyPartData, BodyPart>, iConsumerManager<iAttributeProvider>
     {

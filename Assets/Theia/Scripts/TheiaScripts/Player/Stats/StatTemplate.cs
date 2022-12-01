@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace Stats
+namespace Theia.Stats
 {
     public class StatTemplate<StatData> : SerializedScriptableObject where StatData : BaseData
     {

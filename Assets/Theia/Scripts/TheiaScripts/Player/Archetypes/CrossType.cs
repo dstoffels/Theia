@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Stats.ArchetypeTypes
+namespace Theia.Stats.archetypes
 {
     [CreateAssetMenu(menuName = "Archetypes/Crosstype")]
     public class CrossType : Archetype

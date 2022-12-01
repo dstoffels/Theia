@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using InventoryStuff;
 using Mats;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Theia.Items.deprecated;
 
-namespace Items
+namespace Theia.Items.refactor
 {
     public class GearItem : ItemBase<FabricMat, InventoryItemData>, IWearableItem, IContainer
     {

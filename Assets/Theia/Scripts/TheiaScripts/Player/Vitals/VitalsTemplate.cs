@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using Stats.Values;
 
-namespace Stats
+namespace Theia.Stats.vitals
 {
     [CreateAssetMenu(menuName ="Vitals/Vitals Template")]
     class VitalsTemplate : StatTemplate<VitalData> { }

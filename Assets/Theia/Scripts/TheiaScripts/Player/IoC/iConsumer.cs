@@ -1,4 +1,4 @@
-﻿namespace Stats.IoC
+﻿namespace Theia.IoC
 {
     public interface iConsumer<TProvider>
     {

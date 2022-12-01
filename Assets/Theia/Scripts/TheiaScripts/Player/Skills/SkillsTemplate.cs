@@ -4,7 +4,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using Stats.SkillTypes;
+using Theia.Stats.skills;
+using Theia.Stats;
 
 namespace Stats
 {

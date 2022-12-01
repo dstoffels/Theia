@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace Stats
+namespace Theia
 {
     /// <summary>
     /// BaseData is a scriptable object base for creating data assets that are consumed by DataClient objects. 

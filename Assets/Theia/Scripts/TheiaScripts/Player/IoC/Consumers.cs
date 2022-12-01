@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using Stats;
 using UnityEngine;
 
-namespace Stats.IoC
+namespace Theia.IoC
 {
     /// <summary>
     /// A set of iConsumers, used in conjunction with iProvider.

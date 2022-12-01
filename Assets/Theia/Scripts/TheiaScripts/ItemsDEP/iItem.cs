@@ -1,7 +1,7 @@
-﻿using InventoryStuff;
+﻿using Theia.Items.refactor;
 using UnityEngine;
 
-namespace Items
+namespace Theia.Items.deprecated
 {
     public interface iItem
     {

@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using Stats.IoC;
+using Theia.IoC;
+using Theia.Stats.attributes;
 
-namespace Stats
+namespace Theia.Stats.vitals
 {
     /// <summary>
     /// Vitals each calculate their stats differently so VitalData contains default members to work from,

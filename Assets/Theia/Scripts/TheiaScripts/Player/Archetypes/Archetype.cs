@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stats.ArchetypeTypes
+namespace Theia.Stats.archetypes
 {
     public abstract class Archetype : BaseData
     {

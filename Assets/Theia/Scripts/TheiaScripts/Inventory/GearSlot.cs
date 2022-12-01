@@ -1,6 +1,4 @@
-﻿using Items;
-
-namespace InventoryStuff
+﻿namespace Theia.Items.refactor
 {
     public class GearSlot : ItemSlot<GearItem>
     {

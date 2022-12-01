@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Stats.IoC;
+using Theia.IoC;
 using UnityEngine;
+using Theia.Stats.vitals;
 
 // TODO: Setup iArmorConsumer
-namespace Stats.Anatomy
+namespace Theia.Stats.anatomy
 {
     [HideReferenceObjectPicker]
     public class BodyPart : VitalBase<BodyPartData>, iBodyPartProvider, iBodyPartConsumer

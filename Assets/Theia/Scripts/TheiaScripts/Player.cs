@@ -1,13 +1,17 @@
-using System;
 using Mirror;
-using Stats;
 using UnityEngine;
-using Items;
+using Theia.Items.deprecated;
 using Sirenix.OdinInspector;
-using Stats.Anatomy;
-using Stats.SkillTypes;
+using Theia.Stats.anatomy;
+using Theia.Stats.vitals;
+using Theia.Stats.skills;
+using Theia.Stats.attributes;
 
-[RequireComponent(typeof(Attributes), typeof(Skills))]
+
+namespace Theia
+{
+
+    [RequireComponent(typeof(Attributes), typeof(Skills))]
 [RequireComponent(typeof(Vitals), typeof(Anatomy))]
 public class Player : NetworkBehaviour
 {
@@ -84,4 +88,6 @@ public struct PlayerHelpers
         player.anatomy.SubscribeAll(player.attributes);
 
     }
+}
+
 }

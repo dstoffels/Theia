@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
-using InventoryStuff;
+using Theia.Items.refactor;
 using UnityEngine.Events;
 
-namespace Items
+namespace Theia.Items.deprecated
 {
     public abstract class ItemBase<TMaterial, TItemData> : SerializedMonoBehaviour, iItem 
         where TItemData : ItemData

@@ -1,6 +1,6 @@
-﻿using Items;
+﻿using Theia.Items.deprecated;
 
-namespace InventoryStuff
+namespace Theia.Items.refactor
 {
     public interface IWearableItemSlot
     {

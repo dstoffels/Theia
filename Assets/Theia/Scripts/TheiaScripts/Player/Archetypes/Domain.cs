@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Stats.ArchetypeTypes
+namespace Theia.Stats.archetypes
 {
     [CreateAssetMenu(menuName = "Archetypes/Domain")]
     public class Domain : Archetype

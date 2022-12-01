@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
-using Stats.IoC;
-using Stats.SkillTypes;
+using Theia.IoC;
+using Theia.Stats.skills;
 
-namespace Stats
+namespace Theia.Stats.attributes
 {
     [RequireComponent(typeof(Skills)), DisallowMultipleComponent]
     public class Attributes : DataClientManager<AttributeData, Attribute>, iProviderManager<iAttributeProvider>, iConsumerManager<iSkillProvider>

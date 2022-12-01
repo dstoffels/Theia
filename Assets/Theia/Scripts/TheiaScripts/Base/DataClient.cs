@@ -2,7 +2,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace Stats
+namespace Theia
 {
     /// <summary>
     /// A base class which derives its data from a ScriptableObject (BaseData).

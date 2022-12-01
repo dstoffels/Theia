@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using Stats.IoC;
+using Theia.IoC;
+using Theia.Stats.attributes;
 
-namespace Stats.SkillTypes
+namespace Theia.Stats.skills
 {
 
     [RequireComponent(typeof(Attributes)), DisallowMultipleComponent]

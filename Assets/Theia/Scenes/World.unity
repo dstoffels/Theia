@@ -11075,18 +11075,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55389e49db478434fa12fe9c31063414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: []
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  material: {fileID: 11400000, guid: 24417bd740e9c5b428571b7621d21b77, type: 2}
-  data: {fileID: 11400000, guid: 0a945041e42d0f54782ec7ff12a143f0, type: 2}
-  accessory: {fileID: 0}
 --- !u!4 &278999848
 Transform:
   m_ObjectHideFlags: 0
@@ -14100,7 +14088,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  path: Stats/Vitals
 --- !u!114 &370969801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14122,7 +14109,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  path: 
   totalVulnerability: 28
 --- !u!114 &370969802
 MonoBehaviour:
@@ -14136,6 +14122,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fae05bb7fb4ab147b71b8d544a37403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!114 &370969806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14157,7 +14152,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  path: 
 --- !u!114 &370969807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14179,7 +14173,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  path: 
 --- !u!4 &370969808
 Transform:
   m_ObjectHideFlags: 0
@@ -14227,7 +14220,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: rightHand
       Entry: 7
-      Data: 0|InventoryStuff.HandSlot, uMMORPG
+      Data: 0|Theia.Items.refactor.HandSlot, uMMORPG
     - Name: item
       Entry: 6
       Data: 
@@ -14236,7 +14229,7 @@ MonoBehaviour:
       Data: 
     - Name: leftHand
       Entry: 7
-      Data: 1|InventoryStuff.HandSlot, uMMORPG
+      Data: 1|Theia.Items.refactor.HandSlot, uMMORPG
     - Name: item
       Entry: 6
       Data: 
@@ -14245,10 +14238,10 @@ MonoBehaviour:
       Data: 
     - Name: slots
       Entry: 7
-      Data: 2|InventoryStuff.GearSlots, uMMORPG
+      Data: 2|Theia.Items.refactor.GearSlots, uMMORPG
     - Name: comparer
       Entry: 7
-      Data: 3|System.Collections.Generic.ObjectEqualityComparer`1[[InventoryStuff.GearSlotData,
+      Data: 3|System.Collections.Generic.ObjectEqualityComparer`1[[Theia.Items.refactor.GearSlotData,
         uMMORPG]], mscorlib
     - Name: 
       Entry: 8
@@ -14264,7 +14257,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 4|InventoryStuff.GearSlot, uMMORPG
+      Data: 4|Theia.Items.refactor.GearSlot, uMMORPG
     - Name: item
       Entry: 6
       Data: 
@@ -14282,7 +14275,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: 5|InventoryStuff.GearSlot, uMMORPG
+      Data: 5|Theia.Items.refactor.GearSlot, uMMORPG
     - Name: item
       Entry: 6
       Data: 
@@ -14300,7 +14293,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 7
-      Data: 6|InventoryStuff.GearSlot, uMMORPG
+      Data: 6|Theia.Items.refactor.GearSlot, uMMORPG
     - Name: item
       Entry: 6
       Data: 
@@ -14318,7 +14311,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 7
-      Data: 7|InventoryStuff.GearSlot, uMMORPG
+      Data: 7|Theia.Items.refactor.GearSlot, uMMORPG
     - Name: item
       Entry: 6
       Data: 
@@ -14336,7 +14329,7 @@ MonoBehaviour:
       Data: 4
     - Name: $v
       Entry: 7
-      Data: 8|InventoryStuff.GearSlot, uMMORPG
+      Data: 8|Theia.Items.refactor.GearSlot, uMMORPG
     - Name: item
       Entry: 6
       Data: 
@@ -14354,7 +14347,7 @@ MonoBehaviour:
       Data: 5
     - Name: $v
       Entry: 7
-      Data: 9|InventoryStuff.GearSlot, uMMORPG
+      Data: 9|Theia.Items.refactor.GearSlot, uMMORPG
     - Name: item
       Entry: 6
       Data: 
@@ -14372,7 +14365,7 @@ MonoBehaviour:
       Data: 6
     - Name: $v
       Entry: 7
-      Data: 10|InventoryStuff.GearSlot, uMMORPG
+      Data: 10|Theia.Items.refactor.GearSlot, uMMORPG
     - Name: item
       Entry: 6
       Data: 
@@ -14850,18 +14843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55389e49db478434fa12fe9c31063414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: []
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  material: {fileID: 11400000, guid: 24417bd740e9c5b428571b7621d21b77, type: 2}
-  data: {fileID: 11400000, guid: 0a945041e42d0f54782ec7ff12a143f0, type: 2}
-  accessory: {fileID: 0}
 --- !u!4 &391639011
 Transform:
   m_ObjectHideFlags: 0
@@ -21697,17 +21678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e454fef6b5e5ee4468c15282b690f823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: []
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  material: {fileID: 11400000, guid: 24417bd740e9c5b428571b7621d21b77, type: 2}
-  data: {fileID: 11400000, guid: 82b0f006b008ba34fa35388b6a9c0b93, type: 2}
 --- !u!4 &623966270
 Transform:
   m_ObjectHideFlags: 0
@@ -35652,7 +35622,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: storedItems
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Items.iItem, uMMORPG]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[Theia.Items.deprecated.iItem, uMMORPG]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -41949,7 +41920,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: storedItems
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Items.iItem, uMMORPG]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[Theia.Items.deprecated.iItem, uMMORPG]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -43304,17 +43276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5230211819adeec44ae9ae4fb54ba938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: []
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  material: {fileID: 11400000, guid: 4c375e0fe2bca16498d3a58af1d13a8d, type: 2}
-  data: {fileID: 11400000, guid: e39001c5db0cdb842b0235370e7a8785, type: 2}
 --- !u!4 &1329581013
 Transform:
   m_ObjectHideFlags: 0
