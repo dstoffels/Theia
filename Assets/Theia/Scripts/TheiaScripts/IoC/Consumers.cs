@@ -9,7 +9,8 @@ namespace Theia.IoC
     /// <summary>
     /// A set of iConsumers, used in conjunction with iProvider.
     /// </summary>
-    public class Consumers<TConsumer, TProvider> : List<TConsumer> where TConsumer : iConsumer<TProvider>
+    public class Consumers<TConsumer, TProvider> : List<TConsumer> 
+        where TConsumer : iConsumer<TProvider>
     {
         new public void Add(TConsumer consumer)
         {

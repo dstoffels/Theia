@@ -12,10 +12,12 @@ namespace Theia.Items.Base
         where TData : ItemData
     {
         public MaterialData material;
-        public override int weight => (int)(data.baseWeight * material.density);
+        public override int weight => data && material ? (int)(data.baseWeight * material.density) : 0;
 
-        public override void Init()
+        public void Init(TData data, MaterialData material)
         {
+            base.Init(data);
+            this.material = material;
             name = $"{material.name} {data.name}";
         }
     }

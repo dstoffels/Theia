@@ -12,6 +12,11 @@ namespace Theia.IoC
         void AddConsumer(TConsumer consumer);
     }
 
+    public interface iWeightProvider
+    {
+        int GetWeight();
+    }
+
     public interface iLevelProvider<TConsumer> : iProvider<TConsumer>
     {
         int GetLevel();
@@ -31,5 +36,6 @@ namespace Theia.IoC
     public interface iArmorProvider : iProvider<iArmorConsumer>
     {
         int GetDamageReduction(BodyPartData bodypart);
+        int GetHindrance();
     }
 }

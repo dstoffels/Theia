@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8505f1e4f6d98cb47b0e8827d47983e5, type: 3}
-  m_Name: Coif
+  m_Name: Gambeson
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: dc41c0c6559064348ba59279ad2702ba, type: 2}
-    - {fileID: 11400000, guid: 6ed3be6834e9f8b4d9a3f59261278fb2, type: 2}
+    - {fileID: 11400000, guid: ee7bc70d26b8ad846b99621698417bde, type: 2}
+    - {fileID: 11400000, guid: 2c66d1297f607f346a13c1735f80278a, type: 2}
+    - {fileID: 11400000, guid: 82adf62d8579b88459a82aad201369b3, type: 2}
+    - {fileID: 11400000, guid: af795ea2944bc8b4aa0586d99b8af9ab, type: 2}
+    - {fileID: 11400000, guid: b44a36f81dc11c74d9b2dc9fc29804cf, type: 2}
+    - {fileID: 11400000, guid: 1a42812c104273a409ee3f8a035bdbac, type: 2}
+    - {fileID: 11400000, guid: 434ffc6beebb77d43ac6f7128d9f4b95, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -52,7 +57,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
@@ -79,6 +84,43 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[Theia.Stats.anatomy.BodyPartData,
+        uMMORPG]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -86,7 +128,7 @@ MonoBehaviour:
       Data: 
   description: 
   maxStackSize: 1
-  baseWeight: 350
+  baseWeight: 3000
   image: {fileID: 0}
   baseHindrance: 5
   baseProtection: 0

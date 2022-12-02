@@ -9,7 +9,9 @@ namespace Theia.Items.Armor
     [CreateAssetMenu(menuName = "Armor/Type")]
     public class ArmorType : BaseData
     {
-
+        // TODO: add special features?
+        // no gaps in coverage (maille)
+        // puncture resistant?
         private static List<ArmorType> _cache;
         [ShowInInspector]
         public static List<ArmorType> all

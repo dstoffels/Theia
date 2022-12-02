@@ -9,9 +9,9 @@ namespace Theia.Items.Base
     public abstract class BaseItem<TData> : DataClientBehaviour<TData>, iItem
         where TData : ItemData
     {
-        [ShowInInspector, SuffixLabel("mL", true)]
-        public int volume => data.size.volume;
-        [ShowInInspector, SuffixLabel("g", true)]
-        public virtual int weight => data.baseWeight;
+        [SuffixLabel("mL", true), ShowInInspector]
+        public int volume => data ? data.size.volume : 0;
+        [SuffixLabel("g", true), ShowInInspector]
+        public virtual int weight => data ? data.baseWeight : 0;
     }
 }
