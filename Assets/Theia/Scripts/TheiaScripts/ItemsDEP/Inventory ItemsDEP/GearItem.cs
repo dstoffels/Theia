@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using Mats;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Theia.Items.deprecated;
+using Theia.Stats.gear;
 
-namespace Theia.Items.refactor
+namespace Theia.Items.Base
 {
-    public class GearItem : ItemBase<FabricMat, InventoryItemData>, IWearableItem, IContainer
+    public class GearItem : MaterialItem<InventoryItemData>, IContainer, iItem
     {
         public List<iItem> storedItems = new List<iItem>();
         public bool isSecured { get; set; }
@@ -35,6 +34,8 @@ namespace Theia.Items.refactor
                 return total;
             }
         }
+
+        int iItem.volume => throw new System.NotImplementedException();
 
         [Button]
         public void Wear(Player player)
@@ -78,11 +79,11 @@ namespace Theia.Items.refactor
 
         private bool DoesItemFit(iItem item)
         {
-            var maxLength = isSecured ? height : height * 2;                        // if container must be secured, item length cannot exceed container length. If not, up to 2x container length is allowed.
+            //var maxLength = isSecured ? height : height * 2;                        // if container must be secured, item length cannot exceed container length. If not, up to 2x container length is allowed.
 
-            if (item.width > width) return false;                                   // is item wider than container?
-            if (item.height > maxLength) return false;                              // is item too tall for container?
-            if (currentVolume + item.volume > maxContainerVolume) return false;     // is the container too full to handle the additional volume of the item?
+            //if (item.width > width) return false;                                   // is item wider than container?
+            //if (item.height > maxLength) return false;                              // is item too tall for container?
+            //if (currentVolume + item.volume > maxContainerVolume) return false;     // is the container too full to handle the additional volume of the item?
             return true;
         }
     }

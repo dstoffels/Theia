@@ -1,4 +1,4 @@
-﻿namespace Theia.Items.deprecated
+﻿namespace Theia.Items.Base
 {
     interface IContainer
     {

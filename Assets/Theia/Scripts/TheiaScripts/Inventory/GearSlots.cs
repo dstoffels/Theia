@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Theia.Items.refactor
+namespace Theia.Stats.gear
 {
     /// <summary>
     /// Custom Dictionary for the Inventory system.

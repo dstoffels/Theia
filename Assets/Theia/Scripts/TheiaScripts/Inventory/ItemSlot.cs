@@ -1,31 +1,31 @@
 ﻿using Sirenix.OdinInspector;
-using Theia.Items.deprecated;
+using Theia.Items.Base;
 
-namespace Theia.Items.refactor
+namespace Theia.Stats.gear
 {
     [HideReferenceObjectPicker, InlineProperty]
-    public abstract class ItemSlot<Item> : IWearableItemSlot
-        where Item : iItem
+    public abstract class ItemSlot<TItem> : DataClient<GearSlotData>, iWearableItemSlot<TItem>
+        where TItem : iItem
     {
         [LabelWidth(75)]
-        public Item item;
+        public TItem item;
 
-        public iItem RemoveItem(iItem item)
+        public TItem Remove(TItem item)
         {
             var temp = item;
             this.item = default;
             return temp;
         }
 
-        public iItem WearItem(iItem newItem)
+        public TItem Equip(TItem newItem)
         {
             var temp = item;
 
-            item = (Item)newItem;
-            item.currentSlot = this;
+            item = newItem;
+            //item.currentSlot = this;
 
             if (temp == null)
-                return null;
+                return default;
             else 
                 return temp;
         }

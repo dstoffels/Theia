@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Theia.Items.refactor
+namespace Theia.Stats.gear
 {
     [CreateAssetMenu]
     public class InventoryTemplate : SerializedScriptableObject

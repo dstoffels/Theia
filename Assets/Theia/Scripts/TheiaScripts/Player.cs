@@ -1,12 +1,13 @@
 using Mirror;
 using UnityEngine;
-using Theia.Items.deprecated;
+using Theia.Items.Base;
 using Sirenix.OdinInspector;
 using Theia.Stats.anatomy;
 using Theia.Stats.vitals;
 using Theia.Stats.skills;
 using Theia.Stats.attributes;
 using Theia.Stats.armor;
+using Theia.Stats.gear;
 
 namespace Theia
 {
@@ -22,7 +23,7 @@ namespace Theia
         public Vitals vitals;
         public Anatomy anatomy;
         public Armor armor;
-        //public Gear gear;
+        public Gear gear;
 
         public override void OnStartLocalPlayer()
         {
@@ -50,17 +51,17 @@ namespace Theia
 
         private void Update()
         {
-            if (Input.GetMouseButtonUp(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                Physics.Raycast(ray, out hit);
+            //if (Input.GetMouseButtonUp(0))
+            //{
+            //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //    RaycastHit hit;
+            //    Physics.Raycast(ray, out hit);
 
-                var item = hit.collider.GetComponent<iItem>();
-                if (item != null)
-                    item.PickUp(this);
+            //    var item = hit.collider.GetComponent<iItem>();
+            //    if (item != null)
+            //        item.PickUp(this);
 
-            }
+            //}
         }
     }
 
@@ -73,17 +74,12 @@ namespace Theia
             player.vitals ??= player.GetComponent<Vitals>();
             player.anatomy ??= player.GetComponent<Anatomy>();
             player.armor ??= player.GetComponent<Armor>();
-            //player.gear ??= player.GetComponent<InventoryStuff.Gear>();
+            player.gear ??= player.GetComponent<Gear>();
 
         }
 
         public static void InitializeComponents(Player player)
         {
-            //player.attributes.InitializeTemplate();
-            //player.skills.InitializeTemplate();
-            //player.vitals.InitializeTemplate();
-            //player.anatomy.InitializeTemplate();
-
             player.attributes.SubscribeAll(player.skills);
             player.skills.SubscribeAll(player.attributes);
             player.vitals.SubscribeAll(player.attributes);

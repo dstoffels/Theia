@@ -1,10 +1,10 @@
-﻿using Theia.Items.deprecated;
-
-namespace Theia.Items.refactor
+﻿using Theia.Items.Base;
+namespace Theia.Stats.gear
 {
-    public interface IWearableItemSlot
+    public interface iWearableItemSlot<TItem>
+        where TItem : iItem
     {
-        iItem RemoveItem(iItem item);
-        iItem WearItem(iItem newItem);
+        TItem Equip(TItem item);
+        TItem Remove(TItem item);
     }
 }
