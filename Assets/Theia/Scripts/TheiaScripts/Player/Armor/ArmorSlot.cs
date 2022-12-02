@@ -35,6 +35,7 @@ namespace Theia.Stats.armor
             if (slots[armorItem.type] == armorItem)
             {
                 slots[armorItem.type] = null;
+                consumers.Notify(this);
                 return armorItem;
             }
             return null;

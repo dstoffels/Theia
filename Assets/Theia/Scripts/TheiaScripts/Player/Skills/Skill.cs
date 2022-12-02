@@ -42,12 +42,13 @@ namespace Theia.Stats.skills
 
         // Players earn xp in a skill by using constituent abilities, leveling up the skill's proficiency at exponential increments.
         //[ShowInInspector, ReadOnly]
-        public int xp { get; private set; }
+        public long xp { get; private set; }
 
         [Button(Style = ButtonStyle.FoldoutButton)]
-        public void AddXp(int amount=5000)
+        public void AddXp(long amount=5000)
         {
-            xp = Mathf.Max(0, xp + amount);
+            var newVal = xp + amount;
+            xp = newVal > 0 ? newVal : 0;
 
             SetProficiency();
         }

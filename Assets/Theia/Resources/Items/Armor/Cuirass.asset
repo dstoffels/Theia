@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8505f1e4f6d98cb47b0e8827d47983e5, type: 3}
+  m_Name: Cuirass
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: size
+      Entry: 7
+      Data: Theia.Items.Base.ItemSize, uMMORPG
+    - Name: height
+      Entry: 3
+      Data: 40
+    - Name: width
+      Entry: 3
+      Data: 25
+    - Name: depth
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: slots
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Theia.Stats.armor.ArmorSlotData,
+        uMMORPG],[System.Collections.Generic.List`1[[Theia.Stats.anatomy.BodyPartData,
+        uMMORPG]], mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Theia.Stats.armor.ArmorSlotData,
+        uMMORPG]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  description: 
+  maxStackSize: 1
+  baseWeight: 2500
+  image: {fileID: 0}
+  baseHindrance: 20
+  baseProtection: 10
+  type: {fileID: 11400000, guid: 8280ec7efe0f96a4dbfb33bd1ec37a7d, type: 2}

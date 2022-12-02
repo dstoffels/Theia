@@ -28,12 +28,13 @@ namespace Theia.Stats.anatomy
 
         public void Damage(int amt = 5)
         {
-            level -= amt - damageReduction;
+            level -= Mathf.Max(1, amt - damageReduction);
             recovering = level >= 0;
             checkCrippled();
         }
 
         // CONSUMER INTERFACE
+        // BODYPARTS
         private bool parentIsCrippled;
         public void Subscribe(iBodyPartProvider provider)
         {
@@ -50,6 +51,7 @@ namespace Theia.Stats.anatomy
             checkCrippled();
         }
 
+        // ARMOR
         private IntProviders armorSlots = new IntProviders();
         public void Subscribe(iArmorProvider provider)
         {
