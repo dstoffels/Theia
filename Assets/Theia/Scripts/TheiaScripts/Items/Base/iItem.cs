@@ -4,6 +4,7 @@
     {
         string name { get; }
         int weight { get; }
-        int volume { get; }
+
+        ItemSize size { get; }
     }
 }

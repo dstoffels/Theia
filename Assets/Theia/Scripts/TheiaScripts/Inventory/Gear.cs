@@ -4,18 +4,32 @@ using Theia.Items.Base;
 
 namespace Theia.Stats.gear
 {
-    public class Gear : DataClientManager<GearSlotData, GearSlot>, iEquippable<GearItem>
+    public class Gear : DataClientManager<GearSlotData, GearSlot>, iEquippable<InventoryItem>
     {
-        [Button]
-        public GearItem Equip(GearItem item)
+        [ShowInInspector]
+        public int totalWeight { get; private set; }
+
+        public void SetTotalWeight()
         {
-            return this[item.slot].Equip(item);
+            totalWeight = 0;
+            foreach (var slot in all)
+                totalWeight += slot.item ? slot.item.weight : 0;
         }
 
         [Button]
-        public GearItem Remove(GearItem item)
+        public InventoryItem Equip(InventoryItem item)
         {
-            return this[item.slot].Remove(item);
+            item = this[item.slot].Equip(item);
+            SetTotalWeight();
+            return item;
+        }
+
+        [Button]
+        public InventoryItem Remove(InventoryItem item)
+        {
+            item = this[item.slot].Remove(item);
+            SetTotalWeight();
+            return item;
         }
 
         // TODO: will this method return/display a message for feedback?
@@ -62,7 +76,7 @@ namespace Theia.Stats.gear
     }
 
     public interface iEquippable<TItem>
-        where TItem : Items.Base.iItem
+        where TItem : iItem
     {
         TItem Equip(TItem item);
         TItem Remove(TItem item);

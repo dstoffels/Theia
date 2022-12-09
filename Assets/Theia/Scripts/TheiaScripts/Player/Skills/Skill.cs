@@ -41,7 +41,7 @@ namespace Theia.Stats.skills
         }
 
         // Players earn xp in a skill by using constituent abilities, leveling up the skill's proficiency at exponential increments.
-        //[ShowInInspector, ReadOnly]
+        [ShowInInspector, ReadOnly]
         public long xp { get; private set; }
 
         [Button(Style = ButtonStyle.FoldoutButton)]
@@ -55,10 +55,11 @@ namespace Theia.Stats.skills
 
         public int proficiency { get; private set; }
 
-        private static readonly float FIRST_BONUS_AT = 1000;
+        private static readonly long FIRST_BONUS_AT = 1000;
         private static readonly float BONUS_MODIFIER = 1.02f;
-        private float nextBonusAt, xpRequired = FIRST_BONUS_AT;
-        private float lastBonusAt = 0;
+        [ShowInInspector]
+        private long nextBonusAt, xpRequired = FIRST_BONUS_AT;
+        private long lastBonusAt = 0;
 
         private bool needsUpdate => xp >= nextBonusAt || xp < lastBonusAt;
 
@@ -72,7 +73,7 @@ namespace Theia.Stats.skills
                 while (needsUpdate)
                 {
                     lastBonusAt = nextBonusAt;
-                    xpRequired *= BONUS_MODIFIER;
+                    xpRequired = (long)Mathf.Ceil(xpRequired * BONUS_MODIFIER);
                     nextBonusAt += xpRequired;
                     proficiency++;
                 }

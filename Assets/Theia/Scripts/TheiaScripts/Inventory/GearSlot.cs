@@ -2,7 +2,7 @@
 
 namespace Theia.Stats.gear
 {
-    public class GearSlot : ItemSlot<GearItem>
+    public class GearSlot : ItemSlot<InventoryItem>
     {
 
     }

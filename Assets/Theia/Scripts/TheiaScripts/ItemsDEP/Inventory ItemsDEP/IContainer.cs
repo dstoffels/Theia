@@ -1,8 +1,8 @@
 ﻿namespace Theia.Items.Base
 {
-    interface IContainer
+    public interface iContainer : iItem
     {
-        bool StowItem(iItem newItem);
-        iItem TakeItem(iItem item);
+        iItem StowItem(iItem newItem);
+        iItem RemoveItem(iItem item);
     }
 }

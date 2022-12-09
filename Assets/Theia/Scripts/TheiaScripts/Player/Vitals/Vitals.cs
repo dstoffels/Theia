@@ -8,7 +8,7 @@ namespace Theia.Stats.vitals
 {
     public class Vitals : DataClientManager<VitalData, Vital>, iConsumerManager<iAttributeProvider>
     {
-        protected override string assetPath => "Stats/Vitals";
+        protected override string assetPath => "Player/Vitals";
         public float impairment
         {
             get

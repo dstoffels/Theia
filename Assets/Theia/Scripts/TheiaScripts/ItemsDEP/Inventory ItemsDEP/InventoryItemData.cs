@@ -12,7 +12,6 @@ namespace Theia.Items
         public GearSlotData inventorySlot;
         public GearSlotData alternateSlot;
 
-        public float maxCarryWeight = 0;
-        public float maxContainerVolume = 0; 
+        public int maxInventoryVolume = 0; 
     }
 }

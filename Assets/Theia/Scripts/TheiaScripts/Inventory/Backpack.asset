@@ -23,23 +23,24 @@ MonoBehaviour:
     SerializationNodes:
     - Name: size
       Entry: 7
-      Data: Items.ItemSize, uMMORPG
+      Data: Theia.Items.Base.ItemSize, uMMORPG
     - Name: height
       Entry: 3
-      Data: 40
+      Data: 60
     - Name: width
       Entry: 3
-      Data: 30
+      Data: 40
     - Name: depth
       Entry: 3
-      Data: 20
+      Data: 25
     - Name: 
       Entry: 8
       Data: 
   description: 
-  maximumStackSize: 1
+  maxStackSize: 1
   baseWeight: 2000
+  image: {fileID: 0}
   inventorySlot: {fileID: 11400000, guid: 275f15a0ce3d961408d4de5ad184b660, type: 2}
   alternateSlot: {fileID: 0}
   maxCarryWeight: 30000
-  maxContainerVolume: 0
+  maxInventoryVolume: 60000
