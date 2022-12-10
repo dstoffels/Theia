@@ -2,22 +2,23 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Theia.Stats.gear;
+using static UnityEditor.Progress;
 
 namespace Theia.Items.Base
 {
     public class InventoryItem : MaterialItem<InventoryItemData>, iContainer
     {
         public GearSlotData slot => data.inventorySlot;
-        [ShowInInspector] public List<iItem> inventory = new List<iItem>();
+        public ItemSize inventorySize => data.inventorySize;
+        [ShowInInspector, ListDrawerSettings(IsReadOnly = true, Expanded = true)] 
+        public List<iItem> inventory = new List<iItem>();
         //public bool isSecured { get; set; }
 
         public override int weight => base.weight + inventoryWeight;
-
         private int inventoryWeight { get; set; }
-
-        [ShowInInspector] public int maxInventoryVolume => data ? data.maxInventoryVolume : 0;
-
+        public override int volume => base.volume + currentInventoryVolume;
         [ShowInInspector] public int currentInventoryVolume { get; private set; }
+        [ShowInInspector] public int maxInventoryVolume => data ? inventorySize.volume : 0;
 
         private void SetCurrentVolumeAndWeight()
         {
@@ -42,10 +43,13 @@ namespace Theia.Items.Base
         [Button]
         public iItem StowItem(iItem newItem)
         {
-            if (CanFit(newItem))
+            if (CanStowItem(newItem))
             {
-                inventory.Add(newItem);
-                SetCurrentVolumeAndWeight();
+                if (!inventory.Contains(newItem))
+                {
+                    inventory.Add(newItem);
+                    SetCurrentVolumeAndWeight();
+                }
                 return default;
             }
             else
@@ -55,8 +59,11 @@ namespace Theia.Items.Base
             }
         }
 
-        private bool CanFit(iItem item) =>
-            currentInventoryVolume + item.size.volume <= maxInventoryVolume && item.size.CanStow(this);
+        private bool CanStowItem(iItem item) =>
+            currentInventoryVolume + item.size.volume <= maxInventoryVolume &&
+            item.size.height <= inventorySize.height * 2 &&
+            item.size.width <= inventorySize.height * 2 &&
+            item.size.depth <= inventorySize.height * 2;
     }
 }
 

@@ -4,7 +4,7 @@ namespace Theia.Stats.gear
     public interface iWearableItemSlot<TItem>
         where TItem : iItem
     {
-        TItem Equip(TItem item);
+        TItem Equip(TItem newItem);
         TItem Remove(TItem item);
     }
 }

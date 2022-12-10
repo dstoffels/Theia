@@ -2,6 +2,7 @@
 
 namespace Theia.Items.Base
 {
+    [InlineProperty]
     public struct ItemSize
     {
         [SuffixLabel("cm", Overlay = true)]
@@ -9,10 +10,5 @@ namespace Theia.Items.Base
 
         [ShowInInspector, SuffixLabel("mL", Overlay = true)]
         public int volume => width * height * depth;
-
-        public bool CanStow(iContainer container) =>
-            height <= container.size.height * 2 &&
-            width <= container.size.height * 2 &&
-            depth <= container.size.height * 2;
     }
 }

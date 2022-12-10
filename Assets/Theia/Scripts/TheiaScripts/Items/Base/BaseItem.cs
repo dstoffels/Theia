@@ -11,6 +11,7 @@ namespace Theia.Items.Base
     {
         [SuffixLabel("g", true), ShowInInspector]
         public virtual int weight => data ? data.baseWeight : 0;
+        public virtual int volume => data ? data.size.volume : 0;
 
         public ItemSize size => data ? data.size : default;
     }

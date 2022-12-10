@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2aa3e20f3826a6419da588b88f87753, type: 3}
-  m_Name: Backpack
+  m_Name: Rucksack
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -26,13 +26,28 @@ MonoBehaviour:
       Data: Theia.Items.Base.ItemSize, uMMORPG
     - Name: height
       Entry: 3
-      Data: 60
+      Data: 40
     - Name: width
       Entry: 3
-      Data: 40
+      Data: 25
     - Name: depth
       Entry: 3
-      Data: 25
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: inventorySize
+      Entry: 7
+      Data: Theia.Items.Base.ItemSize, uMMORPG
+    - Name: height
+      Entry: 3
+      Data: 75
+    - Name: width
+      Entry: 3
+      Data: 50
+    - Name: depth
+      Entry: 3
+      Data: 40
     - Name: 
       Entry: 8
       Data: 
@@ -42,5 +57,3 @@ MonoBehaviour:
   image: {fileID: 0}
   inventorySlot: {fileID: 11400000, guid: 275f15a0ce3d961408d4de5ad184b660, type: 2}
   alternateSlot: {fileID: 0}
-  maxCarryWeight: 30000
-  maxInventoryVolume: 60000

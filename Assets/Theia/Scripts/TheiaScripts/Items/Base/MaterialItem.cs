@@ -14,6 +14,7 @@ namespace Theia.Items.Base
         public MaterialData material;
         public override int weight => data && material ? (int)(data.baseWeight * material.density) : 0;
 
+        [Button]
         public void Init(TData data, MaterialData material)
         {
             base.Init(data);

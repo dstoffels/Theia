@@ -11,7 +11,6 @@ namespace Theia.Items
     {
         public GearSlotData inventorySlot;
         public GearSlotData alternateSlot;
-
-        public int maxInventoryVolume = 0; 
+        public ItemSize inventorySize;
     }
 }

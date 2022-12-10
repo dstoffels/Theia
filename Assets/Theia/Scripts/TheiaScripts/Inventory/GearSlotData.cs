@@ -4,5 +4,8 @@ using UnityEngine;
 namespace Theia.Stats.gear
 {
     [CreateAssetMenu(menuName = "Inventory/Gear Slot")]
-    public class GearSlotData : BaseData { }
+    public class GearSlotData : BaseData
+    {
+        public int numSlots = 1;
+    }
 }

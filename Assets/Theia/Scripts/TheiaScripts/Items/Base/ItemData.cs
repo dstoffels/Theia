@@ -10,7 +10,6 @@ namespace Theia.Items.Base
         public int maxStackSize = 1;
         [SuffixLabel("g", true)]
         public int baseWeight;
-        [InlineProperty]
         public ItemSize size;
         public Sprite image;
     }

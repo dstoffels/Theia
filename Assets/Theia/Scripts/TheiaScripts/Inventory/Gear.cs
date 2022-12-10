@@ -13,7 +13,7 @@ namespace Theia.Stats.gear
         {
             totalWeight = 0;
             foreach (var slot in all)
-                totalWeight += slot.item ? slot.item.weight : 0;
+                totalWeight += slot.GetWeight();
         }
 
         [Button]

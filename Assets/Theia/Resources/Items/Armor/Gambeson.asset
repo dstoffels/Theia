@@ -33,13 +33,13 @@ MonoBehaviour:
       Data: Theia.Items.Base.ItemSize, uMMORPG
     - Name: height
       Entry: 3
-      Data: 10
+      Data: 75
     - Name: width
       Entry: 3
-      Data: 10
+      Data: 35
     - Name: depth
       Entry: 3
-      Data: 10
+      Data: 7
     - Name: 
       Entry: 8
       Data: 

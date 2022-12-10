@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using Theia.IoC;
 using Theia.Items.Armor;
 using Theia.Stats.anatomy;
+using Theia.Stats.gear;
 
 namespace Theia.Stats.armor
 {
     [HideReferenceObjectPicker]
-    public class ArmorSlot : DataClient<ArmorSlotData>, iArmorProvider, iWeightProvider
+    public class ArmorSlot : DataClient<ArmorSlotData>, iArmorProvider, iWeightProvider, iWearableItemSlot<ArmorItem>
     {
         [ShowInInspector, ReadOnly]
         private Dictionary<ArmorType, ArmorItem> slots;
@@ -47,31 +48,11 @@ namespace Theia.Stats.armor
         public void AddConsumer(iArmorConsumer consumer) => consumers.Add(consumer); 
 
         // TODO: update to implement armor "soft spots"? pass in action along with bodypart?
-        public int GetDamageReduction(BodyPartData bodypart)
-        {
-            int total = 0;
-            foreach (var armor in slots.Values)
-                if(armor != null && armor.data.slots[data].Contains(bodypart))
-                    total += armor.damageReduction;
-            return total;
-        }
+        public int GetDamageReduction(BodyPartData bodypart) => 
+            utils.Sum<ArmorItem>(slots.Values, item => item && item.data.slots[data].Contains(bodypart) ? item.damageReduction : 0);
 
+        public int GetWeight() => utils.Sum<ArmorItem>(slots.Values, item => item ? item.splitWeight : 0);
+        public int GetHindrance() => utils.Sum<ArmorItem>(slots.Values, item => item ? item.hindrance: 0);
         public BaseData GetData() => data;
-
-        public int GetWeight()
-        {
-            int weight = 0;
-            foreach (var slot in slots.Values)
-                weight += slot ? slot.splitWeight : 0;
-            return weight;
-        }
-
-        public int GetHindrance()
-        {
-            int hindrance = 0;
-            foreach(var slot in slots.Values)
-                hindrance += slot ? slot.hindrance : 0;
-            return hindrance;
-        }
     }
 }
