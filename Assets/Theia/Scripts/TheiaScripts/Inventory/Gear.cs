@@ -9,12 +9,7 @@ namespace Theia.Stats.gear
         [ShowInInspector]
         public int totalWeight { get; private set; }
 
-        public void SetTotalWeight()
-        {
-            totalWeight = 0;
-            foreach (var slot in all)
-                totalWeight += slot.GetWeight();
-        }
+        public void SetTotalWeight() => utils.Sum<GearSlot>(all, slot => slot.GetWeight());
 
         [Button]
         public InventoryItem Equip(InventoryItem item)

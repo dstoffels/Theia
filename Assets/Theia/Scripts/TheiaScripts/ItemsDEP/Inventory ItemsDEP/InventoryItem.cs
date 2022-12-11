@@ -14,24 +14,24 @@ namespace Theia.Items.Base
 
         public override int weight => base.weight + inventoryWeight;
         private int inventoryWeight { get; set; }
-        public override int volume => base.volume + currentInventoryVolume;
-        [ShowInInspector] public int currentInventoryVolume { get; private set; }
+        public override int volume => base.volume + totalInventoryVolume;
+        [ShowInInspector] public int totalInventoryVolume { get; private set; }
         [ShowInInspector] public int maxCapacity => data ? inventorySize.volume : 0;
         [ShowInInspector] public bool isSecured { get; private set; } = true;
 
         private void UpdateStats()
         {
-            currentInventoryVolume = 0;
-            inventoryWeight= 0;
-            bool hasOversizedItem = false;
-            foreach (var item in inventory)
-            {
-                currentInventoryVolume += item.size.volume;
-                inventoryWeight += item.weight;
-                hasOversizedItem = item.size.greatestDimension > inventorySize.height * 2 ? true : hasOversizedItem;
-            }
-            isSecured = !hasOversizedItem;
+            SetTotalInventoryVolume();
+            SetInventoryWeight();
+            SetIsSecured();
         }
+
+        private void SetTotalInventoryVolume() => totalInventoryVolume = utils.Sum<iItem>(inventory, item => item.size.volume);
+        private void SetInventoryWeight() => inventoryWeight = utils.Sum<iItem>(inventory, item => item.weight);
+        private void SetIsSecured() =>
+            isSecured = utils.Reduce<bool, iItem>(inventory, (item, isSecured) =>
+                item.size.greatestDimension <= inventorySize.height ? true : isSecured) && 
+            totalInventoryVolume <= maxCapacity * capacityThreshold;
 
         [Button]
         public iItem RemoveItem(iItem item)
@@ -61,13 +61,16 @@ namespace Theia.Items.Base
         }
 
         private bool CanStowItem(iItem item) =>
-            currentInventoryVolume + item.size.volume <= maxCapacity &&
+            totalInventoryVolume + item.size.volume <= maxCapacity &&
             item.size.greatestDimension <= inventorySize.height * 2;
 
         private void OnValidate()
         {
             UpdateStats();
         }
+
+        [ShowInInspector]
+        public static float capacityThreshold = 0.75f;
     }
 }
 
