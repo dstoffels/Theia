@@ -6,26 +6,49 @@ namespace Theia.Stats.gear
 {
     public class Gear : DataClientManager<GearSlotData, GearSlot>, iEquippable<InventoryItem>
     {
-        [ShowInInspector]
-        public int totalWeight { get; private set; }
-
-        public void SetTotalWeight() => utils.Sum<GearSlot>(all, slot => slot.GetWeight());
+        [ShowInInspector, ReadOnly]
+        public int weight { get; private set; }
+        public void SetWeight() => weight = utils.Sum<GearSlot>(all, slot => slot.GetWeight());
 
         [Button]
-        public InventoryItem Equip(InventoryItem item)
+        public InventoryItem Equip(InventoryItem container)
         {
-            item = this[item.slot].Equip(item);
-            SetTotalWeight();
-            return item;
+            container = this[container.slot].Equip(container);
+            SetWeight();
+            return container;
         }
 
         [Button]
-        public InventoryItem Remove(InventoryItem item)
+        public InventoryItem Remove(InventoryItem container)
         {
-            item = this[item.slot].Remove(item);
-            SetTotalWeight();
+            container = this[container.slot].Remove(container);
+            SetWeight();
+            return container;
+        }
+
+        [ShowInInspector, ReadOnly]
+        public InventoryItem defaultContainer { get; private set; }
+
+        [Button]
+        public void SetDefaultContainer(InventoryItem container) => defaultContainer = container;
+
+        [Button]
+        public iItem StowItemInContainer(iItem newItem, InventoryItem container= null)
+        {
+            container = container ? container : defaultContainer;
+            newItem = this[container.slot].StowItemInContainer(newItem, container);
+            SetWeight();
+            return newItem;
+        }
+
+        [Button]
+        public iItem RemoveItemFromContainer(iItem item, InventoryItem container)
+        {
+            item = this[container.slot].RemoveItemFromContainer(item, container);
+            SetWeight();
             return item;
         }
+
 
         // TODO: will this method return/display a message for feedback?
         // TODO: may need a variation of this method to swap and/or automatically get and store an item in next available inventory

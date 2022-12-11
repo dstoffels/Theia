@@ -17,7 +17,7 @@ namespace Theia.Items.Base
         public override int volume => base.volume + totalInventoryVolume;
         [ShowInInspector] public int totalInventoryVolume { get; private set; }
         [ShowInInspector] public int maxCapacity => data ? inventorySize.volume : 0;
-        [ShowInInspector] public bool isSecured { get; private set; } = true;
+        [ShowInInspector] public bool isSecured { get; private set; }
 
         private void UpdateStats()
         {
@@ -33,15 +33,7 @@ namespace Theia.Items.Base
                 item.size.greatestDimension <= inventorySize.height ? true : isSecured) && 
             totalInventoryVolume <= maxCapacity * capacityThreshold;
 
-        [Button]
-        public iItem RemoveItem(iItem item)
-        {
-            inventory.Remove(item);
-            UpdateStats();
-            return item;
-        }
 
-        [Button]
         public iItem StowItem(iItem newItem)
         {
             if (CanStowItem(newItem) && (Object)newItem != this)
@@ -58,6 +50,12 @@ namespace Theia.Items.Base
                 Debug.Log($"Cannot put {newItem.name} in {name}");
                 return newItem;
             }
+        }
+        public iItem RemoveItem(iItem item)
+        {
+            inventory.Remove(item);
+            UpdateStats();
+            return item;
         }
 
         private bool CanStowItem(iItem item) =>

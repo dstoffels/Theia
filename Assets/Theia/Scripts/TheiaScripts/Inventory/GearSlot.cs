@@ -2,6 +2,7 @@
 using Theia.IoC;
 using Theia.Items;
 using Theia.Items.Base;
+using UnityEngine;
 
 namespace Theia.Stats.gear
 {
@@ -10,6 +11,12 @@ namespace Theia.Stats.gear
     {
         [ListDrawerSettings(Expanded = true), ReadOnly]
         public InventoryItem[] slots;
+
+        public ItemSize inventorySize => throw new System.NotImplementedException();
+
+        public int weight => throw new System.NotImplementedException();
+
+        public ItemSize size => throw new System.NotImplementedException();
 
         public InventoryItem Equip(InventoryItem newItem)
         {
@@ -37,6 +44,26 @@ namespace Theia.Stats.gear
             }
             return null;
         }
+
+        public iItem StowItemInContainer(iItem newItem, InventoryItem container)
+        {
+            foreach (var wornContainer in slots)
+                if (wornContainer == container)
+                    return container.StowItem(newItem);
+            Debug.Log($"FAILED: {container.name} not found in player gear. Container must be equipped first.");
+            return newItem;
+        }
+
+        public iItem RemoveItemFromContainer(iItem item, InventoryItem container)
+        {
+            foreach (var wornContainer in slots)
+                if (wornContainer == container)
+                    return container.RemoveItem(item);
+            Debug.Log($"FAILED: {container.name} not found in player gear or {item.name} not found in inventory.");
+            return default;
+        }
+
+        // PROVIDER INTERFACE
         public int GetWeight() => utils.Sum<InventoryItem>(slots, item => item ? item.weight : 0);
 
         public override void Init(GearSlotData data)
