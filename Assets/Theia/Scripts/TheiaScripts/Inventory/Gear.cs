@@ -55,11 +55,6 @@ namespace Theia.Stats.gear
         //    } 
         //}
 
-        //public void StowItem(iItem item)
-        //{
-        //    // find a suitable container to stow item in
-
-        //}
 
         //private void OnMouseUp()
         //{

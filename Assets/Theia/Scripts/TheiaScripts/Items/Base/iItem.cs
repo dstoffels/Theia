@@ -4,7 +4,6 @@
     {
         string name { get; }
         int weight { get; }
-
         ItemSize size { get; }
     }
 }

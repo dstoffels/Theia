@@ -2,7 +2,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Theia.Stats.gear;
-using static UnityEditor.Progress;
 
 namespace Theia.Items.Base
 {
@@ -12,58 +11,63 @@ namespace Theia.Items.Base
         public ItemSize inventorySize => data.inventorySize;
         [ShowInInspector, ListDrawerSettings(IsReadOnly = true, Expanded = true)] 
         public List<iItem> inventory = new List<iItem>();
-        //public bool isSecured { get; set; }
 
         public override int weight => base.weight + inventoryWeight;
         private int inventoryWeight { get; set; }
         public override int volume => base.volume + currentInventoryVolume;
         [ShowInInspector] public int currentInventoryVolume { get; private set; }
-        [ShowInInspector] public int maxInventoryVolume => data ? inventorySize.volume : 0;
+        [ShowInInspector] public int maxCapacity => data ? inventorySize.volume : 0;
+        [ShowInInspector] public bool isSecured { get; private set; } = true;
 
-        private void SetCurrentVolumeAndWeight()
+        private void UpdateStats()
         {
             currentInventoryVolume = 0;
             inventoryWeight= 0;
+            bool hasOversizedItem = false;
             foreach (var item in inventory)
             {
                 currentInventoryVolume += item.size.volume;
                 inventoryWeight += item.weight;
+                hasOversizedItem = item.size.greatestDimension > inventorySize.height * 2 ? true : hasOversizedItem;
             }
-                
+            isSecured = !hasOversizedItem;
         }
 
         [Button]
         public iItem RemoveItem(iItem item)
         {
             inventory.Remove(item);
-            SetCurrentVolumeAndWeight();
+            UpdateStats();
             return item;
         }
 
         [Button]
         public iItem StowItem(iItem newItem)
         {
-            if (CanStowItem(newItem))
+            if (CanStowItem(newItem) && (Object)newItem != this)
             {
                 if (!inventory.Contains(newItem))
                 {
                     inventory.Add(newItem);
-                    SetCurrentVolumeAndWeight();
+                    UpdateStats();
                 }
                 return default;
             }
             else
             {
-                Debug.Log("Dis bish don' fit in " + name);
+                Debug.Log($"Cannot put {newItem.name} in {name}");
                 return newItem;
             }
         }
 
         private bool CanStowItem(iItem item) =>
-            currentInventoryVolume + item.size.volume <= maxInventoryVolume &&
-            item.size.height <= inventorySize.height * 2 &&
-            item.size.width <= inventorySize.height * 2 &&
-            item.size.depth <= inventorySize.height * 2;
+            currentInventoryVolume + item.size.volume <= maxCapacity &&
+            item.size.greatestDimension <= inventorySize.height * 2;
+
+        private void OnValidate()
+        {
+            UpdateStats();
+        }
     }
 }
 

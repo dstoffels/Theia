@@ -1,4 +1,5 @@
 ﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Theia.Items.Base
 {
@@ -10,5 +11,7 @@ namespace Theia.Items.Base
 
         [ShowInInspector, SuffixLabel("mL", Overlay = true)]
         public int volume => width * height * depth;
+
+        public int greatestDimension => Mathf.Max(height, Mathf.Max(width, depth));
     }
 }

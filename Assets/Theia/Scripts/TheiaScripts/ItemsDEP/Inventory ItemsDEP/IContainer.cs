@@ -4,5 +4,7 @@
     {
         iItem StowItem(iItem newItem);
         iItem RemoveItem(iItem item);
+
+        ItemSize inventorySize { get; }
     }
 }
